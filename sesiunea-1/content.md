@@ -172,13 +172,15 @@
 ### Oleaca de teorie
 - O funcție definește o anumită sarcină pe care dorim să o îndeplinim, cum ar fi:
     - calcularea pătratului unui număr-
-    - afișarea unui mesaj "Hello world"
+    - afișarea unui mesaj gen: "Hello world"
     - afișarea numelui complet al unei persoane
     - etc.
-- Functiile pot fi v- Recapitulare functii
-m nevoie pentru a calcula media geometrica a 3 numere, o putem pur si simplu apela.
+- Daca luam de exemplu o functie care calculeaza media geometrica a 3 numere:
     - Te poti gandi ca in loc sa copiezi undeva la 4,5 linii de cod de fiecare data, o sa ai doar o linie de cod.
-    - Un avantaj mare al functiilor este ca daca avem o problema de logica in calculul pe care il face functia noastra (care prespunem ca e chemata in muuuulte locuri) noi vom avea de corectat intr-un singur loc, anume unde am definit functie, in rest va fi transparent.
+    - O sa fie ceva gen: `calculeazaMedie(x,y,z)` sau `calculeazaMedie(a,b,c)`
+    - daca nu ai fi avut functii, trebuie sa copiezi peste tot, toata logica ce iti calcula media.
+- Un avantaj mare al functiilor este ca daca avem o problema de logica in calculul/operatiile pe care il/le face functia noastra (si prespunem ca e chemata in muuuulte locuri) noi vom avea de corectat intr-un singur loc, anume unde am definit functia si solutia probleme se va propaga automat peste tot unde e folosita.
+
 - Pentru definirea unei funcții, vom utiliza următorul șablon:
     ```c++
         <tip întoarcere> <nume funcție> (<listă de parametri>){
