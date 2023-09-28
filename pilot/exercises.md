@@ -151,7 +151,7 @@
     - Date de intrare: `[1 3, 4, -1, 5, 7, 99, -11, 2, -12, 21]`
     - Date de iesire: `99`
 
-4. Scrie un program C++ care citeste un numar `n` si un numar `k` de la tastatura, dupa care va citi `n` numere reale pe care le va salva intr-un vector. Programul va determina de cate ori apare numarul `k` in vector sau `-` in cazul in care numarul nu exista in vector.
+4. Scrie un program C++ care citeste un numar `n` si un numar `k` de la tastatura, dupa care va citi `n` numere reale pe care le va salva intr-un vector. Programul va determina de cate ori apare numarul `k` in vector sau `-1` in cazul in care numarul nu exista in vector.
     - Date de intrare:
         - `n` = 9
         - `k` = 11
