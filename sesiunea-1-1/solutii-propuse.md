@@ -85,7 +85,7 @@
         }
     }
 
-    int creeazaOglindit(int number) {
+    int intoarceOglindit(int number) {
         int rezultat = 0;
         while (number > 0) {
             int ultimaCifra = number % 10;
