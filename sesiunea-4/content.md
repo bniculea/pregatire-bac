@@ -1,4 +1,4 @@
-# Sesiunea $
+# Sesiunea 4
 
 ## Agenda
 - Recapitulare concepte din sesiunile anterioare si/sau predate la scoala
@@ -482,10 +482,10 @@ respective majorat cu 50% este:
     ```
 
 - Variante: 
-    * a. A[x]==B[x] && A[y]==B[y] 
-    * b. A.x==B.x && A.y==B.y 
-    * c. x[A]==x[B] && y[A]==y[B] 
-    * d. x.A==x.B && y.A==y.B 
+    * a. `A [ x ] == B[x] && A[y]==B[y] `
+    * b. `A.x == B.x && A.y==B.y `
+    * c. `x[A]==x[B] && y[A]==y[B] `
+    * d. `x.A==x.B && y.A==y.B `
 
 
 ## Exercitii de antrenament:
