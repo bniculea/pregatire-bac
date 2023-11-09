@@ -155,8 +155,8 @@
 
 3. Solutie:
     ```c++
-        int a[24][4];
-        for (int i = 0; i < 4; i++) {
+        int a[4][24];
+        for (int i = 0; i < 24; i++) {
             if (a[0][i] == 2024 && a[23][i] == 2024) {
                 cout << i << " ";
             }
