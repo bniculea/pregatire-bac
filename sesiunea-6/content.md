@@ -636,11 +636,9 @@
                 int lungimeSirA = strlen(a);
                 int lungimeSufix = 1;
                 while (lungimeSufix <= lungimeSirA) {
-                    int indexB  = 0;
-                    int amGasitPrefixNou = 1;
-                    int i = lungimeSirA-lungimeSufix;
-                    while(i < lungimeSirA) {
-                        if (a[i] != b[indexB++]) {
+                    int1.
+    - Sursa: Bac 2012 August, Subiectul 2, exercitiul 4
+    - Enunt: ++]) {
                             amGasitPrefixNou = 0;
                             break;
                         }
@@ -648,10 +646,9 @@
                     }
                     if (amGasitPrefixNou) {
                         areSufixePrefixe = 1;
-                        for (int j = lungimeSirA-lungimeSufix; j < lungimeSirA; j++) {
-                            cout << a[j];
-                        }
-                        cout << " ";
+                        for (int j = 1.
+    - Sursa: Bac 2012 August, Subiectul 2, exercitiul 4
+    - Enunt: cout << " ";
                     }
 
                     lungimeSufix++;
