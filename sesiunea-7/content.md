@@ -23,7 +23,7 @@
 
             using namespace std;
 
-            int main() {TBD i = 0; i < strlen(s);i++) {
+            int main() {int i = 0; i < strlen(s);i++) {
                     cout << s+i << " ";
                 }
                 return 0;
