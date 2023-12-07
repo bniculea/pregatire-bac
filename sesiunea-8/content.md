@@ -401,7 +401,7 @@
         ```
     - b.
         ```json
-            Daca ne uitam la program, pentru 144, mai sus am obtinut 0 deoarece am avut un numar par de impartiri la 2, ca sa obtinem un numar impar, putem sa alegem dublul numarului 144, adica 288.
+            Daca ne uitam la program, pentru 144, mai sus am obtinut 1 deoarece am avut un numar par de impartiri la 2, ca sa obtinem un numar impar, putem sa alegem dublul numarului 144, adica 288.
         ```
     - c. 
         ```c++
