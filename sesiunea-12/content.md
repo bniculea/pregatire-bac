@@ -242,19 +242,19 @@
                 return 0;
             }
         ```
-* Mai departe haideti sa ne uitam la elementele de sub diagonala principala sa vedem ce putem observa din indecsii lor:
-    ```json
-        -2 -> [1, 0]
-        -3 -> [2, 0]
-        -4 -> [2, 1]
-        -5 -> [3, 0]
-        -6 -> [3, 1]
-        -7 -> [3, 2]
-        -8 -> [4, 0]
-        -9 -> [4, 1]
-        -10 -> [4, 2]
-        -11 -> [4, 3]
-    ```
+    * Mai departe haideti sa ne uitam la elementele de sub diagonala principala sa vedem ce putem observa din indecsii lor:
+        ```json
+            -2 -> [1, 0]
+            -3 -> [2, 0]
+            -4 -> [2, 1]
+            -5 -> [3, 0]
+            -6 -> [3, 1]
+            -7 -> [3, 2]
+            -8 -> [4, 0]
+            -9 -> [4, 1]
+            -10 -> [4, 2]
+            -11 -> [4, 3]
+        ```
     * Dupa cum poate te asteptai, aici lucrurile sunt in oglinda, anume, pentru fiecare element, indexul liniei este mai mare decat cel al coloanei. Mai jos avem bucatica de cod care va afisa strict elementele de sub diagonala principala
         ```c++
             #include <iostream>
@@ -308,90 +308,103 @@
         10 -> [2, 1]
         11 -> [3, 0]
     ```
-    * Aici e mai complicat putin, nu mult, va trebui sa ne folosim de formula pe care o folosim ca aflam numerele de pe diagonala secundara, anume `i+j = n-1` si totodata putem observa ca numerele de deasupra diagonalei secundare sunt numerele care sunt in stanga ei de aici, corelat cu indexii de mai sus putem spune ca pentru numerele de deasupra diagonalei secundare putem folosi formula `(i+j) < (n-1)` unde `n` reprezinta numarul de elemente de pe linie
-    * Mai jos avem codul c++ care va afisa doar elementele de deasupra diagonalei secundare
-        ```c++
-            #include <iostream>
+* Aici e mai complicat putin, nu mult, va trebui sa ne folosim de formula pe care o folosim ca aflam numerele de pe diagonala secundara, anume `i+j = n-1` si totodata putem observa ca numerele de deasupra diagonalei secundare sunt numerele care sunt in stanga ei de aici, corelat cu indexii de mai sus putem spune ca pentru numerele de deasupra diagonalei secundare putem folosi formula `(i+j) < (n-1)` unde `n` reprezinta numarul de elemente de pe linie
+* Mai jos avem codul c++ care va afisa doar elementele de deasupra diCadranele se noteaza in sensul acelor de ceasornic, similar cu poza de mai jos:agonalei secundare
+    ```c++
+        #include <iostream>
 
-            using namespace std;
+        using namespace std;
 
-            int main() {
+        int main() {
 
-                int matrice[5][5] = {
-                        {2,  3,  4,   5,   1},
-                        {6, 7,  8,   1,   -2},
-                        {9, 10, 1,   -3,   -4},
-                        {11, 1, -5,  -6,   -7},
-                        {1, -8, -9, -10, -11},
-                };
+            int matrice[5][5] = {
+                    {2,  3,  4,   5,   1},
+                    {6, 7,  8,   1,   -2},
+                    {9, 10, 1,   -3,   -4},
+                    {11, 1, -5,  -6,   -7},
+                    {1, -8, -9, -10, -11},
+            };
 
 
-                cout << "Afisare elemente de deasupra diagonalei secundare: " <<endl;
-                for (int i = 0; i<5; i++) {
-                    for (int j = 0; j < 5; j++) {
-                        if ((i +j) < (5-1)) {
-                            cout << matrice[i][j] << " ";
-                        } else {
-                            // Am pus tab doar de dragul de a le afisa mai frumos
-                            // Ca si cum am fi extras doar numerele de deasupra diagonelei principale
-                            cout << "\t";
-                        }
+            cout << "Afisare elemente de deasupra diagonalei secundare: " <<endl;
+            for (int i = 0; i<5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    if ((i +j) < (5-1)) {
+                        cout << matrice[i][j] << " ";
+                    } else {
+                        // Am pus tab doar de dragul de a le afisa mai frumos
+                        // Ca si cum am fi extras doar numerele de deasupra diagonelei principale
+                        cout << "\t";
                     }
-                    cout << endl;
                 }
-
-                return 0;
+                cout << endl;
             }
-        ```
-* Mai departe haideti sa ne uitam la elementele de sub diagonala secundara sa vedem ce putem observa din indecsii lor:
-```json
-    -2 -> [1, 4]
-    -3 -> [2, 3]
-    -4 -> [2, 4]
-    -5 -> [3, 2]
-    -6 -> [3, 3]
-    -7 -> [3, 4]
-    -8 -> [4, 1]
-    -9 -> [4, 2]
-    -10 -> [4, 3]
-    -11 -> [4, 4]
-```
+    ```
+
+* Acum haide sa vedem elementele de sub diagonala secundara ce indecsi au:
+    ```json
+        -2 -> [1, 4]
+        -3 -> [2, 3]
+        -4 -> [2, 4]
+        -5 -> [3, 2]
+        -6 -> [3, 3]
+        -7 -> [3, 4]
+        -8 -> [4, 1]
+        -9 -> [4, 2]
+        -10 -> [4, 3]
+        -11 -> [4, 4]
+    ```
 * Dupa cum poate te asteptai, aici lucrurile sunt in oglinda, anume, pentru fiecare element, stiind ca este in dreapta diagonalei secundare si stiind totodata formula elementelor de pe diagonala secundara + indecsii lor, avem: `(i+j) > (n-1)`
-    * Codul c++ de mai jos evidentiaza acest lucru:
-        ```c++
-            #include <iostream>
+* Codul c++ de mai jos evidentiaza acest lucru:
+    ```c++
+        #include <iostream>
 
-            using namespace std;
+        using namespace std;
 
-            int main() {
+        int main() {
 
-                int matrice[5][5] = {
-                        {2,  3,  4,   5,   1},
-                        {6, 7,  8,   1,   -2},
-                        {9, 10, 1,   -3,   -4},
-                        {11, 1, -5,  -6,   -7},
-                        {1, -8, -9, -10, -11},
-                };
+            int matrice[5][5] = {
+                    {2,  3,  4,   5,   1},
+                    {6, 7,  8,   1,   -2},
+                    {9, 10, 1,   -3,   -4},
+                    {11, 1, -5,  -6,   -7},
+                    {1, -8, -9, -10, -11},
+            };
 
 
-                cout << "Afisare elemente de sub diagonala secundara: " <<endl;
-                for (int i = 0; i<5; i++) {
-                    for (int j = 0; j < 5; j++) {
-                        if ((i +j) > (5-1)) {
-                            cout << matrice[i][j] << " ";
-                        } else {
-                            // Am pus tab doar de dragul de a le afisa mai frumos
-                            // Ca si cum am fi extras doar numerele de deasupra diagonelei principale
-                            cout << "\t";
-                        }
+            cout << "Afisare elemente de sub diagonala secundara: " <<endl;
+            for (int i = 0; i<5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    if ((i +j) > (5-1)) {
+                        cout << matrice[i][j] << " ";
+                    } else {
+                        // Am pus tab doar de dragul de a le afisa mai frumos
+                        // Ca si cum am fi extras doar numerele de deasupra diagonelei principale
+                        cout << "\t";
                     }
-                    cout << endl;
                 }
+                cout << endl;
+            }
 
-                return 0;
-            }    
-        ```
+            return 0;
+        }    
+    ```
 
 ## Exercitii de antrenament
-1. Scrieti un program care citeste de la tastatura un numar din intervalul [1, 4] si matricea din poza de mai jos. In functie de numarul introdus de la tastatura, programul va afisa numerele din cadranul respectiv. Cadranele se noteaza in sensul acelor de ceasornic, similar cu poza de mai jos:
-    
+1. Scrieti un program care citeste de la tastatura un numar din intervalul [1, 4] si matricea din poza de mai jos. In functie de numarul introdus de la tastatura, programul va afisa numerele din cadranul respectiv, si numerotarea cadranelor se face astfel:
+    - `1` cadranul ce se afla in partea de sus a matricei, cadran ce va contine elementele care se afla deasupra ambelor diagonale
+    - `2` cadranul ce se afla in partea dreapta a matricei, cadran ce va contine numerele care se afla deasupra diagonalei principale dar care sunt sub diagonala secundara
+    - `3` cadranul ce se afla in partea de jos a matricei, cadran ce va contine numerele care se afla sub ambele diagonale
+    - `4` cadranul ce se afla in partea stanga a matricei, cadran ce va contine numerele care se afla deasupra diagonalei secundare dar sub diagonala principala
+
+- Exemplu:
+    - Input: 2
+    - Output: 
+        ```json
+                      1
+                   1 -2
+                1 -3 -4
+                  -6 -7
+                      11
+        ```
+        - Nota: felul in care le afisezi nu conteaza, conteaza doar numerele
