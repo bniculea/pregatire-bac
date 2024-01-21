@@ -9,15 +9,12 @@
 * Exercitii de antrenament
 
 ## Introducere in Matrici
-* Matricile pot fi vazute ca o extensie a vectorilor 1D. Dupa cum stii, intr-un vector, elementele sunt aranjate intr-o singura linie, pe cand intr-o matrice, acestea sunt aranjate in linii si coloane:
-    - Vector:
-        * ![Poza graf](imagini/vector-dummy.png)
-    - Matrice:
-        * ![Poza graf](imagini/matrice-dummy.png)
-* Daca intr-un vector normal, accesam elementele folosind un index (care intotdeauna pleaca de la 0, indiferent ce zic profesorii...), intr-o matrice, pentru a accesa un element o sa folosim 2 indecsi (de asemenea 0-based):
+* Matricile pot fi vazute ca o extensie a vectorilor 1D. Dupa cum stii, intr-un vector, elementele sunt aranjate pe aceeasi linie. Si pentru a accesa un element din vector putem folosi un singur index care ne spune pozitia la care se afla elementul dorit. De retinut ca index-ul porneste de la 0, ceea ce inseamna, de exemplu ca al doilea element va avea index-ul 0.
+
+* Pentru a accesa un element dintr-o matrice avem nevoie de doua valori, spre deosebire de un vector 1D, anume:
     - Index-ul pentru linie
     - Index-ul pentru coloana
-    - De exemplu, casuta marcata mai jos cu rosu se gaseste pe linia 3 si coloana 2
+        - De exemplu, casuta marcata mai jos cu rosu se gaseste pe linia 3 si coloana 2
         * ![Poza graf](imagini/acces-matrice.png)
             * NOTA: numarul de linii nu trebuie sa fie egal cu numarul de coloane insa o sa vedem putin mai incolo.
 * Acum, sa complicam putintel lucrurile, am zis mai sus ca un vector 2D este o extensie a unui vector 1D, ce am vrut sa spun prin asta este ca putem vedea un vector 2D, ca pe un  vector normal, unde fiecare dintre elementele sale sunt un vector la randul lor
@@ -47,11 +44,10 @@
     ```c++
         // Declarare si initializare
         int numere[4] = {1,2,3,4};
-        ![Poza graf](imagini/acces-matrice.png)![Poza graf](imagini/acces-matrice.png)![Poza graf](imagini/acces-matrice.png)
+        
         int n;
         cin >> n;
         int numere2[n];
-        
         // Initializare
         for (int i = 0; i < n; i++) {
             cin >> numere2[i];
@@ -77,11 +73,11 @@
             }
         }
     ```
-* De asemenea un lucru foarte important, daca iti aduci aminte, atunci cand voiam sa setam toate elementele dintr-un vector sa aibe![Poza graf](imagini/acces-matrice.png)na ajunge.
+* De asemenea un lucru foarte important, daca iti aduci aminte, atunci cand voiam sa setam toate elementele dintr-un vector sa aibe valoare 0 (sau o alta valoare arbitrara) scriam ceva de genul: `int numere[n] = {0}`. La fel putem proceda si pentru cand vrem ca toate elementele dintr-o matrice sa aibe aceeasi valoare: `int matrice[4][4] = {0}` si putem observa ca nu trebuie sa specificam doua valori in acest caz.
 
 ## Accesare elemente din matrice
-* Am vorbit ca matricile sunt o extensie a vectorilor 1D si ca pentru a manipula elementele din ele, trebuie sa folosim doua valori, prima va specifica numarul linii si a doua va specifica numarul coloanei. De retinut faptul ca ambele pleaca de la 0. Asta inseamna ca elementul care se gaseste pe prima linie si prima coloana va putea fi accesat folosind [0][0].
-    - Nota [] se numeste operatorul pentru indexare, asa, pentru tine :D
+* Am vorbit ca matricile sunt o extensie a vectorilor 1D si ca pentru a manipula elementele din ele, trebuie sa folosim doua valori, prima va specifica numarul linii si a doua va specifica numarul coloanei. De retinut faptul ca ambele pleaca de la 0. Asta inseamna ca elementul care se gaseste pe prima linie si prima coloana va putea fi accesat folosind `[0][0]`.
+    - Nota `[]` se numeste operatorul pentru indexare, asa, pentru tine :D
 * Acum, hai sa facem un mic programel in care initializam noi direct o matrice si programelul va trebui sa afiseze elementele care sunt impare:
     ```c++
         #include <iostream>
@@ -116,7 +112,7 @@
     * ![Poza graf](imagini/matrice-secundara.png)
 
 * Acum, haide sa disecam putin fiecare dintre cazuri
-    * ca si mic sfat, de fiecare data cand iti este greu sa iti dai seama cam cum trebuie sa faci ca sa obtii o matrice sau ca sa o creezi, tinand cont de un exemplu dat, noteaza-ti indecsii elementelor si incearca sa vezi o corelare intre ei si linie, coloana, numarul de elemente
+    * ca si mic sfat, de fiecare data cand iti este greu sa iti dai seama cam cum trebuie sa faci ca sa obtii o matrice sau ca sa o creezi, tinand cont de un exemplu dat, noteaza-ti indecsii elementelor si incearca sa vezi o corelare intre ei si linie, coloana, numarul de elemente, etc
 
 ### Pentru diagonala principala
 * o sa scriem pozitiile la care se gasesc elementele de pe diagonala principala:
@@ -390,7 +386,105 @@
         }    
     ```
 
+## Exercitii "clasa"
+
+* Nota: exercitiile sunt extrase de pe site-ul pbinfo de la link-ul: 
+1. https://www.pbinfo.ro/probleme/313/diagonale
+- Solutie:
+    ```c++
+        #include <iostream>
+
+        using namespace std;
+
+        int main() {
+
+            int n;
+            cin >> n;
+            int matrice[n][n];
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    cin >> matrice[i][j];
+                }
+            }
+
+            int sumaDiagonalaPrincipala = 0;
+            int sumaDiagonalaSecundara = 0;
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (i == j) {
+                        sumaDiagonalaPrincipala += matrice[i][j];
+                    }
+                    if ((i+j)== n-1) {
+                        sumaDiagonalaSecundara += matrice[i][j];
+                    }
+                }
+            }
+
+            if (sumaDiagonalaPrincipala > sumaDiagonalaSecundara) {
+                cout << sumaDiagonalaPrincipala - sumaDiagonalaSecundara;
+            } else {
+                cout << sumaDiagonalaSecundara - sumaDiagonalaPrincipala;
+            }
+            
+            return 0;
+        }
+
+    ```
+2. 
+    - Link: https://www.pbinfo.ro/probleme/780/cmmdcsum
+    - Solutie:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int gcd(int x, int y);
+
+            int main() {
+
+                int n;
+                cin >> n;
+                int matrice[n][n];
+
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cin >> matrice[i][j];
+                    }
+                }
+
+                int sumaDeasupraDiagonalaPrincipala = 0;
+                int sumaSubDiagonalaPrincipala = 0;
+
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        if (j > i) {
+                            sumaDeasupraDiagonalaPrincipala += matrice[i][j];
+                        }
+                        if (i > j) {
+                            sumaSubDiagonalaPrincipala += matrice[i][j];
+                        }
+                    }
+                }
+
+                cout << gcd(sumaSubDiagonalaPrincipala, sumaDeasupraDiagonalaPrincipala);
+
+                return 0;
+            }
+
+            int gcd(int x, int y) {
+                while(y != 0) {
+                    int temp = y;
+                    y = x % y;
+                    x = temp;
+                }
+                return x;
+            }
+        ```
+
 ## Exercitii de antrenament
+
 1. Scrieti un program care citeste de la tastatura un numar din intervalul [1, 4] si matricea din poza de mai jos. In functie de numarul introdus de la tastatura, programul va afisa numerele din cadranul respectiv, si numerotarea cadranelor se face astfel:
     - `1` cadranul ce se afla in partea de sus a matricei, cadran ce va contine elementele care se afla deasupra ambelor diagonale
     - `2` cadranul ce se afla in partea dreapta a matricei, cadran ce va contine numerele care se afla deasupra diagonalei principale dar care sunt sub diagonala secundara
@@ -408,3 +502,5 @@
                       11
         ```
         - Nota: felul in care le afisezi nu conteaza, conteaza doar numerele
+        
+2. Exercitiul ce se afla la adresa: https://www.pbinfo.ro/probleme/1749/zona4 si care se bazeaza pe aceeasi idee ca exercitiul de mai sus
