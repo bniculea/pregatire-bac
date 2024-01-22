@@ -586,6 +586,58 @@
             }
         
         ```
+
+5. 
+    - Link: https://www.pbinfo.ro/probleme/210/chenar
+    - Solutie:
+        ```c++
+        #include <iostream>
+        #include <fstream>
+
+        using namespace std;
+
+        int main() {
+
+            ifstream fin("chenar.in");
+            ofstream fout("chenar.out");
+
+            int n;
+            fin >> n;
+            int matrice[n][n];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    fin >> matrice[i][j];
+                }
+            }
+
+            // prima linie
+            for (int i =0; i < n; i++) {
+                fout << matrice[0][i] << " ";
+            }
+
+            // ultima coloana
+            for (int i = 1; i < n; i++) {
+                fout << matrice[i][n-1] << " ";
+            }
+
+            // ultima linie de la dreapta la stanga
+            for (int i = n-2; i >= 0; i--) {
+                fout << matrice[n-1][i] << " ";
+            }
+
+            // prima coloana de sus in jos
+            for (int i = n-2; i > 0; i--) {
+                fout << matrice[i][0] << " ";
+            }
+
+
+            fin.close();
+            fout.close();
+
+
+            return 0;
+        }
+        ```
 ## Exercitii de antrenament
 
 1. Scrieti un program care citeste de la tastatura un numar din intervalul [1, 4] si matricea din poza de mai jos. In functie de numarul introdus de la tastatura, programul va afisa numerele din cadranul respectiv, si numerotarea cadranelor se face astfel:
