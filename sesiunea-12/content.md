@@ -521,7 +521,71 @@
                 return 0;
             }
         ```
+4. 
+    - Link: https://www.pbinfo.ro/probleme/3124/patratmagic0
+    - Solutie:
+        ```c++
+            #include <iostream>
 
+            using namespace std;
+
+            int main() {
+
+                int n;
+                cin >> n;
+                int matrice[n][n];
+                int estePatratMagic = 1;
+                int sumaDiagonalaPrincipala = 0;
+                int sumaDiagonalaSecundara = 0;
+                // i+j =
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cin >> matrice[i][j];
+                        if (matrice[i][j] > n * n || matrice[i][j] < 1) {
+                            estePatratMagic = 0;
+                            break;
+                        }
+                    }
+                }
+                
+                if (!estePatratMagic) {
+                    cout << "false";
+                    return 0;
+                }
+
+                for (int i =0; i < n; i++) {
+
+                    sumaDiagonalaPrincipala += matrice[i][i];
+                    sumaDiagonalaSecundara += matrice[i][n-1-i];
+                }
+
+                if (sumaDiagonalaPrincipala != sumaDiagonalaSecundara) {
+                    estePatratMagic = 0;
+                } else {
+                    for (int i = 0; i < n; i++) {
+                        int sumaLinieCurenta = 0;
+                        int sumaColoanaCurent = 0;
+                        for (int j = 0; j < n; j++) {
+                            sumaLinieCurenta += matrice[i][j];
+                            sumaColoanaCurent += matrice[j][i];
+                        }
+                        if (sumaLinieCurenta != sumaDiagonalaPrincipala || sumaColoanaCurent != sumaDiagonalaPrincipala) {
+                            estePatratMagic = 0;
+                            break;
+                        }
+                    }
+                }
+
+                if (estePatratMagic) {
+                    cout << "true";
+                } else {
+                    cout << "false";
+                }
+
+                return 0;
+            }
+        
+        ```
 ## Exercitii de antrenament
 
 1. Scrieti un program care citeste de la tastatura un numar din intervalul [1, 4] si matricea din poza de mai jos. In functie de numarul introdus de la tastatura, programul va afisa numerele din cadranul respectiv, si numerotarea cadranelor se face astfel:
