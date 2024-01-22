@@ -640,7 +640,7 @@
         ```
 ## Exercitii de antrenament
 
-1. Scrieti un program care citeste de la tastatura un numar din intervalul [1, 4] si matricea din poza de mai jos. In functie de numarul introdus de la tastatura, programul va afisa numerele din cadranul respectiv, si numerotarea cadranelor se face astfel:
+1. Scrieti un program care citeste de la tastatura un numar din intervalul [1, 4] si citeste un n de la tastatura (n >= 4) urmat de n*n elemente. In functie de numarul introdus de la tastatura, programul va afisa numerele din cadranul respectiv, si numerotarea cadranelor se face astfel:
     - `1` cadranul ce se afla in partea de sus a matricei, cadran ce va contine elementele care se afla deasupra ambelor diagonale
     - `2` cadranul ce se afla in partea dreapta a matricei, cadran ce va contine numerele care se afla deasupra diagonalei principale dar care sunt sub diagonala secundara
     - `3` cadranul ce se afla in partea de jos a matricei, cadran ce va contine numerele care se afla sub ambele diagonale
@@ -660,4 +660,4 @@
         
 2. Exercitiul ce se afla la adresa: https://www.pbinfo.ro/probleme/1749/zona4 si care se bazeaza pe aceeasi idee ca exercitiul de mai sus
 
-3. Problema ce a fost data la Bac in anul 2022 august, Subiectul 2, exercitiul 5 (vezi in subiecte/bac_2023_august.pdf)
+3. Problema ce a fost data la Bac in anul 2023 august, Subiectul 2, exercitiul 5 (vezi in subiecte/bac_2023_august.pdf)
