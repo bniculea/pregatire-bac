@@ -482,6 +482,45 @@
                 return x;
             }
         ```
+3. 
+    - Link: https://www.pbinfo.ro/probleme/786/matsim
+    - Solutie:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int gcd(int x, int y);
+
+            int main() {
+
+                int n;
+                cin >> n;
+                int matrice[n][n];
+                int simetrica[n][n];
+
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cin >> matrice[i][j];
+                    }
+                }
+
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        simetrica[j][i] = matrice[i][j];
+                    }
+                }
+
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cout << simetrica[i][j] <<" ";
+                    }
+                    cout << endl;
+                }
+
+                return 0;
+            }
+        ```
 
 ## Exercitii de antrenament
 
