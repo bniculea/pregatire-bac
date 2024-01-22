@@ -659,3 +659,5 @@
         - Nota: felul in care le afisezi nu conteaza, conteaza doar numerele
         
 2. Exercitiul ce se afla la adresa: https://www.pbinfo.ro/probleme/1749/zona4 si care se bazeaza pe aceeasi idee ca exercitiul de mai sus
+
+3. Problema ce a fost data la Bac in anul 2022 august, Subiectul 2, exercitiul 5 (vezi in subiecte/bac_2023_august.pdf)
