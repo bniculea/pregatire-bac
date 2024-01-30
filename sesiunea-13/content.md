@@ -147,3 +147,115 @@
                 return 0;
             }
         ```
+
+## Exercitii matrici oarecare
+
+1. 
+    - Link: https://www.pbinfo.ro/probleme/767/sumapare2
+    - Solutie: 
+        ```c++
+        #include <iostream>
+        #include <fstream>
+
+        using namespace std;
+
+        int main() {
+            int n,m;
+
+            cin >> n >> m;
+            int matrice[n][m];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    cin >> matrice[i][j];
+                }
+            }
+            int suma = 0;
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    if(matrice[i][j] % 2 == 0) {
+                        suma += matrice[i][j];
+                    }
+                }
+            }
+
+            cout << suma;
+            return 0;
+        }
+        ```
+2. 
+    - Link: https://www.pbinfo.ro/probleme/658/sumalinii 
+    - Solutie:
+        ```c++
+            #include <iostream>
+            #include <fstream>
+
+            using namespace std;
+
+            int main() {
+                int n,m;
+
+                cin >> n >> m;
+                int matrice[n][m];
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < m; j++) {
+                        cin >> matrice[i][j];
+                    }
+                }
+                for (int i = 0; i < n; i++) {
+                    int sumaLinie = 0;
+                    for (int j = 0; j < m; j++) {
+                        sumaLinie += matrice[i][j];
+                    }
+                    cout << sumaLinie <<" ";
+                }
+
+                return 0;
+            }
+        ```
+3. 
+    - Link: https://www.pbinfo.ro/probleme/666/nrprime
+    - Solutie:
+        ```c++
+            #include <iostream>
+            #include <fstream>
+
+            using namespace std;
+            int estePrim(int n);
+
+            int main() {
+                int n,m;
+                int contor = 0;
+
+                cin >> n >> m;
+                int matrice[n][m];
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < m; j++) {
+                        cin >> matrice[i][j];
+                    }
+                }
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < m; j++) {
+                        if ((i+1) % 2 == 0 && estePrim(matrice[i][j])) {
+                            contor++;
+                        }
+                    }
+                }
+                cout << contor;
+
+                return 0;
+            }
+
+            int estePrim(int n) {
+                if (n < 2) {
+                    return 0;
+                }
+                int rezultat = 1;
+                for (int i = 2; i*i <= n; i++) {
+                    if (n % i == 0) {
+                        rezultat = 0;
+                        break;
+                    }
+                }
+                return rezultat;
+            }
+        ```
