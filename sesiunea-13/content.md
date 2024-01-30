@@ -63,6 +63,9 @@
 
             int main() {
                 char text[101], rezultat[101];
+                // Ne asiguram ca nu o sa citim garbage din memorie
+                text[0] = '\0';
+                rezultat[0] = '\0';
                 cin.getline(text, 101);
                 int contor = 0;
                 char *cuvant = strtok(text, " ");
@@ -72,22 +75,75 @@
                         strcat(rezultat, cuvant);
                         strcat(rezultat, " ");
                     } else {
-                        int estePalindrom = 0;
-                        int i =0, j = strlen(cuvant)-1;
-                        while (i < j) {
-                            if (cuvant[i] != cuvant[j]) {
-                                estePalindrom = 0;
-                                break;
-                            }
-                            i++;
-                            j--;
+                        int lungimeCuvant = strlen(cuvant);
+                        char oglindit[lungimeCuvant+1];
+                        for(int i = 0; i < lungimeCuvant; i++) {
+                            oglindit[i] = cuvant[lungimeCuvant - 1 - i];
                         }
-                        if(estePalindrom) {
-                            
+                        oglindit[lungimeCuvant] = '\0';
+                        if (strcmp(oglindit, cuvant) != 0) {
+                            contor++;
                         }
+                        strcat(rezultat, oglindit);
+                        strcat(rezultat, " ");
                     }
                     cuvant = strtok(NULL, " ");
                 }
+                if (contor == 0) {
+                    cout << "nu exista";
+                } else {
+                    cout << rezultat;
+                }
+                return 0;
+            }
+        ```
+
+* 3
+    - Explicatie
+        ```json
+            O sa scriem un algoritm in care vom cauta cel mai mic si cel mai mare numar de doua cifre. In cazul in care nu vom gasi cel putin un astfel de numar,se va afisa "NU EXISTA". Algoritmul va fi eficient din punct de vedere al timpului de executie deoarece se va face o singura parcurgere a numerelor din fisier. In acelasi timp, algoritmul este eficient din punct de vedere al memoriei utilizate deoarece nu se foloseste alte structuri de date pentru stocarea si  manipularea numerelor, practic, din maximum de 10^6 numere cate pot fi in fisier, noi in memorie o sa avem maximum 3, in acelasi moment: min, max si numarul curent pe care il citim.
+        
+        ```
+    - Solutie:
+        ```c++
+            #include <iostream>
+            #include <fstream>
+
+            using namespace std;
+
+            int main() {
+                ifstream fin("bac.txt");
+
+                int minimDouaCifra=-1;
+                int maximDouaCifre=-1;
+                int numar;
+                while(fin >> numar) {
+                    // aici verificam daca are doua cifre
+                    if (numar >= 10 && numar <= 99) {
+                        // daca suntem la inceput, initializam ambele cu aceeasi valoare
+                        if (minimDouaCifra == -1 && maximDouaCifre == -1) {
+                            minimDouaCifra = numar;
+                            maximDouaCifre = numar;
+                        } else {
+                            // altfel updatam cele doua numere, min, max
+                            if (numar < minimDouaCifra) {
+                                minimDouaCifra = numar;
+                            } else if (numar > maximDouaCifre) {
+                                maximDouaCifre = numar;
+                            }
+                        }
+                    }
+                }
+
+                // aici putem lua oricare dintre minime
+                // daca valoarea oricareia este -1 inseamna ca nu am gasit un numar cu 2 cifre
+                if (minimDouaCifra == -1) {
+                    cout << "nu exista";
+                } else {
+                    cout << minimDouaCifra-1 << " " << maximDouaCifre +1;
+                }
+
+                fin.close();
                 return 0;
             }
         ```
