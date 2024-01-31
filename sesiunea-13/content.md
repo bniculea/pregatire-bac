@@ -259,3 +259,125 @@
                 return rezultat;
             }
         ```
+
+4. 
+    - Link: https://www.pbinfo.ro/probleme/2807/matrice10
+    - Solutie:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+                int n,m;
+
+                cin >> n >> m;
+                int matrice[n][m];
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < m; j++) {
+                        cin >> matrice[i][j];
+                    }
+                }
+                int indexLinieMinim1 = 0,indexLinieMinim2 = 0;
+                for (int i = 0; i < n; i++) {
+                if (matrice[i][0] < matrice[indexLinieMinim1][0]) {
+                    indexLinieMinim1 = i;
+                }
+                    if (matrice[i][m-1] < matrice[indexLinieMinim2][m-1]) {
+                        indexLinieMinim2 = i;
+                    }
+                }
+
+
+                int aux = matrice[indexLinieMinim1][0];
+                matrice[indexLinieMinim1][0] = matrice[indexLinieMinim2][m-1];
+                matrice[indexLinieMinim2][m-1] = aux;
+
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < m; j++) {
+                        cout << matrice[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+
+                return 0;
+            }
+
+        ```
+
+5. 
+    - Link: https://www.pbinfo.ro/probleme/2825/chenar2
+    - Solutie:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+                int n,m;
+
+                cin >> n >> m;
+                int matrice[n][m];
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < m; j++) {
+                        cin >> matrice[i][j];
+                    }
+                }
+
+                int x;
+                cin >> x;
+                int gasit = 0;
+
+                // cautam pe prima linie
+                for (int i = 0; i < m; i++) {
+                    if (matrice[0][i] == x) {
+                        gasit = 1;
+                        break;
+                    }
+                }
+                if (!gasit) {
+                    // cautam pe ultima coloana
+                    for (int i = 0; i < n; i++) {
+                        if (matrice[i][m-1] == x) {
+                            gasit = 1;
+                            break;
+                        }
+                    }
+                }
+
+                if (!gasit) {
+                    // cautam pe ultima linie
+                    for (int i = 0; i < m; i++) {
+                        if (matrice[n-1][i] == x) {
+                            gasit = 1;
+                            break;
+                        }
+                    }
+                }
+
+                if (!gasit) {
+                    // cautam pe prima coloana
+                    for (int i = 0; i < n; i++) {
+                        if (matrice[i][0] == x) {
+                            gasit = 1;
+                            break;
+                        }
+                    }
+                }
+
+                if (gasit) {
+                    cout << "DA";
+                } else {
+                    cout << "NU";
+                }
+
+                return 0;
+            }
+
+        ```
+
+## Exercitii propuse:
+1. Subiectul III, Exercitiul 2 din Bac 2023 Iunie
+2. Subiectul III, Exercitiul 2 din Bac 2022 August
+3. Subiectul III, Exercitiul 2 din Bac 2022 Speciala
+3. Subiectul III, Exercitiul 2 din Bac 2021 August
