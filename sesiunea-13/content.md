@@ -378,6 +378,6 @@
 
 ## Exercitii propuse:
 1. Subiectul III, Exercitiul 2 din Bac 2023 Iunie
-2. Subiectul III, Exercitiul 2 din Bac 2022 August
+2. Subiectul III, Exercitiul 2 din Bac 2022 Iunie
 3. Subiectul III, Exercitiul 2 din Bac 2022 Speciala
-3. Subiectul III, Exercitiul 2 din Bac 2021 August
+4. Subiectul III, Exercitiul 2 din Bac 2021 August
