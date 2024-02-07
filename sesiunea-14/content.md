@@ -70,24 +70,50 @@
                         int parcelaEst = matrice[i][j + 1];
                         int parcelaSud = matrice[i + 1][j];
                         int parcelaVest = matrice[i][j-1];
+                        // daca suntem pe prima linie
                         if (i == 0) {
+                            // si suntem si pe prima coloana
                             if (j == 0) {
+                                // atunci avem vecini doar in est si in sud (sau dreapta si jos)
                                 minValue = calculeazaMinimum(parcelaEst, parcelaSud);
                             } else if (j == n-1) {
+                                // dar daca suntem ultima coloana din prima linie
+                                // avem vecini doar in sud si vest (sau dreapta si stanga)
                                 minValue = calculeazaMinimum(parcelaSud, parcelaVest);
                             } else {
+                                // altfel o sa avem vecini in sud, vest si est (sau jos, dreapta si stanga)
                                 minValue = calculeazaMinimum(parcelaSud, parcelaVest, parcelaEst);
                             }
                         } else if (i == m-1) {
+                            // insa daca suntem pe ultima linie
                             if (j == 0) {
+                                //si pe prima coloana
+                                //atunci avem vecini doar in nord si in est (sau sus si in dreapta)
                                 minValue = calculeazaMinimum(parcelaNord, parcelaEst);
                             } else if (j == n-1) {
-                                minValue = calculeazaMinimum(parcelaNord, parcelaEst);
+                                // insa daca suntem pe ultima coloana
+                                // avem vecini in nord si in vest (sau sus si stanga )
+                                minValue = calculeazaMinimum(parcelaNord, parcelaVest);
                             } else {
+                                // altfel o sa avem vecini atat in nord cat si in vest si est
+                                // sau sus, dreapta, stanga
                                 minValue = calculeazaMinimum(parcelaNord, parcelaVest, parcelaEst);
                             }
                         } else {
-                            minValue = calculeazaMinimum(parcelaNord, parcelaEst, parcelaVest, parcelaSud);
+                            // altfel, daca nu suntem nici pe prima nici pe ultima trebuie din nou sa verificam pe ce coloana suntem
+
+                            //daca suntem pe prima coloana
+                            if (j == 0) {
+                                // atunci avem vecini in nord, est si sud
+                                minValue = calculeazaMinimum(parcelaNord, parcelaEst, parcelaSud);
+                            } else if (j == n-1) {
+                                // dar daca suntem pe ultima coloana
+                                // avem vecini in nord, sud si vest
+                                minValue = calculeazaMinimum(parcelaNord, parcelaSud, parcelaVest);
+                            } else {
+                                // altfel suntem pe o pozitie in care avem vecini in toate partile
+                                minValue = calculeazaMinimum(parcelaNord, parcelaEst, parcelaVest, parcelaSud);
+                            }
                         }
 
 
