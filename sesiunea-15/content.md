@@ -429,7 +429,7 @@
     - Rezolvare:
         - a
             ```json
-                Algoritmul de mai jos, va parcurge fisierul o singura data si in timp ce il vom parcurge, vom popula un vector de frecventa. In timp ce citim numerele din fisier, vom stii care este numarul cel mai mare astfel incat sa optimizam vectorul de frecventa deoarece este posibil sa nu avem nevoie de toate cele 1000 de numere posibile pentru vectorul de frecventa, astfel avand un algoritm eficient din punct de vedere al vitezei. Dupa ce avem vectorul de frecventa initializat, vom cauta sa vedem daca exista mai mult de 1 numar ce are frecventa egala cu 1, caz in care sirul nu poate fi finit, altfel avem un sir finit.
+                Algoritmul de mai jos, va parcurge fisierul o singura data si in timp ce il vom parcurge, vom popula un vector de frecventa. In timp ce citim numerele din fisier, vom stii care este numarul cel mai mare astfel incat sa optimizam vectorul de frecventa deoarece este posibil sa nu avem nevoie de toate cele 1000 de numere posibile pentru vectorul de frecventa, astfel avand un algoritm eficient din punct de vedere al vitezei. Dupa ce avem vectorul de frecventa initializat, vom cauta sa vedem daca toate numerele au o frecventa para sau avem cel mult un numar cu frecventa impara, atunci este finit, altfel nu.
             ```
         - b
             ```c++
@@ -449,22 +449,18 @@
                             numarMaxim = numar;
                         }
                     }
-                    int contorFrecventa1 = 0;
-                    int esteSirFinit = 1;
+                    int contorFrecventaImpara = 0;
+                    int contorFrecventaPara = 0;
                     for(int i = 0; i <=numarMaxim;i++) {
-                        if (frecventa[i] == 0) {
-                            continue;
+                        if (frecventa[i] % 2 == 0) {
+                            contorFrecventaPara++;
                         } else {
-                            if (contorFrecventa1 == 0 && frecventa[i] == 1) {
-                                contorFrecventa1++;
-                            } else if (frecventa[i] == 1) {
-                                esteSirFinit =0;
-                                break;
-                            }
+                            contorFrecventaImpara++;
                         }
                     }
 
-                    if (esteSirFinit) {
+                    // Daca au toate un numar par de aparitii sau cel mult una are numar impar de aparitii, este ok
+                    if (contorFrecventaImpara == 0 || contorFrecventaImpara == 1) {
                         cout << "DA";
                     } else {
                         cout << "NU";
