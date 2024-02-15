@@ -189,7 +189,7 @@
     - Rezolvare:
         - Conform matricii de adiacenta avem urmatorul graf:
         ![Poza graf](imagini/s1e5.png)
-        - Sa nu uitam ca un graf partial este un graf care are aceleasi muchii ca si graful initial si doar muchiile difera.
+        - Sa nu uitam ca un graf partial este un graf care are aceleasi noduri ca si graful initial si doar muchiile difera.
         - Observam ca de muchia [5,1] nu ne putem atinge, caci astfel 5 ar deveni izolat deci incalcam cerinta si ce putem face este sa eliminam cate o muchie pe rand dintre cele ramase.
 
     - Raspuns corect: a
