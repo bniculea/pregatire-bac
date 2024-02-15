@@ -3,6 +3,7 @@
 ## Agenda
 - Rezolvare subiecte ramase din simulare
 - Rezolvare subiect Bacalaureat 2020 iunie
+- Rezolvare subiect Bacalaureat 2020 august
 
 ## Rezolvare subiecte ramase din simulare
 2. 
@@ -469,4 +470,414 @@
 
                     fin.close();
                 }
+            ```### Subiectul III
+
+## Rezolvare subiect Bacalaureat 2020 august
+
+### Subiectul 1.
+1. 
+    - Rezolvare
+        ```json
+            Atunci cand facem  x % y, valoarea maxima pe care o poate avea rezultatul este y-1, deoarece de fiecare data cand ajungem la un multiplu de al lui y, valoarea va fi 0.
+        ```
+    - Raspuns corect: 2019 -> b
+
+2. 
+    - Rezolvare:
+        - Aici trebuie sa avem exact 3 apeluri recursive pentru a afisa de 3 ori '*' si totodata, la al treilea sa ne si oprim. Acum sa le luam pe rand:
+        - a
+            ```json
+                f(30) =
+                        cout << "*" [prima steluta]
+                        30 > 5 => f (31/2) = f(15)
+                      = 
+                        cout << "*" [a doua steluta]
+                        15 > 5 -> f(16/2) = f(8)
+                      = 
+                        cout << "*" [a treia steluta]
+                        8 > 5 -> f(9/2) = f(4)
+                    -> Va mai fi cel putin o steluta deci a nu este o optiune valida
             ```
+        - b
+            ```json
+               f(21) =
+                        cout << "*" [prima steluta]
+                        21 > 5 => f(22/2) = f(11)
+                     =
+                        cout << "*" [a doua steluta]
+                        11 > 5 => f(12/2) = f(6)
+                    =
+                        cout << "*" [a treia steluta]
+                        6 > 5 => f(7/2) = f(3)
+                    -> va mai fi cel putin o steluta deci nici b nu este o optiune valida
+            ```
+        - c
+            ```json
+                f(17) =
+                        cout << "*" [prima steluta]
+                        17 > 5 => f(18/2) = f(9)
+                    
+                      = 
+                        cout << "*" [a doua steluta]
+                        9 > 5 => f(10/2) => f(5)
+                
+                      = 
+                        cout << "*" [a treia steluta]
+                        5 > 5 false si ne oprim
+                    -> Acesta este raspunsul corect
+            ```
+    - Raspuns corect: c
+
+3. 
+    - Rezolvare:
+        ```json
+            Pentru a ne usura treaba o sa mergem mai departe cu urmatoarele notatii:
+                0       1       2       3       4
+                capsune mere    pepene  pere    portocale
+            
+            Primele 4 solutii sunt:
+                0 1 2
+                0 1 2 3
+                0 1 2 4
+                0 1 3
+            Urmatoarele 2 sunt:
+                0 1 3 4
+                0 1 4 => Capsune Mere Portocale
+        ```
+    - Raspuns corect: c
+
+4. 
+    - Rezolvare:
+        - Din vectorul de tati avem urmatoarele:
+            ```json
+                1 2 3 4 5 6 7 8 9
+                8 6 4 2 3 0 4 2 7
+                Deci:
+                    Nodul 6 este radacina
+                    6 parinte pentru: 2
+                    2 parinte pentru: 4 si 8
+                    4 parinte pentru: 3 si 7
+                    8 parinte pentru: 1
+                    3 parinte pentru: 5
+                    7 parinte pentru 9
+            ```
+        - Doar din explicatia de mai sus ne putem da seama ca 8 este un frate al nodului 4. Insa mai jos avem si o poza care repreezinta arborele de mai sus
+        ![Poza graf](imagini/s1e4-august.png)
+    - Raspuns corect: d
+
+5. 
+    - Rezolvare:
+        - Mai intai ce inseamna un graf eulerian: 
+            Definiție: Se numește graf eulerian un graf care conține un ciclu eulerian. Se numește ciclu eulerian un ciclu care conține toate muchiile grafului. [https://www.pbinfo.ro/articole/810/grafuri-neorientate#intlink-12]
+        - Stim ca avem un nod cu gradul 4
+        - Rezulta ca un numar minim de muchii ale grafului pentru a fi eulerian este 6
+        - Ca si exemplu putem considera graful de mai jos
+        ![Poza graf](imagini/s1e5-august.png)
+    - Raspuns corect: b
+
+### Subiectul 2.
+1. 
+    * a
+        - Rezolvare:
+            ```json
+                n = 247388
+                m = 0
+                repeta
+                    c = 8
+                    n = 24738
+                    c < 5 false => m = m+c = 0 + 8 = 8
+                pana cand n = 0
+                repeta
+                    c = 8
+                    n = 2473
+                    c < 5 false => m = m + c = 8 + 8 = 16
+                pana cand n = 0
+                repeta
+                    c = 3
+                    n = 247
+                    c < 5 true => m = 16 - 6 = 10
+                pana cand n = 0
+                repeta
+                    c = 7
+                    n = 24
+                    c < 5 false => m = 17
+                pana cand n = 0
+                repeta
+                    c = 4
+                    n = 2
+                    c < 5 true => m = 17 - 8 = 9
+                pana cand n = 0
+                    c = 2
+                    n = 0
+                    c < 5 true => m = 9 - 4 = 5
+                pana cand n =0 [ne oprim]
+                m !=0 => Afisam "NU"
+            ```
+    * b
+        - Rezolvare:   
+            ```json
+                - Trebuie sa dam 2 numere din intervalul [100, 1000]
+                - Observam ca algoritmul intoarce "DA" atunci cand suma cifrelor mai mari decat 5 este egala cu dublul sumei cifrelor mai mici decat 5
+                - Ca si posibilitati avem:
+                    - 126
+                    - 138
+                    - 162
+                    - 183
+                    - 216
+                    - 228
+                    - 261
+                    - 282
+                    - 306
+                    - 318
+                    - 360
+                    - 381
+                    - 408
+                    - 480
+                    - 603
+                    - 612
+                    - 621
+                    - 630
+                    - 804
+                    - 813
+                    - 822
+                    - 831
+                    - 840
+
+            ```
+    * c
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+                int n;
+                cin >> n;
+                int m = 0;
+                do {
+                    int c = n % 10;
+                    n = n / 10;
+                    if (c < 5) {
+                        m = m - 2 * c;
+                    } else {
+                        m = m + c;
+                    }
+                } while (n != 0);
+                if ( m == 0) {
+                    cout << "DA";
+                } else {
+                    cout << "NU";
+                }
+            }
+
+        ```
+    * d
+        ```json
+            citește n (număr natural) 
+            m <- 0 
+            ┌cat timp n > 0 executa
+            │ c<-n%10; n<-[n/10] 
+            │┌dacă c<5 atunci m<-m-2*c 
+            ││altfel m<-m+c 
+            │└■
+            └■
+            ┌dacă m=0 atunci scrie ‘DA’ 
+            │altfel scrie m, ‘NU’ 
+            └■
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            struct procesor {
+                char producator;
+                int frecventa;
+                float pret;
+            };
+
+            struct procesor p[20];
+        ```
+3. 
+    ```c++
+        #include <iostream>
+
+        using namespace std;
+        int main() {
+            int a[6][4] = {
+                    {2, 3, 4, 5},
+                    {8, 7, 8, 5},
+                    {1, 3, 5, 7},
+                    {3, 0, 2, 9},
+                    {3, 5, 1, 6},
+                    {7, 3, 0, 2}
+            };
+            int coloana3[6];
+            for (int i = 0; i < 6; i++) {
+                coloana3[i] = a[i][2];
+            }
+
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 6; j++) {
+                    if (coloana3[i] % 2 == 0 && coloana3[j] % 2 == 0) {
+                        if (coloana3[i] < coloana3[j]) {
+                            int aux = coloana3[i];
+                            coloana3[i] = coloana3[j];
+                            coloana3[j] = aux;
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < 6; i++) {
+                a[i][2] = coloana3[i];
+            }
+
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 4; j++) {
+                    cout << a[i][j] << " ";
+                }
+                cout << endl;
+            }
+
+            return 0;
+        }
+
+    ```
+### Subiectul 3
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            using namespace std;
+
+            int estePNumar(int n);
+            int kpn(int a, int b, int k);
+
+            int main() {
+                cout << kpn(27, 50, 3);
+                return 0;
+            }
+
+            int kpn(int a, int b, int k){
+            int contor = 0;
+            int rezultat = -1;
+            for(int i = a; i<=b; i++){
+                if (estePNumar(i)){
+                    contor++;
+                    if (contor == k){
+                        rezultat = i;
+                        break;
+                    }
+                }
+            }
+            return rezultat;
+            }
+
+            int estePNumar(int n) {
+                int sumaDivizori = 0;
+                for (int i = 1; i <= n; i++) {
+                    if (n % i == 0) {
+                        sumaDivizori+= i;
+                    }
+                }
+
+                if (sumaDivizori % 2 == n % 2) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        ```
+* 2
+    - Solutie:
+        ```c++
+            #include <iostream>
+            #include <cstring>
+
+            using namespace std;
+
+            int main() {
+                char text[101], rezultat[101];
+                // Ne asiguram ca nu o sa citim garbage din memorie
+                text[0] = '\0';
+                rezultat[0] = '\0';
+                cin.getline(text, 101);
+                int contor = 0;
+                char *cuvant = strtok(text, " ");
+                while (cuvant != NULL) {
+                    if (strlen(cuvant) % 2 == 0) {
+                        // il copiem direct in rezultat
+                        strcat(rezultat, cuvant);
+                        strcat(rezultat, " ");
+                    } else {
+                        int lungimeCuvant = strlen(cuvant);
+                        char oglindit[lungimeCuvant+1];
+                        for(int i = 0; i < lungimeCuvant; i++) {
+                            oglindit[i] = cuvant[lungimeCuvant - 1 - i];
+                        }
+                        oglindit[lungimeCuvant] = '\0';
+                        if (strcmp(oglindit, cuvant) != 0) {
+                            contor++;
+                        }
+                        strcat(rezultat, oglindit);
+                        strcat(rezultat, " ");
+                    }
+                    cuvant = strtok(NULL, " ");
+                }
+                if (contor == 0) {
+                    cout << "nu exista";
+                } else {
+                    cout << rezultat;
+                }
+                return 0;
+            }
+        ```
+
+* 3
+    - Explicatie
+        ```json
+            O sa scriem un algoritm in care vom cauta cel mai mic si cel mai mare numar de doua cifre. In cazul in care nu vom gasi cel putin un astfel de numar,se va afisa "NU EXISTA". Algoritmul va fi eficient din punct de vedere al timpului de executie deoarece se va face o singura parcurgere a numerelor din fisier. In acelasi timp, algoritmul este eficient din punct de vedere al memoriei utilizate deoarece nu se foloseste alte structuri de date pentru stocarea si  manipularea numerelor, practic, din maximum de 10^6 numere cate pot fi in fisier, noi in memorie o sa avem maximum 3, in acelasi moment: min, max si numarul curent pe care il citim.
+        
+        ```
+    - Solutie:
+        ```c++
+            #include <iostream>
+            #include <fstream>
+
+            using namespace std;
+
+            int main() {
+                ifstream fin("bac.txt");
+
+                int minimDouaCifra=-1;
+                int maximDouaCifre=-1;
+                int numar;
+                while(fin >> numar) {
+                    // aici verificam daca are doua cifre
+                    if (numar >= 10 && numar <= 99) {
+                        // daca suntem la inceput, initializam ambele cu aceeasi valoare
+                        if (minimDouaCifra == -1 && maximDouaCifre == -1) {
+                            minimDouaCifra = numar;
+                            maximDouaCifre = numar;
+                        } else {
+                            // altfel updatam cele doua numere, min, max
+                            if (numar < minimDouaCifra) {
+                                minimDouaCifra = numar;
+                            } else if (numar > maximDouaCifre) {
+                                maximDouaCifre = numar;
+                            }
+                        }
+                    }
+                }
+
+                // aici putem lua oricare dintre minime
+                // daca valoarea oricareia este -1 inseamna ca nu am gasit un numar cu 2 cifre
+                if (minimDouaCifra == -1) {
+                    cout << "nu exista";
+                } else {
+                    cout << minimDouaCifra-1 << " " << maximDouaCifre +1;
+                }
+
+                fin.close();
+                return 0;
+            }
+        ```
