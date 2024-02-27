@@ -531,4 +531,164 @@
      ![Poza graf](imagini/special-s1e5.png)
     - Raspuns corect: `c`
 ### Subiectul II
+1. 
+    - a
+        - Rezolvare:
+            ```json
+                n = 3
+                i = 1
+                    j = 1
+                        j <= i adevarat => scriem 2
+                    j = 2
+                        j <= i fals => scriem 3
+                    j = 3
+                        j <= i fals => scriem 3
+                i = 2
+                    j = 1
+                        j <= i adevarat => scriem 2
+                    j = 2
+                        j <= i adevarat => scriem 2
+                    j = 3
+                        j <= i adevarat => scriem 3
+                i = 3
+                    j = 1
+                        j <= i adevarat => scriem 2
+                    j = 2
+                        j <= i adevarat => scriem 2
+                    j = 3
+                        j <= i adevarat => scriem 2
+                Raspuns corect: 233223222
+            ```
+    - b
+        - Rezolvare:
+            ```json
+               Daca ar fi sa facem codul sub forma unei matrici patratice, s-ar observa ca afisam un 2 pentru toate pozitiile care sunt fie pe diagonala principala sau sub ea. Si aici e o formula, numarul de elemente sub diagonala principala este egala cu suma primelor n numere naturale consecutive adica (n * (n+1))/2. Deci de exemplu daca:
+               n = 3 =>6 de 2
+               n = 4 => 10 de 2
+               n = 5 => 15 de 2
+               n = 6 => 21 de 2
+               n = 7 => 28 de 2
+               n = 8 => 36 de 2
+               n = 9 => 45 de 2
+               n = 10 => 55 de 2
+            Rezulta ca putem alege oricare 2 numere din [6,9]
+            ```
+    - c
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main()
+            {
+                int n;
+                cin >> n;
+                for (int i = 1; i<=n;i++) {
+                    for (int j = 1; j <=n; j++) {
+                        if (j <= i) {
+                            cout << 2;
+                        } else {
+                            cout << 3;
+                        }
+                    }
+                }
+                return 0;
+            }
+
+        ```
+    - d
+        ```json
+            citește n 
+            (număr natural nenul) 
+            ┌pentru i<-1,n execută
+            | j <- 1
+            │┌cat timp j<= n execută
+            ││┌dacă j≤i atunci 
+            │││ scrie 2 
+            │││altfel 
+            │││ scrie 3 
+            ││└■
+            || j <- j+1 
+            │└■
+            └■
+        ```
+2. 
+    - Rezolvare:
+        ```json
+            Din enunt avem vectorul de tati:
+            1 2 3 4 5 6 7 8
+            0 1 1 2 2 4 5 1
+
+            Din care rezulta:
+            1 -> Radacina
+            1 parinte pentru -> 2, 3, 8
+            2 parinte pentru -> 4, 5
+            4 parinte pentru -> 6
+            5 parinte pentru -> 7
+            Rezulta ca descendentii nodului 2 sunt: 4, 5, 6, 7
+        ```
+3. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <cstring>
+
+            using namespace std;
+
+            int main()
+            {
+                char s[21] = "elemente";
+                int k;
+                char a[21];
+                for (k = strlen(s)-1; k>= 0; k--) {
+                    if (s[k] == s[0]) {
+                        int i = 0;
+                        for (i =0; i <=k; i++) {
+                            a[i] = s[i];
+                        }
+                        a[i] = '\0';
+                        cout << a <<" ";
+                    }
+
+                }
+                return 0;
+            }
+        ```
 ### Subiectul III
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            void Putere (int n, int &x, int &p);
+
+            int main()
+            {
+
+                int n=12, x, p;
+                Putere(n, x, p);
+                cout << x <<" " << p;
+                return 0;
+            }
+
+            void Putere (int n, int &x, int &p) {
+                x = 2;
+                p = 0;
+                int copieN = n;
+
+                while ( copieN > 1) {
+                    while (copieN % x == 0) {
+                        copieN = copieN / x;
+                        p++;
+                    }
+                    if (copieN > 1) {
+                        copieN = n;
+                        x++;
+                        p = 0;
+                    }
+                }
+            }
+        ```
+2. 
