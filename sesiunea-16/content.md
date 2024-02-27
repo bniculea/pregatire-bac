@@ -728,3 +728,52 @@
                 return 0;
             }
         ```
+
+
+3. 
+    - Rezolvare:
+        - a:
+            ```json
+                Algoritmul este eficient din punct de vedere al timpului de executie deoarece se efectueaza o singura citire a fisierului. In acelasi timp, algoritmul este eficient din punct de vedere al memoriei deoarece nu utilizam alte structuri de date pentru a memora numerele din fisier.
+            ```
+        - b:
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+                int main()
+                {
+                    ifstream fin("bac.in");
+                    int min, max;
+                    int p1 = 0, p2 = 0;
+                    int k, numar;
+                    fin >> numar;
+                    min = max = numar;
+                    k = 1;
+                    while (fin >> numar) {
+                        k++;
+                        if ( numar < min) {
+                            min = numar;
+                        } else if (numar > max) {
+                            max= numar;
+                        } else {
+                            if (numar >= min && numar <= max && p1 == 0) {
+                                p1 = k;
+                            } else {
+                                p2 = k;
+                            }
+                        }
+                    }
+
+                    if (p1 != 0 && p2 != 0) {
+                        cout << p1 <<" " << p2;
+                    } else {
+                        cout << "nu exista";
+                    }
+
+                    fin.close();
+                    return 0;
+                }
+            ```
