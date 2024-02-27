@@ -2,6 +2,7 @@
 
 ## Agenda
 - Rezolvare varianta BAC Iunie 2022
+- Rezolvare varianta BAC Sesiunea Speciala 2023
 
 ## Rezolvare varianta BAC Iunie 2022
 
@@ -438,3 +439,96 @@
                     return 0;
                 }
             ```
+
+## Rezolvare varianta BAC Sesiunea Speciala 2023
+
+### Subiectul I
+1. 
+    - Rezolvare:
+        ```json
+            - Conform cerintei doar daca ambele sunt pare trebuie sa obtinem 1
+            a.  Este invalid deoarece obtinem 1 si daca unul este par si unul impar
+            b. Este invalid deoarece obtinem 1 si daca, de exemplu, ambele sunt impare (e.g m = 7, n = 3)
+            c. Este adevarat doar daca ambele sunt pare, rezulta ca c este raspunsul
+            d. Este invalid pentru ca obtinem 1 daca ambele sunt impare.
+        ```
+    - Raspuns corect: `c`
+2. 
+    - Rezolvare:
+        ```json
+            f(35,3) = 
+                    2+ 10 * f(11, 3) =
+                        = 2+10 * f(3, 3) = 
+                            = 0 + 10 * f(1, 3)
+                                = 1 + 10 * f(0, 3) = 1
+                            = 10
+                        = 2+10*10 = 102
+                    = 2+10 * 102 = 1022
+        ```
+    - Raspuns corect: `a`
+3. 
+    - Rezolvare:
+        ```json
+            formula corecta ar fi: v = p.lg * p.lt * p.h
+            Datorita sintaxei incorecte, se elimina variantele a,b,c
+        ```
+    - Raspuns corect: `d`
+4. 
+    - Rezolvare:
+        ```json
+            Pentru usurinta notam astfel:
+            A M U R G
+            0 1 2 3 4
+
+            Primele 5 solutii generate sunt: 
+            URAMG
+            URAGM
+            URMAG 
+            URMGA
+            URGAM
+            Adica:
+            2 3 0 1 4
+            2 3 0 4 1
+            2 3 1 0 4
+            2 3 1 4 0
+            2 3 4 0 1
+
+            Trebuie sa zicem ce urmeaza dupa:
+            GURMA => 4 2 3 1 0 si stim ca litera R precede literele A si M adica 3 precede 0 si 1
+            Observand felul in care se genereaza cele 5 solutii initiale, urmatoarea ar fi 4 3 0 1 2 adica: GRAMU
+        ```
+    - Raspuns corect: `b`
+5. 
+    - Rezolvare:
+        ```json
+            - Drum elementar: Un lanț (drum) se numește elementar dacă în el nu se repetă noduri
+            - Avand 23 de noduri si conditia din enunt inseamna ca avem arcele:
+                - 1 -> 2
+                - 2 -> 4
+                - 3 -> 6
+                - 4 -> 8
+                - 5 -> 10
+                - 6 -> 12
+                - 7 -> 14
+                - 8 -> 16
+                - 9 -> 18
+                - 10 -> 20
+                - 11 -> 22
+                - 12 -> 11
+                - 13 -> 12
+                - 14 -> 13
+                - 15 -> 14
+                - 16 -> 15
+                - 17 -> 16
+                - 18 -> 17
+                - 19 -> 18
+                - 20 -> 19
+                - 21 -> 20
+                - 22 -> 21
+                - 23 -> 22
+        ```
+    - Conform imaginii de mai jos, lungimea maxima este 16
+     ![Poza graf](imagini/special-s1e5.png)
+    - Raspuns corect: `c`
+### Subiectul II
+### Subiectul III
