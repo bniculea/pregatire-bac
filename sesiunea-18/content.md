@@ -296,4 +296,5 @@
                 }
             }
         ```
+    - Nota: momentan se repete cuvintele in aceeasi fraza insa nu este un lucru ce contrazice enuntul. Insa pentru a face mai istet programul putem sa salvam indexul cuvantului folosit deja si daca mai intalnim un generic cu acelasi numar de litere, cautam sa vedem daca mai gasim o alta solutie, in caz contrar, folosim tot cuvantul anterior.
 3. 
