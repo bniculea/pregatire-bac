@@ -298,3 +298,48 @@
         ```
     - Nota: momentan se repete cuvintele in aceeasi fraza insa nu este un lucru ce contrazice enuntul. Insa pentru a face mai istet programul putem sa salvam indexul cuvantului folosit deja si daca mai intalnim un generic cu acelasi numar de litere, cautam sa vedem daca mai gasim o alta solutie, in caz contrar, folosim tot cuvantul anterior.
 3. 
+    - Rezolvare:
+        - a
+            ```json
+                Algoritmul de mai jos, parcurge fisierul o singura data si in timp ce il parcurge, actualizeaza vectorul de aparitii si in acelasi timp, tine minte care a fost valoarea maxima citita din fisier. Avem nevoie de valoarea maxima pentru a scurta parcurgerea vectorului de aparitii. Dupa ce am initializat vectorul de aparitii, il parcurgem pana la valoarea maxima pe care am citit-o si in cazul in care gasim un numar care nu respecta conditia din enunt, oprim parcurgerea si afisam "NU". In cazul in care niciun numar nu incalca cerinta, programul va afisa "DA". Algoritmul nostru este eficient din punct de vedere al timpului de executie din mai multe motive:
+                1. Fisierul a fost citit o singura data
+                2. Vectorul de aparitii, a fost parcurs doar pana la valoarea maxima (asta a ajutat cand numerele din fisier sunt mai mici decat valoarea maxima e.g 1000)
+                3. Imediat ce am gasit o valoare care incalca cerinta, scurt-circuitam programul si afisam NU
+            ```
+        - b:
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+                int main() {
+                    ifstream fin("bac.in");
+                    int aparitii[1001] = {0};
+
+                    int numar;
+                    int max = 0;
+                    while(fin>>  numar) {
+                        aparitii[numar]++;
+                        if (numar > max) {
+                            max = numar;
+                        }
+                    }
+
+                    int esteApi = 1;
+                    for(int i = 1; i < max; i++) {
+                        if (aparitii[i] == 0) {
+                            continue;
+                        }
+                        if(aparitii[i] > i || aparitii[i] % 2 != i % 2) {
+                            esteApi = 0;
+                            break;
+                        }
+                    }
+
+                    if(esteApi) {
+                        cout << "DA";
+                    } else {
+                        cout << "NU";
+                    }
+                }
+            ```
