@@ -326,7 +326,7 @@
                     }
 
                     int esteApi = 1;
-                    for(int i = 1; i < max; i++) {
+                    for(int i = 1; i <= max; i++) {
                         if (aparitii[i] == 0) {
                             continue;
                         }
