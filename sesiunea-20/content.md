@@ -373,6 +373,7 @@
 2. 
     - Rezolvare:
         ```c++
+
             #include <iostream>
 
             using namespace std;
@@ -381,41 +382,67 @@
                 int n, k;
                 cin >> n;
                 cin >> k;
-            // int matrice[n][n];
-            //    for(int i =0; i < n; i++) {
-            //        for(int j = 0; j < n; j++) {
-            //            cin >> matrice[i][j];
-            //        }
-            //    }
-                int matrice[5][5] = {
-                        {2, 3, 4, 5, 6},
-                        {2, 4, 6, 8, 0},
-                        {7, 8, 9, 0, 1},
-                        {3, 5, 7, 9, 1},
-                        {7, 3, 8, 5, 6}
-                };
+                int matrice[n][n];
+                for(int i =0; i < n; i++) {
+                    for(int j = 0; j < n; j++) {
+                        cin >> matrice[i][j];
+                    }
+                }
 
                 int lungimeSecventa = n-k;
                 int sir[lungimeSecventa];
                 // aici extragem numerele
+                // observam ca fiecare numar se va muta cu un numar de pozitii egal
+                // cu lungimea secventei de numere pana in diagonala principala
                 for(int i = 0; i < lungimeSecventa; i++) {
-                    sir[i] = matrice[k-1][i];
+                    sir[i] = matrice[k-1][(i+lungimeSecventa-1) % lungimeSecventa];
                 }
                 for(int i = 0; i < n; i++) {
                     for(int j = 0; j < n; j++) {
                         if (j < n-1-i && (i+1) == k) {
-                            matrice[i][j] = sir[]
+                            matrice[i][j] = sir[j];
                         }
                     }
                 }
 
-            //    for(int i =0; i < n; i++) {
-            //        for(int j = 0; j < n; j++) {
-            //            cout << matrice[i][j] << " ";
-            //        }
-            //        cout << endl;
-            //    }
+                for(int i =0; i < n; i++) {
+                    for(int j = 0; j < n; j++) {
+                        cout << matrice[i][j] << " ";
+                    }
+                    cout << endl;
+                }
             }
-
         ```
 3. 
+    - Rezolvare:
+        - a
+            ```json
+                In algoritmul de mai jos, citim separat primul numar al sirului dupa care, le citim pe restul, si in timp ce citim, numaram cate numere avem in total si cate numere pe care le intalnim, sunt mai mari sau egale cu numarul de pe prima pozitie.
+                Dupa care, imediat ce terminam de citit, pozitia cea mai mare pe care o poate ocupa numarul de pe prima pozitie este egala cu diferenta dintre contorul ce a numarat cate numere sunt in fisier si contorul ce reprezinta cate numere sunt mai mari sau egale cu numarul de pe prima pozitie.
+                Algoritmul nostru este eficient din punct de vedere al timpului de executie deoarece fisierul este parcurs o singura data, in acelasi timp, din totalul de 10000 de numere cate pot fi in fisier, noi in memorie tinem doar 2 dintre ele, anume primul element si numarul citit la fiecare pas, lucru ce face programul nostru eficient si din punct de vedere al memoriei utilizate.
+            ```
+        - b
+            ```c++
+                #include <fstream>
+                #include <iostream>
+
+                using namespace std;
+
+                int main() {
+                    ifstream fin ("bac.txt");
+                    int primulTermen;
+                    fin >> primulTermen;
+                    int numar = primulTermen;
+                    int contorTermeni = 1;
+                    int termeniMaiMariDecatPrimul = 0;
+                    while (fin >> numar) {
+                        contorTermeni++;
+                        if (numar >= primulTermen) {
+                            termeniMaiMariDecatPrimul++;
+                        }
+                    }
+
+                    cout << contorTermeni - termeniMaiMariDecatPrimul;
+                    fin.close();
+                }
+            ```
