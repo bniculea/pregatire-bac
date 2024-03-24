@@ -157,3 +157,85 @@
                     fin.close();
                 }
             ```
+
+## Rezolvare Test 12 Bac 2021
+
+### Subiectul I
+1. 
+    - Rezolvare:
+        * a -> Obtinem `1` si pentru numere din afara intervalelor specificate, de exemplu:  `-2019`.
+        * b -> Nu este posibil ca un numar sa fie in acelasi timp din intervalul [-2021,  2022] si [2020, 2021] deci este invalid
+        * c -> ! din fata parantezelor inverseaza conditiile si obtinem practic:
+            `x >= -2021 && x <= -2020 || x >= 2020 && x <= 2021` Care rezulta in `1` doar pentru numere din intervalele reunite din enunt.
+        * d -> ! din fata parantezelor inverseaza conditiile si obtinem:
+            `x >= -2021 || x <= 2021 || x <= -2020  && x >= 2020`
+                - Aceasta varianta cade din mai multe motive:
+                    1. obtinem 1 si pentru numere din afara intervalului
+                    2. Daca primele doua || operatii sunt false, obtinem o conditie imposibila, anume sa fie un x care in acelasi timp e si mai mic decat 2020 si mai mare sau egal cu 2020.
+    - Raspuns corect: `c`
+2. 
+    - Rezolvare:
+        ```json
+            - Din punct de vedere al sintaxei, eliminam din start: c si d
+            - De asemenea si punctul b este invalid deoarece masina este numele structurii si nu al unui membru din aceea structura.
+            - Rezulta ca punctul a este cel corect.
+        ```
+    - Raspuns corect `a`
+3. 
+    - Rezolvare:
+        ```json
+            Pentru usurinta in calcule notam:
+             roșu galben verde albastru violet
+               |    |      |       |       |
+               0    1      2       3       4
+
+            Primele 4 solutii sunt:
+            (roșu, galben, verde)
+            (roșu, galben, albastru)
+            (roșu, galben,violet),
+            (roșu, verde, galben)
+
+            Adica:
+            [0 1 2],
+            [0 1 3],
+            [0 1 4],
+            [0 2 1],
+            
+            [0 2 3],
+            [0 2 4],
+            [0 3 1],
+            [0 3 2],
+            [0 3 4]
+            si a 10 a este:
+            [0 4 1] -> rosu violet galben
+        ```
+    - Raspuns corect: `d`
+4. 
+    - Rezolvare:
+        - Aici vedem ca putem folosi algoritmul lui euclid, varianta recursiva.
+            - Mai multe detalii aici:https://ro.wikipedia.org/wiki/Algoritmul_lui_Euclid 
+        ```c++
+            int f (int x, int y)
+            { if(y==0) return x;
+                else return f(y, x%y);
+            }
+        ```
+    - Raspuns corect: `b`
+5. 
+    - Rezolvare:
+        - Stim ca arborele nostru are 5 noduri dintre care 1 trebuie sa fie radacina
+        - Prin urmare, gradul maxim pe care il poate avea un nod este 4 si in acelasi timp nu putem un nod cu gradul 0 pentru ca asta ar insemna sa avem un nod deconectat.
+        - Acum sa verificam fiecare optiune:
+            - a -> invalida datorita explicatiei de mai sus
+            - b -> nu avem cum sa obtinem din 5 noduri un arbore cu 4 noduri ce au gradul 1  si unul sa aibe 3
+            - c -> Aceasta este o optiune valida, deoarece daca am avea arborele din poza de mai jos:
+            ![Graf initial](imagini/s1e5.png) am avea:
+                - Nodul 4 cu gradul 1
+                - Nodul 5 cu gradul 1
+                - Nodul 1 cu gradul 2
+                - Nodul 2 cu gradul 2
+                - Nodul 3 cu gradul 2
+            - d -> de asemenea nu putem obtine un arbore, avand 5 noduri, unde sa avem si un nod cu gradul 3 si inca 2 noduri cu gradul 1 si alte 2 cu gradul 2
+### Subiectul II
+
+### Subiectul III
