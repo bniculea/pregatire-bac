@@ -235,7 +235,143 @@
                 - Nodul 1 cu gradul 2
                 - Nodul 2 cu gradul 2
                 - Nodul 3 cu gradul 2
-            - d -> de asemenea nu putem obtine un arbore, avand 5 noduri, unde sa avem si un nod cu gradul 3 si inca 2 noduri cu gradul 1 si alte 2 cu gradul 2
+            - d -> de asemenea nu putem obtine un arbore, avand 5 noduri, unde sa avem si un nod cu gradul 3 si inca 2 noduri cu gradul 1 si alte 2 cu gradul 2]
+    - Raspuns corect: `c`
 ### Subiectul II
+1. 
+    a.
+        ```json
+            n = 5
+            k = 2
+            t = 1
+            pentru i = 1, i<=2 executa
+                pentru j = 1, j <= 2
+                    afiseaza: 2 * t => 2
+                pentru j = 2, j <= 2
+                    afiseaza: 2*t => 2
+                t = t+1 => 2
+            pentru i = 2, i<=2 executa
+                pentru j = 1, j <= 2
+                    afiseaza: 2 * t => 4
+                pentru j = 2, j <= 2
+                    afiseaza: 2 * t => 4
+                t = t+1 = 3
+            pentru i = 1, i >= 1, i--
+                afiseaza 3 * t -> 9
+        ```
+        - Rezulta ca programul afiseaza: 2 2 4 4 9
+    b.
+        - Observam ca pentru a obtine 12, trebuie sa avem un t = 4;
+        - Vom putea obtine t =4 daca primul for, va avea 3 executii fix
+        - Stiind ca pentru k avem valoarea 6, pentru a obtine 3 din [n/k], luam n = 19 drept cea mai mica valoare. Nu putem alege n = 18 deoarece in acest caz, ultimul for nu se va executa. Si cea mai mare valoare pentru care putem obtine t = 4 este 23. 
+        ```json
+            19 si 23
+        ```
+    c. 
+        ```c++
+            #include <iostream>
 
+            using namespace std;
+
+            int main() {
+                int n, k, t = 1;
+                cin >> n >> k;
+                for(int i = 1; i<=n/k;i++) {
+                    for(int j = 1; j <=k;j++) {
+                        cout << 2 * t << " ";
+                    }
+                    t = t+1;
+                }
+                for(int i = n%k; i >=1; i--) {
+                    cout << 3 * t << " ";
+                }
+            }
+        ```
+    d. 
+        
+    ```json
+        citește n,k
+        (numere naturale nenule)
+        t<-1
+        ┌pentru i<-1,[n/k] execută
+        │┌pentru j<-1,k execută
+        ││ scrie 2*t,' '
+        │└■
+        │ t<-t+1
+        └■
+        i <- n%k
+        ┌cat timp i >=1 execută
+        │ scrie 3*t,' '
+        | i <- i-1
+        └■
+    ```
+2. 
+    - Rezolvare:
+        - Teorie: https://www.pbinfo.ro/articole/810/grafuri-neorientate#intlink-9
+        - `Lant elementar`:Lanțul care conține numai vârfuri distincte, două câte două, este lanț elementar.
+        - `Ciclu care nu este elementar`:Se numește ciclu un lanț simplu în care primul vârf este identic cu ultimul. De asemenea, pentru a nu fi elementar, varfurile nu trebuie sa fie distincte insa muchiile trebuie sa fie distincte.
+        - Conform matricei de adiacenta obtinem graful de mai jos:
+        ![Graf initial](imagini/s2e2.png)
+        - Astfel avem:
+            - Lant elementar: 1 6 3 5 4 2
+            - Ciclu neelemantar: 1 6 3 5 6 2 1
+3. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <cstring>
+
+            using namespace std;
+
+            int main() {
+                char s[51] = "CALCULATOARE";
+                for(int i=0;i<strlen(s);i++)
+                    if(strchr("OAU", s[i])) cout<< "*";
+                    else cout<< s[i];
+            }
+        ```
+    - De scris pe hartie:
+        ```c++
+            for(i=0;i<strlen(s);i++)
+            if(strchr("OAU", s[i])) cout<< "*";
+            else cout<< s[i];
+        ```
 ### Subiectul III
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            void frate(int x, int &y);
+            int main() {
+                int x = 9027, y;
+                frate(x, y);
+                cout << y;
+            }
+
+            void frate(int x, int &y){
+                int rezultat = 0;
+                int p = 1;
+                while(x) {
+                    int ultimaCifra = x % 10;
+                    if (ultimaCifra == 9) {
+                        y = -1;
+                        return;
+                    } else {
+                        ultimaCifra += 1;
+                        rezultat = ultimaCifra * p + rezultat;
+                        p = p * 10;
+                    }
+                    x /= 10;
+                }
+                y = rezultat;
+            }
+        ```
+        - De retinut, putem folosi keyword-ul `return` intr-o functie `void`, singur, fara a specifica o valoare de intors. Sensul acestuia, in cazul respectiv este de a iesi imediat din functie.
+2. 
+    - Rezolvare:
+        ```c++
+        ```
+3. 
