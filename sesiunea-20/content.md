@@ -373,5 +373,49 @@
 2. 
     - Rezolvare:
         ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+                int n, k;
+                cin >> n;
+                cin >> k;
+            // int matrice[n][n];
+            //    for(int i =0; i < n; i++) {
+            //        for(int j = 0; j < n; j++) {
+            //            cin >> matrice[i][j];
+            //        }
+            //    }
+                int matrice[5][5] = {
+                        {2, 3, 4, 5, 6},
+                        {2, 4, 6, 8, 0},
+                        {7, 8, 9, 0, 1},
+                        {3, 5, 7, 9, 1},
+                        {7, 3, 8, 5, 6}
+                };
+
+                int lungimeSecventa = n-k;
+                int sir[lungimeSecventa];
+                // aici extragem numerele
+                for(int i = 0; i < lungimeSecventa; i++) {
+                    sir[i] = matrice[k-1][i];
+                }
+                for(int i = 0; i < n; i++) {
+                    for(int j = 0; j < n; j++) {
+                        if (j < n-1-i && (i+1) == k) {
+                            matrice[i][j] = sir[]
+                        }
+                    }
+                }
+
+            //    for(int i =0; i < n; i++) {
+            //        for(int j = 0; j < n; j++) {
+            //            cout << matrice[i][j] << " ";
+            //        }
+            //        cout << endl;
+            //    }
+            }
+
         ```
 3. 
