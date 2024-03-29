@@ -373,7 +373,6 @@
 2. 
     - Rezolvare:
         ```c++
-
             #include <iostream>
 
             using namespace std;
@@ -391,11 +390,10 @@
 
                 int lungimeSecventa = n-k;
                 int sir[lungimeSecventa];
-                // aici extragem numerele
-                // observam ca fiecare numar se va muta cu un numar de pozitii egal
-                // cu lungimea secventei de numere pana in diagonala principala
                 for(int i = 0; i < lungimeSecventa; i++) {
-                    sir[i] = matrice[k-1][(i+lungimeSecventa-1) % lungimeSecventa];
+                    int pozitieNoua = (i+1) % lungimeSecventa;
+                    int mutam = matrice[k-1][i];
+                    sir[pozitieNoua] = mutam;
                 }
                 for(int i = 0; i < n; i++) {
                     for(int j = 0; j < n; j++) {
