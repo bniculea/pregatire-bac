@@ -425,5 +425,123 @@
             └■
         ```
 2. 
+    - Rezolvare
+        ```c++
+            struct elev{
+                int cod;
+                float nota1;
+                float nota2;
+            }y[30];
+        ```
 3. 
+    - Rezolvare:
+        ```c++
+            strcpy(s,"vorbeste"); // s = vorbeste
+            s[3]=s[0]; // -> s =vorveste
+            s[5]=s[2]; // -> s =vorverte 
+            s[0]=s[1]+1; // -> s = porverte
+            s[2]=s[1]-2; // -> s = pomverte
+            s[6]=s[4]-1; // -> s = pomverde
+            strcpy(t,s); t[3]='\0'; // -> t = pomverde, t = pom;
+            cout<<t<<endl<<s+3; // afiseaza "pom" si pe linia urmatoare "verde"
+        ```
 ### Subiectul III
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            using namespace std;
+
+            int armonie(int x, int y);
+
+
+            int main() {
+                cout << armonie(8,  12) << endl;
+                cout << armonie(8,  13) << endl;
+            }
+
+            int armonie(int x, int y) {
+                int suma = x+y;
+                int sumaDivizoriX = 0;
+                for (int i = 1; i<=x; i++) {
+                    if (x % i == 0) {
+                        sumaDivizoriX += i;
+                    }
+                }
+                int sumaDivizoriY = 0;
+                for (int i = 1; i<=y; i++) {
+                    if (y % i == 0) {
+                        sumaDivizoriY += i;
+                    }
+                }
+                if (suma> sumaDivizoriX && suma < sumaDivizoriY) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            using namespace std;
+
+
+            int main() {
+                int m, n;
+                cin >> m >> n;
+                int matrice[m][n];
+                for (int i = 0; i < m; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cin >> matrice[i][j];
+                    }
+                }
+                int frecventa[21] = {0};
+                for(int i = 0; i< n-1; i++) {
+                    int numar = matrice[0][i];
+                    frecventa[numar]++;
+                }
+
+                for (int i = 1; i < m; i++) {
+                    int numar = matrice[i][n-1];
+                    frecventa[numar]++;
+                }
+
+                for (int i = 2; i< 21; i++){
+                    if (frecventa[i] == 2) {
+                        cout << i << " ";
+                    }
+                }
+            }
+
+        ```
+3. 
+    - Rezolvare:
+        - a
+            ```json
+                Mai jos avem un algoritm unde mai intai citim primul termen al sirului, dupa care citim fiecare numar din fisier si in timp ce citim, tinem un contor care va reprezenta cate numere din fisier sunt mai mici sau egale cu primul termen. Dupa care vom afisa acest contor. Programul este eficient din punct de vedere al timpului de executie deoarece fisierul este citit o singura data si in acelasi timp, programul este eficient din punct de vedere al memoriei ocupate deoarece din maximum de 10^5 numere cate pot fi prezente in fisier, noi in memorie tinem doar 2 numere din fisier in orice moment, numere care reprezinta primul termen + numarul curent citit la fiecare pas + o variabila in care vom tine contorul.
+            ```
+        - b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+                using namespace std;
+
+
+                int main() {
+                ifstream fin("bac.txt");
+                int primulTermen;
+                fin >> primulTermen;
+                int pozitie = 0;
+                int numar;
+                while ( fin >> numar) {
+                    if (numar <= primulTermen) {
+                            pozitie++;
+                    }
+                }
+                cout << pozitie;
+                fin.close();
+                }
+
+            ```
