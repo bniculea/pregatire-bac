@@ -295,5 +295,67 @@
 ## Testul 10
 
 ### Subiectul I
+1. 
+    - Rezolvare:
+        * a: Intersectia intervalului data cu multimea data, este multimea vida,  deci a este invalid
+        * b: Aici pentru orice numar din reuniune, obtinem `1`
+        * c: Deoarece stim ca a este variabila reala, putem sa luam de exemplu numarul 2019 care face parte din intervalul inchis [2002, 2020] si pentru care obtinem `0`
+        * d: Din nou aici avem multimea vida ca rezultat al intersectiei
+    - Raspuns corect: `b`
+2. 
+    - Rezolvare:
+        ```json
+            afisa(12345) =
+                = afisam "+" calculam afis(12) si la intoarcere trebuie sa afisam a, adica 12345 si cand iesimn din if sa afisam "+"
+                    = afisam "+" calculam afisa(0) si la intoarcere trebuie sa afisam a adica 12 si cand iesim din if sa afisam "+"
+                        = afisam "++"
+                    = afisam "12+"
+                = afisam "12345+" 
+        ```
+    - Programul afiseaza: "++++12+12345+"
+    - Raspuns corect: `c`
+3. 
+    - Rezolvare:
+        ```json
+            Notam:
+             0    1    2    3     4      5
+            Ana Ioana Lia Maria Miruna Simona
+
+            Astfel primele 5 solutii generate sunt: 
+            (Ana, Ioana, Lia, Maria)
+            (Ana, Ioana, Lia, Miruna),
+            (Ana, Ioana, Lia, Simona),
+            (Ana, Ioana, Maria, Miruna),
+            (Ana, Ioana, Maria,Simona)
+
+            0 1 2 3
+            0 1 2 4
+            0 1 2 5
+            0 1 3 4
+            0 1 3 5
+        ```
+        * Acum sa evaluam optiunile date:
+            * a -> aceasta optiune este invalida deoarece are 5 persoane, si noi trebuie sa avem 4
+            * b -> Conform notarii noastre, (Ioana, Maria, Miruna, Simona) este (1,3,4,5) si este valid.
+            * c -> Conform notarii noastre, (Lia, Ioana, Maria, Simona) este (2,1,3,5) si aceasta optiune este invalida deoarece cu siguranta inainte de aceasta a fost generata de exemplu 1,2,3,5 si nu avem voie sa refolosim aceiasi membri.
+            * d -> Conform notarii noastre, (Maria, Miruna, Lia, Simona) este (3,4,2,5), si la fel ca la c, inaintea de aceasta, cu siguranta am avut (2,3,4,5).
+    - Raspuns corect: `b`
+4. 
+    - Rezolvare:
+        - conform enuntului avem graful:
+        ![Graf initial](imagini/t10-s1-e4.png)
+        - Din graf vedem ca:
+            - Nodul 1: Gradul 2
+            - Nodul 2: Gradul 5
+            - Nodul 3: Gradul 3
+            - Nodul 4: Gradul 3
+            - Nodul 5: Gradul 2
+            - Nodul 6: Gradul 1
+    - Raspuns corect:   `d`
+
+5. 
+    - Rezolvare:
+        - Din teorie stim ca un arbore are n-1 muchii, si stiind ca avem 4 arbori, rezulta ca avem 16 muchii, deoarece la fiecare arbore, scadem cate o muchie.
+    - Raspuns corect: `c`
 ### Subiectul II
 ### Subiectul III
