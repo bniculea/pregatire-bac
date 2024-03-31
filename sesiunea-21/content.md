@@ -358,4 +358,72 @@
         - Din teorie stim ca un arbore are n-1 muchii, si stiind ca avem 4 arbori, rezulta ca avem 16 muchii, deoarece la fiecare arbore, scadem cate o muchie.
     - Raspuns corect: `c`
 ### Subiectul II
+1. 
+    * a
+        ```json
+            x = 2, y = 9
+            x = -7
+            y = 2
+            x = 2 - (-7) = 9
+            cat timp x>= y
+                scrie 'A'
+                x = 7
+                x % 2 == 0 false => scrie 'B'
+            cat timp x >= y
+                scrie 'A'
+                x = 5
+                x % 2 == 0 false => scrie 'B'
+            cat timp x>= y
+                scrie 'A'
+                x = 3
+                x % 2 == 0 false => scrie 'B'
+            cat timp x >= y
+                scrie 'A'
+                x = 1
+                1 % 2 == 0 false => scrie 'B'
+        ```
+        - Rezulta ca programul afiseaza: `ABABABAB`
+    * b `18 si 19`
+    * c
+        ```c++
+            #include <iostream>
+            using namespace std;
+
+            int main() {
+                int x,y;
+                cin >> x >> y;
+                if (x < y) {
+                    x = x - y;
+                    y = x + y;
+                    x = y - x;
+                }
+                while ( x >= y) {
+                    cout << 'A';
+                    x = x - y;
+                    if (x%2 == 0) {
+                        cout << 'A';
+                    } else {
+                        cout << 'B';
+                    }
+                }
+            }
+        ```
+    * d 
+        ```json
+            citeşte x,y (numere naturale)
+            ┌dacă x<y atunci
+            │ x <- x-y; y<-x+y; x<-y-x
+            └■
+            ┌ daca x≥y atunci
+            | ┌execută
+            │ | scrie ’A’
+            │ | x<-x-y
+            │ |┌dacă x%2=0 atunci scrie ’A’
+            │ │| altfel scrie ’B’
+            | |└■
+            │ └■ cat timp x≥y
+            └■
+        ```
+2. 
+3. 
 ### Subiectul III
