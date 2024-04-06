@@ -60,6 +60,176 @@
     - Raspuns corect: `b`
 
 ### Subiectul II
+1. 
+    - a
+        ```json
+            n = 3
+            i = 1
+                j = 1
+                    scrie "+"
+                j = 2
+                    scrie "+"
+                j = 3
+                    scrie "+"
+                scrie "@"
+            i = 2
+                j = 2
+                    scrie "+"
+                j = 3
+                    scrie "+"
+            i = 3
+                j = 3
+                    scrie "+"
+                scrie "@"
+        ```
+        - Programul afiseaza: "+++@+++@"
+    - b
+        ```json
+            4, 5
+        ```
+    - c
+        ```c++
+            # include <iostream>
+
+            using  namespace std;
+
+            int main() {
+                int n;
+                cin >> n;
+                for (int i = 1; i <=n; i++) {
+                    for (int j = 1; j <= n; j++) {
+                        cout << "+";
+                    }
+
+                    if (i % 2 != 0) {
+                        cout << "@";
+                    }
+                }
+            }
+        ```
+    - d
+        ```json
+            citeşte n
+            (număr natural nenul)
+            i <- 1
+            ┌cat timp i<=n execută 
+            │┌pentru j<-i,n execută
+            │| scrie ’+’
+            │└■
+            │┌dacă i%2≠0 atunci 
+            ││ scrie ’@’
+            │└■
+            | i<- i+1
+            └■
+        ```
+2. 
+    - Rezolvare:
+        - Aici trebuie mai intai sa dam valori pentru a observa cum merge functia
+        - Incepem cu x = 1 si avem:
+            ```json
+                f(10, 1) =
+                    = 10/1 + f(9, 1) =
+                        = 9/1 + f(8, 1) =
+                            = 8/1 + f(7, 1) =
+                                = 7 + f(6, 1) =
+                                    = 6 + f(5, 1) =
+                                        = 5 + f(4, 1) =
+                                            = 4 + f(3, 1) =
+                                                = 3 + f(2, 1) =
+                                                    = 2 + f(1, 1) =
+                                                        = 1
+                                                    = 3
+                                                = 6
+                                            = 10
+                                        = 15
+                                    = 21
+                                = 28
+                            = 36
+                        = 45
+                    = 55
+            ```
+        - Deci pentru 1 am obtinut 55. Acum crestem putin si calculam f(10, 3)
+            ```json
+                f(10, 3) =
+                = 10/3 + f(7, 3) =
+                    = 7/3 + f(4, 3) =
+                        = 4/3 + f(1, 3) =
+                            = 3/1 + f(1, 2) =
+                                = 2/1 + f (1, 1) =
+                                    = 1
+                                = 3
+                            = 6
+                        = 7
+                    = 9
+                = 12
+            ```
+        - Si observam ca pentru x = 3 nu ajungem, mai incercam cu x = 2
+        - Calculam f(10, 2)
+            ```c++
+                f(10,2) =
+                    = 10/2+ f(8, 2) =
+                        = 8/2 + f(6, 2) =
+                            = 6/2 + f(4, 2) =
+                                = 4/2 + f(2, 2) =
+                                    = 1
+                                = 3
+                            = 6
+                        = 4+ 6 = 10
+                    = 15
+            ```
+        - Pana acum, ce putem observa este ca cu cat e mai mare diferenta intre parametri, cu atat is sansele mai mari, deci mai ramane sa incercam cu x = 9;
+        - Calculam f(10, 9)
+            ```json
+                f(10, 9) =
+                    = 10/9 + f(1, 9)
+                        = 9/1 + f(1, 8)
+                            = 8/1 + f(1, 7)
+                                = 7/1 + f(1, 6)
+                                    = 6/1 + f(1, 5)
+                                        = 5/1 + f(1, 4)
+                                            = 4/1 + f(1, 3)
+                                                = 3/1 + f(1, 2)
+                                                    = 2/1 + f(1, 1)
+                                                        = 1
+                                                    = 3
+                                                = 6
+                                            = 10
+                                        = 15
+                                    = 21
+                                = 28
+                            = 36
+                        = 45
+                    = 46
+            ```
+        - Raspuns corect: `1, 9`
+        - Din pacate aici, la bac, o sa trebuiasca sa faci pentru fiecare dintre cazuri, sa nu risti sa gresesti.
+3. 
+    - Rezolvare:
+        ```c++
+            # include <iostream>
+
+            using  namespace std;
+            int f(int a, int b);
+
+            int main() {
+                int matrice[4][5];
+                for(int i = 0; i < 4; i++) {
+                    for(int j = 0; j < 5; j++) {
+                            matrice[i][j]= (i+j) % 3;
+                    }
+                }
+
+                for(int i = 0; i < 4; i++) {
+                    for(int j = 0; j<5; j++) {
+                            cout << matrice[i][j] <<" ";
+                    }
+                    cout << endl;
+                }
+            }
+            // Pentru bac, tot ce trebuia sa scrii in acea linie punctata este
+            // matrice[i][j]= (i+j) % 3;
+            // Se observa usor cum la fiecare pas, valoarea este egala cu restul impartirii la 3 a sumei indicelui liniei si coloanei.
+        ```
 ### Subiectul III
 
 ## Testul 8
