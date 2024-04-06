@@ -331,8 +331,54 @@
                 fin.close();
             }
         ```
+
 ## Testul 8
 
 ### Subiectul I
+1. 
+    - Rezolvare:
+        - Evaluam fiecare optiune atat cu un numar cu 2 cifre cat si cu 3 cifre
+            - a -> Nu exista numar cu 2 cifre care sa dea 0 la x/10
+            - b -> Aici obtinem 0 si pentru numere cu mai mult de 2 cifre (e.g 3000)
+            - c -> Aici obtinem 0 doar pentru numere de 2 cifre sau mai putin.
+            - d -> Aici putem sa obtinem 0 si pentru numere mai mari de 2 cifre (e.g 200)
+    - Raspuns corect: `c`
+2. 
+    - Rezolvare:
+        - Calculam pentru 4 mai intai
+            ```json
+                f(4) =
+                    = g(4+f(3))
+                        = g(3+f(2))
+                            = g(2+f(1))
+                                = g(1+f(0))
+                                = g(2) = 2
+                            = g(2+2) = g(4) = 4
+                        = g(3+4) = g(7) = 7
+                    = g(4+7) = g(11) = 1 + 1 = 2
+            ```
+        - Acum sa incercam si pentru 6
+            ```json
+                f(6) = 
+                    = g(6 + f(5))
+                        = g(5 + f(4)) // stim ca f(4) = 2
+                        = g(5+2) = g(7)
+                    = g(6+7) = g(13) = 4
+            ```
+        - Vedem ca a este invalid. trecem la b si incepem cu 7
+        - Calculam f(7)
+            ```json
+                f(7) =
+                    = g(7 + f(6)) // stim ca f(6) = 4
+                    = g(7+4) = g(11) = 2
+            ```
+        - Calculam f(9)
+            ```json
+                f(9) =
+            ```
+3. 
+4. 
+5. 
+
 ### Subiectul II
 ### Subiectul III
