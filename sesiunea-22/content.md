@@ -231,7 +231,106 @@
             // Se observa usor cum la fiecare pas, valoarea este egala cu restul impartirii la 3 a sumei indicelui liniei si coloanei.
         ```
 ### Subiectul III
+1. 
+    - Rezolvare
+        ```c++
+            # include <iostream>
+            using  namespace std;
+            void divizor(int a, int b, int k, int &nr);
 
+            int main() {
+                int a = 3, b = 50, k = 4, nr;
+                divizor(a, b, k, nr);
+                cout << nr;
+            }
+
+            void divizor(int a, int b, int k, int &nr) {
+                int contor = 0;
+                for (int i = a; i<=b; i++) {
+                    if (i % k == 0 && i/10 == k) {
+                        contor++;
+                    }
+                }
+                nr = contor;
+            }
+        ```
+2. 
+    - Rezolvare
+        ```c++
+            #include <iostream>
+            #include <cstring>
+
+            using  namespace std;
+
+            int main() {
+                char text[101];
+                cin.getline(text, 101);
+                char* cuvant = strtok(text, " ");
+                int exista = 0;
+                while (cuvant != NULL) {
+                    int valid = 1;
+                    char ultimaVocalaCitita = 0;
+                    for(int i = 0; i < strlen(cuvant); i++) {
+                        if (strchr("aeiou", cuvant[i])) {
+                            // daca e prima vocala citita, o salvam
+                            if (ultimaVocalaCitita == 0) {
+                                ultimaVocalaCitita = cuvant[i];
+                                // altfel, verificam sa vedem daca e diferita de
+                                // ultimca vocala citita
+                            } else if (ultimaVocalaCitita != cuvant[i]) {
+                                valid = 0;
+                                break;
+                            }
+                        }
+                    }
+                    if (valid == 1) {
+                        exista = 1;
+                        cout << cuvant << endl;
+                    }
+                    cuvant = strtok(NULL, " ");
+                }
+
+                if (!exista) {
+                    cout << "nu exista";
+                }
+            }
+
+        ```
+3. 
+    - a
+        ```json
+            O sa implementam un algoritm care va calcula frecventa tuturor cifrelor ale numerelor citite. Practic citim numar cu numar si pentru fiecare, actualizam vectorul de frecventa conform cifrelor fiecarui numar. Dupa care, la final, parcurgem vectorul de frecventa de la capat si pentru fiecare cifra, o afisam de atatea ori cat este valoarea frecventei sale. Algoritmul este eficient din punct de vedere al timpului de executie deoarece fisierul este parcurs o singura data si in acelasi timp, este eficient din punct de vedere al memoriei, deoarece din totalul de 10^5 numere cat pot exista in fisier, noi in memorie, vom avea doar 10, anume cele din vectorul de frecventa.
+        ```
+    - b
+        ```c++
+            #include <iostream>
+            #include <fstream>
+
+            using  namespace std;
+
+            int main() {
+                ifstream fin("numere.txt");
+                int frecventa[10] = {0};
+                int numar;
+                while(fin >> numar){
+                    while(numar) {
+                        int ultimaCifra = numar %10;
+                        frecventa[ultimaCifra]++;
+                        numar /= 10;
+                    }
+                }
+
+                for(int i = 9; i >=0; i--) {
+                    if (frecventa[i] != 0) {
+                        for(int j = 0; j < frecventa[i]; j++) {
+                            cout << i;
+                        }
+                    }
+                }
+
+                fin.close();
+            }
+        ```
 ## Testul 8
 
 ### Subiectul I
