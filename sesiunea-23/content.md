@@ -365,5 +365,69 @@
 ## Test 5 Bac 2021
 
 ### Subiectul I
+1. 
+    - Rezolvare:
+        * a -> Nu exista numere care sa dea 1 pentru expresia de fata
+        * b -> Obtinem 1 doar daca x == 2 si y == 4 care respecta cerinta enuntului insa nu este valid pentru alte numere pare consecutive
+        * c -> Obtinem valoarea 1 si pentru 2 numere impare consecutive (e.g x = 5, y = 3) deci `a` este invalid
+        * d -> Obtinem 1 doar pentru numere pare consecutive
+    - Raspuns corect: `d`
+2. 
+    - Rezolvare:
+        ```json
+            f(7552021, 1) =
+                = f(755202, 2) // la intoarcere calculam daca ultima cifra este egala cu k (1) afisam k (1)
+                    = f(75520, 3) // la intoarcere calculam daca ultima cifra este egala cu k (3) afisam k (3)
+                        = f(7552, 4) // la intoarcere calculam daca ultima cifra este egala cu k (4) afisam k (4)
+                            = f(755, 5) // la intoarcere calculam daca ultima cifra este egala cu k (5) afisam k (5)
+                                = f(75, 6) // la intoarcere calculam daca ultima cifra este egala cu k (6) afisam k (6)
+                                    = f(7, 7) // // la intoarcere calculam daca ultima cifra este egala cu k (7) afisam k (7)
+                                    = afisam 7
+                                = nu afisam nimic
+                            = afisam 5
+                        = nu afisam nimic
+                    = nu afisam nimic
+                = afisam 2
+            = afisam 1
+        ```
+        - Raspuns corect: 7521 -> `a`
+3. 
+    - Rezolvare:
+        ```json
+            Solutiile pentru a genera 9 ca suma de numere prime este asa:
+            2+2+2+3
+            2+2+5
+            2+7
+            3+3+3
+        ```
+    - A 3-a solutie generata este `2+7`
+    - Raspuns corect: `c`
+4. 
+    - Rezolvare:
+        ```json
+            [1 2 3 4 5 6 7 8 9]
+            [8 7 6 5 7 7 8 0 8]
+            Conform vectorului de tati stim ca:
+            - 8 este radacina si parinte pentru: 1, 7, 9
+            - 7 este parinte pentru: 2 5 6
+            - 5 este parinte pentru 4
+            - 6 este parinte pentru 3
+        ```
+    - Astfel, descendentii lui 7 sunt copiii directi + descendentii acestora adica: 2,5,6,4,3.
+    - Raspuns corect: `d`
+5. 
+    - Rezolvare:
+        - Conform enuntului avem graful: 
+        ![Graf initial](imagini/t5-s1-e5.png)
+        - SI observam:
+            - Nodul 1: gradul 2
+            - Nodul 2: gradul 5
+            - Nodul 3: gradul 3
+            - Nodul 4: gradul 3
+            - Nodul 5: gradul 2
+            - Nodul 6: gradul 1
+        - Avem 4 noduri cu grad impar
+    - Raspuns corect: `b`
+
 ### Subiectul II
 ### Subiectul III
