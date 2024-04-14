@@ -430,4 +430,195 @@
     - Raspuns corect: `b`
 
 ### Subiectul II
+1. 
+    - a
+        ```json
+            x = 12
+            y = 0
+            repeta
+                daca x (12) > 9
+                    repeta
+                        x = x /10 = 1
+                    pana cand x <= 9
+                y = 1
+                x = 7
+                daca x(7) > 9
+                y = 10+7 = 17
+                x = 354
+                daca x(354) > 9
+                    repeta
+                        x = 35
+                    repeta
+                        x = 3
+                y = 170+ 3 = 173
+                x = 9
+                daca x(9) > 9
+                y = 1739
+                x = 630
+                daca x(630) > 9
+                    repeta
+                        x = 63
+                    repeta
+                        x = 6
+                y = 17396
+                x =0
+            scrie 17396
+        ```
+    - b: 
+        - Observam ca algoritmul va crea un numar din prima cifra a tuturor numerelor pana la intalnirea lui 0
+        - `32 29 10 0`
+    - c
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+            int main() {
+                int x;
+                cin >> x;
+                int y = 0;
+                do {
+                    if (x > 9) {
+                        do {
+                            x = x / 10;
+                        } while (x > 9);
+                    }
+                    y = y * 10 + x;
+                    cin >> x;
+                } while (x != 0);
+
+                cout << y;
+                return 0;
+            }
+        ```
+    - d:
+        ```json
+            citeşte x
+            (număr natural nenul)
+            y<-0
+            ┌repetă
+            │┌dacă x>9 atunci
+            ││┌cat timp x> 9 execută
+            │││ x<-[x/10]
+            ││└■
+            │└■
+            │ y<-y*10+x
+            │ citeşte x  (număr natural)
+            └până când x=0
+            scrie y
+        ```
+2. 
+    - Rezolvare
+        ```c++
+            struct carte {
+                char titlu[51];
+                int nrExemplare;
+                char autor[10][50];
+            }c;
+        ```
+3. 
+    - Rezolvare:
+        ```json
+            strcpy(s,"informatica"); 
+            cout<<strlen(s); | printf("%d",strlen(s)); 
+            for (i=0;i<strlen(s);i++) 
+            if (strchr("aeiou",s[i])!=NULL) 
+                s[i]= '*'; 
+            cout<<s; | printf("%s",s); 
+        ```
+        - Observam ca initial sirul `s` va contine `"informatica"` dupa care se va afisa lungimea lui, dupa care fiecare vocala din cuvant se va inlocui cu `*` si se va afisa. Astfel programul va afisa: `11*nf*rm*t*c*`
+
 ### Subiectul III
+
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int identice(int n);
+
+            int main() {
+
+                int n = 212;
+                cout << identice(n);
+                return 0;
+            }
+
+            int identice(int n) {
+                int rezultat = 1;
+                int ultimaCifra = n % 10;
+                n = n/10;
+                while (n) {
+                    if (n % 10 != ultimaCifra) {
+                        rezultat = 0;
+                        break;
+                    }
+                    n /= 10;
+                }
+                return rezultat;
+            }
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+
+                int m, n;
+                cin >> m >> n;
+                int matrice[m][n];
+                for(int i =0; i < m;i++) {
+                    for(int j = 0; j < n; j++) {
+                        matrice[i][j] = ((i+1)* (j+1)) % 10;
+                    }
+                }
+
+                for(int i =0; i < m;i++) {
+                    for(int j = 0; j < n; j++) {
+                        cout << matrice[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+                return 0;
+            }
+
+        ```
+3. 
+    - Rezolvare:
+        - a
+            ```json
+                O sa dezvoltam un algoritm care va citi numar cu numar din fisier si in acelasi timp va tine minte care este cel mai mare numar intalnit. Astfel, pentru fiecare numar citit, verificam daca trebuie sau nu actualizat maximul dupa care, vom afisa valoarea maxima.
+                Algoritmul este eficient din punct de vedere al timpului de executie deoarece rezultatul obtinut dintr-o singura parcurgere a fisierului, si in acelasi timp, algoritmul este eficient din punct de vedere al memoriei deoarece nu se folosesc structuri de date pentru a stoca numerele si din maximum de 1_000_000 de numere, noi vom tine in memorie doar 2, valoarea maxima si numarul curent citit.
+            ```
+        - b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+                int main() {
+                    ifstream  fin("bac.txt");
+                    int n;
+                    fin >> n;
+                    int maximSecventa;
+                    int numar;
+                    fin >> numar;
+                    maximSecventa = numar;
+                    cout << numar << " ";
+                    while(fin >> numar) {
+                        if (numar > maximSecventa) {
+                            maximSecventa = numar;
+                        }
+                        cout << maximSecventa << " ";
+                    }
+
+                    fin.close();
+                    return 0;
+                }
+
+            ```
