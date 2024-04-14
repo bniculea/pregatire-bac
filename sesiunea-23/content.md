@@ -3,8 +3,363 @@
 ## Test 6 Bac 2021
 
 ### Subiectul I
+1. 
+    - Rezolvare:
+        - Datorita semnului `!` expresia devine: `x >= 3 || y <= 5`
+        - a -> Optiune invalida, difera operatorul logic, dupa cum putem vedea mai sus (adica `&&` si ar fi trebuit sa avem `||` pentru a fi echivalenta)
+        - b -> Invalida deoarece `!` este aplicat doar la prima paranteza
+        - c -> Invalida nu seamana deloc cu expresia initiala
+        - d -> Dupa ce aplicam operatorul `!` pentru a doua paranteza, expresia devine: `x>= 3 || y <= 5`, adica exact cu ce devine expresia initiala dupa ce aplicam operatorul `!`
+    - Raspuns corect: `d`
+2. 
+    - Rezolvare:
+        ```json
+            f(2121, 19) =
+                = 1 + 1 + f(212, 1)
+                    = 0 + 1 + f(21, 0)
+                        = 1
+                    = 2
+                = 4 
+        ```
+    - Raspuns corect: `a`
+3. 
+    - Rezolvare
+        ```json
+            Stim ca Alex are rolul principal deci restul 5 se bat pentru cele 2 pozitii
+            Si ne intereseaza distributiile de genul `Alex _ Daria` si `Alex Daria _` si pentru fiecare loc lipsa, avem 4 copii din care sa alegem. Deci in total 8
+        ```
+    - Raspuns corect: `b`
+4. 
+    - Rezolvare
+        ```json
+            Conform pozei avem:
+            1 2 3 4 5 6 7
+            7 4 5 0 4 5 4
+        ```
+    - Raspuns corect: `d`
+5. 
+    - Rezolvare:
+        - Conform enuntului avem graful:
+        ![Graf initial](imagini/t6-s1-e5.png)
+        - Observam ca avem 4 noduri cu grad imapar: 6, 2, 9, 1
+        - Numarul minim de muchii ce trebuie adaugate pentru a avea grad par cu toate este:
+            - 2: 6-1 si 2-9
+    - Raspuns corect: `c`
 ### Subiectul II
+1.
+    - a
+        ```json
+            x = 404, y = 413
+            k = 0, i = 404
+            cat timp i <= y
+                n = 404, c = 0
+                cat timp n>0 && c = 0
+                    n%2 == 1 false
+                    n = n/10 = 40
+                cat timp n > 0 && c = 0
+                    n%2 == 1 false
+                    n = n/10 = 4
+                cat timp n>0 && c = 0
+                    n%2 == 1 false
+                    n = 0
+                k = 0
+                i = 405
+            cat timp i <= y
+                N = 405, c = 0
+                cat timp n > 0 && c = 0
+                    n%2 == 1 adevarat
+                        c = 1
+                    n = 40
+                k = 1
+                i = 406
+            cat timp i <= y
+                n = 406, c = 0
+                cat timp n>0 && c = 0
+                    n%2 == 1 false
+                    n = n/10 = 40
+                cat timp n > 0 && c = 0
+                    n%2 == 1 false
+                    n = n/10 = 4
+                cat timp n>0 && c = 0
+                    n%2 == 1 false
+                    n = 0
+                k = 0
+                i = 407
+            cat timp i <= y
+                N = 407, c = 0
+                cat timp n > 0 && c = 0
+                    n%2 == 1 adevarat
+                        c = 1
+                    n = 40
+                k = 2
+                i = 408
+            cat timp i <= y
+                n = 408, c = 0
+                cat timp n>0 && c = 0
+                    n%2 == 1 false
+                    n = n/10 = 40
+                cat timp n > 0 && c = 0
+                    n%2 == 1 false
+                    n = n/10 = 4
+                cat timp n>0 && c = 0
+                    n%2 == 1 false
+                    n = 0
+                k = 0
+                i = 409
+            
+            cat timp i <= y
+                N = 409, c = 0
+                cat timp n > 0 && c = 0
+                    n%2 == 1 adevarat
+                        c = 1
+                    n = 40
+                k = 3
+                i = 410
+            cat timp i<= y
+                N = 410, c = 0
+                cat timp n > 0 && c = 0
+                    n%2 == 1 false
+                    n = n/10 = 41
+                cat timp n>0 && c = 0
+                    n%2 == 1 adevarat
+                        c = 1
+                    n = 4
+                k = 4
+                i = 411
+            cat timp i<= y
+                n = 411, c = 0
+                cat timp n>0 && c = 0
+                    n% 2 = 1 adevarat
+                        c = 1
+                    n = 41
+                k = 5
+                i = 412
+            cat timp i<= y
+                n = 412, c = 0
+                cat timp n>0 && c = 0
+                    n% 2 = 1 false
+                    n = 41
+                cat timp n>0 && c = 0
+                    n% 2 = 1 adevarat
+                        c = 1
+                k = 6
+                i = 413
+            cat timp i<= y
+                n = 413, c = 0
+                cat timp n>0 && c = 0
+                    n% 2 = 1 adevarat
+                    n = 41
+                k = 7
+                i = 414
+            scrie k => scrie 7
+        ```
+        - Programul afiseaza `7`
+    - b
+        - Programul numara cate numere din intervalul dat [x,y] au cel putin o cifra impara
+        - 61, 62
+    - c
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+                int x, y;
+                cin >> x >> y;
+                int k = 0, i = x;
+                while (i <= y) {
+                    int n = i, c =0;
+                    while (n >0 && c == 0) {
+                        if (n % 2 == 1) {
+                            c = 1;
+                        }
+                        n = n /10;
+                    }
+                    k = k + c;
+                    i = i+1;
+                }
+                cout << k;
+                return 0;
+            }
+        ```
+    - d
+        ```json
+            citește x,y
+                (numere naturale, x≤y)
+            k<-0; 
+            ┌pentru i<-x,y execută
+            │ n<-i; c<-0
+            │┌cât timp n>0 și c=0 execută
+            ││┌dacă n%2=1 atunci c<-1
+            ││└■
+            ││ n<-[n/10]
+            │└■
+            │ k<-k+c
+            │ i<-i+1
+            └■
+            scrie k
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            struct punct {
+                float x;
+                float y;
+            };
+            struct figura {
+                punct centru;
+                float diametru;
+                
+            }c;
+        ```
+3. 
+    - Rezolvare:
+        ```json
+            strcpy(s,"PRASLEA*CEL*VOINIC"); i=0; 
+            while (i<strlen(s)) 
+            if (strchr("ACEI",s[i])!=NULL){
+                 strcpy(t,s+i+1);
+                strcpy(s+i,t);
+            } 
+            else i=i+1;
+
+
+            initial s contine "PRASLEA*CEL*VOINIC"
+            Dupa care se parcurge char cu cahr si atunci cand intalnim oricare dintre literele "ACEI", programul o va sterge.
+            Astfel, la final, secventa de instructiuni va afisa:
+            PRSL*L*VON
+        ```
 ### Subiectul III
+1.
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            void numar(int n, int c, int& m);
+
+            using namespace std;
+            int main() {
+                int n = 55;
+                int c = 5;
+                int m;
+                numar(n, c, m);
+
+                cout << m;
+                return 0;
+            }
+
+            void numar(int n, int c, int& m) {
+                int rezultat = 0;
+                int valid = 0;
+                int p =1;
+                while (n) {
+                    int ultimaCifra = n % 10;
+                    if (ultimaCifra != c) {
+                        valid = 1;
+                        rezultat = ultimaCifra * p + rezultat;
+                        p= p * 10;
+                    }
+                    n/= 10;
+                }
+
+                if (!valid) {
+                    m = -1;
+                } else {
+                    m = rezultat;
+                }
+            }
+
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+            int main() {
+
+                int n;
+                cin >> n;
+                int matrice[n][n];
+                for(int i =0; i < n; i++) {
+                    for(int j = 0; j < n; j++) {
+                        if (i == 0) {
+                            matrice[i][j] = n-1-j;
+                        } else if (i+j == n-1) {
+                            matrice[i][j] = 0;
+                        } else if ((i+j) < (n-1)) {
+                            matrice[i][j] = n-1-i-j;
+                        } else {
+                            matrice[i][j] = j - (n-1-i);
+                        }
+                    }
+                }
+
+                for(int i =0; i < n; i++) {
+                    for(int j = 0; j < n; j++) {
+                        cout << matrice[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+                return 0;
+            }
+        ```
+3. 
+    - Rezolvare:
+        * a
+            ```json
+            O sa implementem un algoritm care va functiona in felul urmator: folosim un contor pentru a tine minte cate numere impare am intalnit. In acelasi timp, vom avea nevoie de alte 3 variabile:
+            lungime1, lungime2, si lungimeaMaxima. Variabila lungimeaMaxima va fi folosita pentru a tine minte care este cea mai lunga secventa care indeplineste cerintele enuntului. lungime1 va tine lungimea secventei care contine cel mult 1 numar impar, si variabila lungime2 va fi folosita pentru a calcula tot secventa ce are maximum 1 numar impar insa aceasta va porni incrementarea doar dupa ce am intalnit 1 numar impar. Asta pentru a reusi sa calculam secventa cea mai lunga dintr-o singura citire.
+            Practic, cat timp avem numere in fisier, citim numar cu numar si verificam urmatoarele:
+                - daca numarul este impar, incrementam contorul specific
+                - daca, contorul este mai mic decat 2, incrementam lungime1 si daca, in acelasi timp, contorul este mai mare de 1, o sa incrementam si lungime2.
+                - atunci cand contorul ajunge sa fie egal cu 2, o sa comparam lungime1 cu lungimeaMaxima si daca este mai mare, o sa actualizam corespunzator. Dupa care, in lungime1 o sa punem ce am acumulat in lungime2 la care mai adaugam si numarul negativ curent, resetam lungime2 la 0, si contorul de numere impare la 1 ca sa tinem cont si de numarul impar curent.
+                La final, mai verificam daca ce avem in lungime1 nu este mai mare decat lungimea maxima, asta pentru a evita situatiile de genul cand pana la iesirea din fisier nu mai sunt numere impare.
+                Programul este eficient din punct de vedere al timpului de executie deoarece se efectueaza o singura parcurgere a fisierului si in acelasi timp, este eficient din punct de vedere al memoriei deoarece nu folosim o structura de date pentru a stoca numerele, rezultatul fiind calculat direct in timp ce parcurgem.
+            ```
+        * b
+            ```c++
+                #include <iostream>
+
+                using namespace std;
+                int main() {
+
+                    ifstream fin("bac.in");
+                    int lungimeMaxima = 0;
+                    int lungime1 = 0;
+                    int lungime2 = 0;
+                    int contorImpare = 0;
+                    int numar;
+                    while(fin >> numar) {
+                        if (numar < 0) {
+                            contorImpare++;
+                        }
+
+                        if (contorImpare < 2) {
+                            lungime1++;
+                            if(contorImpare == 1 && numar > 0) {
+                                lungime2++;
+                            }
+                        } else if (contorImpare == 2) {
+                            if (lungime1 > lungimeMaxima) {
+                                lungimeMaxima = lungime1;
+                            }
+                            lungime1 = lungime2+1; // adaugam si numarul negativ curent;
+                            lungime2 = 0;
+                            contorImpare = 1;
+                        }
+                    }
+
+                    if (lungime1 > lungimeMaxima) {
+                        lungimeMaxima = lungime1;
+                    }
+
+                    cout << lungimeMaxima;
+                    fin.close();
+                    return 0;
+                }
+            ```
+
 
 
 ## Test 5 Bac 2021
