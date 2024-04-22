@@ -316,7 +316,166 @@
                     return 0;
                 }
             ```
+
 ## Testul 2
-### Subiectul I
+
+### Subiectul I![Graf initial](imagini/t3-s1-e4.png)a `b`
+    - Raspuns corect: `a`
+2. 
+    - Rezolvare:
+        ```json
+            f(4) =
+                4 > 1
+                    x = 3; f(2)
+                        2 > 1
+                            x = 1
+                            f(0)    => afisam 0
+                        1 > 1 false
+                        afisam 1
+                3 > 1
+                    x = 2; f(1) => afisam 1![Graf initial](imagini/t3-s1-e4.png)
+    - Raspuns corect: `d`
+3. 
+    - Rezolvare:
+        ```json
+            Notam:
+            {  0             1                 2              3                4         }
+            {„Bono”, „Bruce Springsteen”, „Bon Jovi”, „Leonard Cohen”, „Portugal.The Man”}
+
+            Primele 5 selectii sunt:
+            
+            („Bono”, „Bruce Springsteen”, „Bono”, „Bruce Springsteen”),
+           
+            („Bono”, „Bruce Springsteen”, „Bono”, „Leonard Cohen”),
+            
+            („Bono”, „Bruce Springsteen”, „Bruce Springsteen”, „Bono”),
+           
+            („Bono”,„Bruce Springsteen”, „Bruce Springsteen”, „Bruce Springsteen”),
+            
+            („Bono”,„Bruce Springsteen”, „Bruce Springsteen”, „Bon Jovi”)
+
+
+            Adica: 
+            { 0, 1, 0, 1 }
+            { 0, 1, 0, 3 }
+            { 0, 1, 1, 0 }
+            { 0, 1, 1, 1 }
+            { 0, 1, 1, 2 }
+        ```
+        - Daca ne inspiram din prima solutie, ultima va fi:
+            - . („Portugal.The Man”, „Leonard Cohen”, „Portugal.The Man”, „Leonard Cohen”)
+            - Adica {4,3, 4, 3}
+        - Raspuns corect: `c`
+4. 
+    - Rezolvare:
+        - Din vectorul de tati avem:
+            ```json
+                (1,2,3,4,5,6,7,8,9,10)
+                (0,1,1,1,2,3,3,7,4,6)
+
+                1- Radacina si tata pentru: 2,3,4
+                2 - tata pentru 5
+                3 - tata pentru 6,7
+                4 - tata pentru 9
+                6 - tata pentru 10
+                7 - tata pentru 8
+            ```
+            - Astfel obtinem urmatorul graf: 
+            ![Graf initial](imagini/t2-s1-e4.png) de unde observam ca avem 4 frunze
+        - Raspuns corect: `b`
+5. 
+    - Rezolvare:
+        - Din muchiile sale initiale obtinem graful de mai jos:
+        ![Graf initial](imagini/t2-s1-e5.png) de unde 
+        - Teorie: 
+            - Definiție: Se numește ciclu un lanț simplu în care primul vârf este identic cu ultimul.
+            - Definitie: Lanțul care conține numai muchii distincte este lanț simplu.
+        - Daca am adauga muchiile: [5-9] si [2-10] Am obtine ciclul:
+            - [1,10,5,8,7,5,9,2,6,3,2,10,4,1]
+    - Raspuns corect: `b`=
+
 ### Subiectul II
+1. 
+    - a
+        ```json
+            n = 2186310
+            s = 1
+            c1 = 0;
+            n = 218631
+            c2 = 1
+            s = -1
+
+            cat timp (c1-c2)* s > 0 si n > 9 atunci
+                c1 = 1;
+                n = 21863
+                c2 = 3
+            cat timp (c1-c2)* s > 0 si n > 9 atunci
+                c1 = 3
+                n = 2186
+                c2 = 6
+            cat timp (c1-c2)* s > 0 si n > 9 atunci
+                c1 = 6
+                n = 218
+                c2 = 8
+            cat timp (c1-c2)* s > 0 si n > 9 atunci
+                c1 = 8
+                n = 21
+                c2 = 1
+            scrie -1, , 21
+        ```
+        - Programul afiseaza "-1 21"
+    - b
+        - Daca alegem 2 numere care sa aibe cifrele crescatoare de la dreapta la stanga, si in care doar primele cifre (de exemplu primele 2) sa fie identice, obtinem aceeasi valoare:
+            - 12987 si 12654 pentru fiecare obtinem: "-1 12"
+    - c
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main()
+            {
+
+                int n;
+                cin >> n;
+                int s = 1;
+                int c1 = n % 10;
+                n = n /10;
+                int c2 = n % 10;
+                if (c1 == c2) {
+                    s = 0;
+                } else if (c1 < c2) {
+                    s = -1;
+                }
+                
+                while ((c1-c2) * s > 0 && n > 9) {
+                    c1 = n % 10;
+                    n = n / 10;
+                    c2 = n% 10;
+                }
+                cout << s << " " << n;
+                return 0;
+            }
+        ```
+    - d
+        ```json
+            citește n (număr natural, n>9)
+            s<-1
+            c1<-n%10; n<-[n/10]; c2<-n%10
+            ┌dacă c1=c2 atunci s<-0
+            │altfel
+            │┌dacă c1<c2 atunci s-1
+            │└■
+            └■
+            ┌ daca (c1-c2)*s>0 și n>9
+            |┌ execută
+            |│ c1<-n%10; n<-[n/10]; c2<-n%10
+            |└■cât timp (c1-c2)*s>0 și n>9
+            └■
+            scrie s,' ',n
+        ```
+2. 
+
+3. 
+    
 ### Subiectul III
