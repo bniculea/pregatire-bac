@@ -517,3 +517,128 @@
         - La final, parcurgem vectorul de vocale, si afisam vocalele care nu se gasesc in cel de al doilea vector.
     
 ### Subiectul III
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+
+            int factori(int n, int m);
+
+            int main(){
+
+                int n = 16500,m = 10780;
+                cout << factori(n, m);
+                return 0;
+            }
+
+            int factori(int n, int m) {
+                int contor = 0;
+                int putere1, putere2, divizor = 2;
+                while( n> 1 && m > 1) {
+                    putere1= 0;
+                    while(n % divizor == 0) {
+                        putere1++;
+                        n = n/divizor;
+                    }
+
+                    putere2 = 0;
+                    while(m % divizor == 0) {
+                        putere2++;
+                        m = m/divizor;
+                    }
+
+                    if (putere1 == putere2 && putere1 != 0) {
+                        contor++;
+                    }
+
+                    divizor++;
+                }
+
+                return contor;
+            }
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main(){
+                int n;
+                cin >> n;
+                int matrice[n][n];
+
+                for(int i = 0; i < n; i++) {
+                    for(int j = 0; j < n; j++) {
+                        if (i+j == n-1) {
+                            matrice[i][j] = n;
+                        } else if ((i+j) < (n-1)) {
+                            // practic n-1-i ne da coloana unde gasim elementul de pe diagonala secundara corespunzator linii
+                            // pe care ne aflam, si daca scadem j, obtinem distanta intre ele
+                            int coloanePanaLaDiagSecundara = n-1-i-j;
+                            matrice[i][j] = n - coloanePanaLaDiagSecundara;
+                        } else {
+                            // aceeasi idee ca si sus doar ca acum j-ul nostru este mai mare decat j-ul corespunzator
+                            // j-ului de pe diagonala secundara
+                            int coloaneDupaDiagSecundara = j - (n-1-i);
+                            matrice[i][j] = n - coloaneDupaDiagSecundara;
+                        }
+                    }
+                }
+
+                for(int i = 0; i < n; i++) {
+                    for(int j = 0; j < n; j++) {
+                        cout << matrice[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+                return 0;
+            }
+
+        ```
+3. 
+    - Rezolvare:
+        - a
+            ```json
+                Deoarece cautam o secventa care fie incepe, fie se termina cu un numar pozitiv, algoritmul nostru va calcula lungimea secventei pana la primul numar pozitiv si lungimea secventei de dupa primul numar pozitiv. Si vom compara cu o variabila in care tinem lungimeaMaxima. Ce este important, dupa ce am terminat de citit numerele din fisier, mai verificam ce avem in  variabila care tine lungimeaCurenta pentru a vedea daca secventa care incepe dupa ce am gasit primul numar pozitiv, este mai mare decat secventa maxima intalnita.
+                Programul este eficient din punct de vedere al timpului de executie deoarece fisierul este citit o singura data, si in acelasi timp, programul este eficient din punct de vedere al memoriei utilizate deoarece din maximum de 10^6 numere cate pot fi in fisier, noi in memorie tinem doar numarul curent pe care il citim, pas cu pas.
+            ```
+        - b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+                int main(){
+                    ifstream fin("bac.in");
+                    int lungimeMaxima = 0;
+                    int lungimeCurenta = 0;
+                    int numar;
+                    int amGasitPozitiv = 0;
+                    while (fin >> numar) {
+                        if (numar > 0 && !amGasitPozitiv) {
+                            lungimeCurenta++;
+                            if (lungimeCurenta > lungimeMaxima) {
+                                lungimeMaxima = lungimeCurenta;
+                            }
+                            lungimeCurenta = 1;
+                            amGasitPozitiv = 1;
+                        } else {
+                            lungimeCurenta++;
+                        }
+                    }
+                    if (lungimeCurenta > lungimeMaxima) {
+                        lungimeMaxima = lungimeCurenta;
+                    }
+                    cout << lungimeMaxima;
+
+                    fin.close();
+                    return 0;
+                }
+
+            ```
