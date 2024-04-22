@@ -475,7 +475,45 @@
             scrie s,' ',n
         ```
 2. 
+    - Rezolvare:
+        ```c++
+            struct polinom {
+                int grad;
+                float coeficient[101]; // aici nu sunt sigur, daca trebuie de [100] sau [101], nu imi aduc aminte teoria de la mate.
+            }p;
 
+        ```
 3. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <cstring>
+
+            using namespace std;
+
+
+            int main(){
+                char s[21];
+                cin >> s;
+                char vocale[] = "aeiouAEIOU";
+                char vocalePrezente[11] = "";
+                int index = 0;
+                for(int i = 0; i<strlen(s); i++) {
+                    if(strchr(vocale, s[i]) !=NULL) {
+                        vocalePrezente[index++] = s[i];
+                    }
+                }
+
+                for(int i = 0; i < strlen(s);i++) {
+                    if (!strchr(vocalePrezente, vocale[i])) {
+                        cout << vocale[i];
+                    }
+                }
+                return 0;
+            }
+        ```
+    - Explicatie:
+        - Mai declaram un vector in care o sa salvam vocalele intalnite in text.
+        - La final, parcurgem vectorul de vocale, si afisam vocalele care nu se gasesc in cel de al doilea vector.
     
 ### Subiectul III
