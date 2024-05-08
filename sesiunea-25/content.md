@@ -798,5 +798,142 @@
             scrie m
         ```
 2. 
+    - Rezolvare:
+        ```c++
+            struct specie {
+                int cod;
+                int nrExemplare;
+                int varsta[10];
+            }s[20];
+
+        ```
 3. 
+    - Rezolvare:
+        ```
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+                int a[5][7] = {
+                        {1,1,1,1,1,1,1},
+                        {1,1,1,1,1,1,1},
+                        {1,1,1,1,1,1,1},
+                        {1,1,1,1,1,1,1},
+                        {1,1,1,1,1,1,1},
+                };
+                for(int i = 1; i < 5; i++) {
+                    for (int j = 1; j < 7; j++) {
+                        int suma = a[i][j-1] + a[i-1][j];
+                        a[i][j] = suma % 10;
+                    }
+                }
+
+                for(int i = 0; i < 5; i++) {
+                    for (int j = 0; j < 7; j++) {
+                        cout << a[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+                return 0;
+            }
+
+        ```
+    - De retinut ca pentru bac doar for-ul in care se asigneaza valorile trebuie scris.
 ### Subiect III
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            void fii(long int n);
+
+            int main() {
+                int n = 16;
+                fii(n);
+                return 0;
+            }
+
+            void fii(long int n) {
+                for(int i = n; i >=1 ; i--) {
+                    for (int j = 1; j <= n; j++) {
+                        if (i > j && i * j == n) {
+                            cout << "(" << i << " " << j << ") ";
+                        }
+                    }
+                }
+            }
+
+
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <cstring>
+            #include <cctype>
+
+            using namespace std;
+
+            int main() {
+                char text[101];
+                char rezultat[101]="";
+                cin.getline(text, 101);
+                char *cuvant = strtok(text, " ");
+                while (cuvant != NULL) {
+                    if (cuvant[0] == '-' && isdigit(cuvant[1])) {
+                        strcat(rezultat, " ");
+                    } else {
+                        strcat(rezultat, cuvant);
+                        strcat(rezultat, " ");
+                    }
+                    cuvant = strtok(NULL, " ");
+                }
+
+                cout << rezultat;
+                return 0;
+            }
+
+        ```
+3. 
+    - Rezolvare:
+        * a
+            ```json
+                O sa implementam un algoritm care va parcurge fisierul si atunci cand va intalnii un numar care se termina in 20, il va compara cu 3 variabile in care vom tine minte cele 3 maxime astfel daca este mai mare sau egal decat cel mai mare numar intalnit(ce respecta conditia) atunci punem in al 3-lea maxim ce aveam in al doilea, in al doilea ce era in primul si in primul maxim punem numarul curent. Daca nu este mai mare sau egal decat maximul intalnit, comparam sa vedem daca este mai mare decat al doilea maxim intalnit, caz in care salvam in maxim 3 al doilea maxim si in al doilea maxim punem numarul curent. In cazul in care nu este mai mare sau egal nici cu al doilea maxim, comparam cu al 3-lea maxim, si daca este mai mare decat acesta, il actualizam cu valoarea numarului curent.
+                Algoritmul este eficient din punct de vedere al timpului de executie deoarece se efectueaza o singura parcurgere a fisierului. In acelasi timp, algoritmul este eficient din punct de vedere al memoriei utilizate, deoarece din maximul de 10^9 numere cate pot fi in fisier, noi in memorie tinem doar 3, anumele cele 3 maxime.
+            ```
+        * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+                int main() {
+                    ifstream  fin("bac.in");
+                    int max1 = -1;
+                    int max2 = -1;
+                    int max3 = -1;
+                    int numar;
+                    while(fin >> numar) {
+                        if (numar % 100 == 20) {
+                            if (numar >= max1) {
+                                max3 = max2;
+                                max2 = max1;
+                                max1 = numar;
+                            } else if (numar >= max2) {
+                                max3 = max2;
+                                max2 = numar;
+                            } else if (numar > max3) {
+                                max3 = numar;
+                            }
+                        }
+                    }
+                    cout << max3 << " " << max2 << " " << max1;
+                    fin.close();
+                    return 0;
+                }
+
+            ```
