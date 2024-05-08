@@ -175,7 +175,125 @@
             
         ```
 ### Subiect III
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
 
+            using namespace std;
+
+            void divX(int n, int x);
+
+            int main() {
+                divX(4, 15);
+                return 0;
+            }
+
+            void divX(int n, int x) {
+                for (int i = n; i > 0; i--) {
+                    cout << x * i << " ";
+                }
+            }
+
+        ```
+2.
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+
+            int main() {
+                int n;
+                cin >> n;
+                int matrice[n][n];
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cin >> matrice[i][j];
+                    }
+                }
+
+                // afisam prima coloana
+                for (int i = 0; i < n; i++) {
+                    cout << matrice[i][0] <<" ";
+                }
+
+                // afisam ultima linie dar plecam de la al doilea element
+                for (int i = 1; i < n; i++) {
+                    cout << matrice[n-1][i]<<" ";
+                }
+
+                // afisam ultima coloana dar plecam de sus in jos, si de la penultimul element
+                for (int i = n-2; i >= 0; i--) {
+                    cout << matrice[i][n-1] << " ";
+                }
+
+                // afisam prima linie de la dreapta la stanga dar plecam de la penultimul si mergem pana la al doilea
+                for(int i = n-2; i >= 1; i--) {
+                    cout << matrice[0][i] << " ";
+                }
+
+                return 0;
+            }
+
+        ```
+3.  
+    - Rezolvare:
+        * a
+            ```json
+                O sa implementam un algoritm care va parcurge fisierul si toate numerele de 2 cifre le va pune intr-un vector de frecventa. Dupa ce am parcurs fisierul, o sa parcurgem vectorul de frecventa de la capat si pentru fiecare numar ce are frecventa 0 si cifrele distincte, o sa il salvam fie in variabila pentru primul numar, or in variabila pentru al doilea numar, in functie de valoarea unui contor pe care il vom folosi sa stim daca am gasit sau nu cele 2 numere.
+                
+                La final, daca contorul nu va avea valoarea 2, se va afisa nu exista, altfel vom afisa valorile celor 2 numere.
+            ```
+        * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+
+                int main() {
+                    ifstream fin("bac.in");
+                    int frecventa[100] = {0};
+                    int numar;
+                    while (fin >> numar) {
+                        if (numar >= 10 && numar <= 99) {
+                            frecventa[numar]++;
+                        }
+                    }
+
+                    int contor = 0;
+                    int numar1, numar2;
+
+                    for(int i = 99; i >= 10; i--) {
+                        if (frecventa[i] == 0) {
+                            int copieI = i;
+                            int d2 = copieI % 10;
+                            copieI = copieI / 10;
+                            int d1 = copieI % 10;
+                            if (d1 != d2 && contor < 2) {
+                                if (contor == 0){
+                                    numar1 = i;
+                                } else {
+                                    numar2 = i;
+                                }
+                                contor++;
+                            }
+                        }
+                    }
+
+                    if (contor < 2) {
+                        cout << "nu exista";
+                    } else {
+                        cout << numar1 << " " << numar2;
+                    }
+                    fin.close();
+                    return 0;
+                }
+
+            ```
 ## Rezolvare test 1 propus pentru BAC 2020
 
 ### Subiect I
