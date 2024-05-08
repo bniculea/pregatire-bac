@@ -297,8 +297,318 @@
 ## Rezolvare test 1 propus pentru BAC 2020
 
 ### Subiect I
+1. 
+    - Rezolvare:
+        * a -> valid doar pentru numere conform cerintei
+        * b -> Invalid deoarece obtinem 1 si pentru numere care nu sunt divizibil cu 2 si 5 in acelasi timp (e.g n = 7)
+        * c -> Invalid din mai multe motive, in primul rand avem un `||` si nu un `&&` si acel `!` din fata parantezei accepta un numar care nu e divizibil cu 5.
+        * d -> Invalid, similar cu b
+    - Raspuns corect: `a`
+2. 
+    - Rezolvare:
+        ```json
+            f(102030)
+            = 20 + f(10203)
+                = 20 + f(1020)
+                    = 20 + f(102)
+                        = 20 + f(10)
+                            = 2020
+                        = 2040
+                    = 2060
+                = 2080
+            = 2100
+        ```
+    - Raspuns corect: `c`
+3. 
+    - Rezolvare:
+        ```json
+            Primele 8 solutii: 
+            1
+            101
+            103
+            11 
+            111
+            113
+            121
+            123
+
+            13
+            131
+            133
+            201
+        ```
+    - Raspuns corect: `d`
+4. 
+    - Rezolvare:
+        ```json
+            (1,2,3,4,5,6,7,8,9,10)
+            (2,8,2,9,8,9,0,7,7,9)
+            Astfel avem:
+            7 radacina si tata pentru: 8 si 9
+            8 tata pentru: 2 si 5
+            9 tata pentru: 4, 6, 10
+            2 tata pentru: 1 si 3
+        ```
+        - Astfel obtinem arborele de mai jos:
+        ![Graf initial](imagini/t1-2020-s1-e4.png)
+            - de unde observam ca nodurile: 7, 8, 2 au exact 3 fii.
+    - Raspuns corect: `b`
+5.
+    - Rezolvare:
+        - Conform teoriei, un graf complet are `(n* (n-1))/2 muchii`(https://www.pbinfo.ro/articole/810/grafuri-neorientate#intlink-7). Noi stiind ca avem 20 de noduri, inseamna ca un graf cu 20 de noduri, pentru a fi complet trebuie sa  190 de muchii in total, noi avand deja 100 de muchii, trebuie sa mai adaugam doar 90.
+    - Raspuns corect: `c`
 ### Subiect II
+1. 
+    * a
+        ```json
+            n = 12345
+            p =1, m = 0, k = 0
+            cat timp n != 0
+                x = 780
+                pentru i <- 1, 0
+                    -
+                daca x != 0
+                    c = 0
+                m = 0
+                n = 1234
+                p = 10
+                k = 1
+            cat timp n != 0
+                x = 921
+                pentru i <- 1, 1
+                    x = 92
+                daca x != 0
+                    c = 2
+                m = 20
+                n = 123
+                p = 100
+                k = 2
+            cat timp n != 0
+                x = 4013
+                pentru i <- 1, 2
+                    x = 401
+                pentru i<-2, 2
+                    x = 40
+                daca x!= 0
+                    c = 0
+                m = 20
+                n = 12
+                p = 1000
+                k = 3
+            cat timp n!= 0
+                x = 75
+                pentru i<1, 3
+                    x = 7
+                pentru i<- 2, 3
+                    x = 0
+                pentru i <- 3, 3>
+                    x =0
+                daca x!= 0 fals
+                    c = 2
+                m = 2000+20 = 2020
+                n = 1
+                p = 10000
+                k = 4
+            cat timp n!= 0
+                x = 100214
+                pentru i<- 1, 4
+                    x = 10021
+                pentru i<-2, 4
+                    x = 1002
+                pentru i<- 3, 4
+                    x = 100
+                pentru i<- 4, 4
+                    x = 10
+                daca x!= 0
+                    c = 0
+                m = 2020
+                n = 0
+                p = 100000
+                k = 5
+        scrie 2020
+        ```
+    * b
+        - 49 29 41
+        - 49 39 47
+    * c
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+
+            int main() {
+                int n;
+                cin >> n;
+                int p = 1, m = 0, k = 0;
+                while (n != 0) {
+                    int x,c;
+                    cin >> x;
+                    for (int i = 1;i<=k; i++) {
+                        x = x/10;
+                    }
+                    if (x!= 0) {
+                        c = x%10;
+                    } else {
+                        c = n%10;
+                    }
+                    m = c*p + m;
+                    n = n/10;
+                    p = p * 10;
+                    k = k+1;
+                }
+                cout << m;
+                return 0;
+            }
+        ```
+    * d
+        ```json
+            citeşte n (număr natural) 
+            p<-1; m<-0; k<-0 
+            ┌cât timp n≠0 execută 
+            │ citește x (număr natural) 
+            │┌pentru i<-1,k execută 
+            ││ x<-[x/10] 
+            │└■ 
+            | x = x / p
+            │┌dacă x≠0 atunci c<-x%10 
+            ││altfel c<-n%10 
+            │└■ 
+            │ m<-c*p+m 
+            │ n<-[n/10] 
+            │ p<-p*10; k<-k+1 
+            └■  
+            scrie m
+        ```
+        - Observam ca instructiunea `pentru..` elimina ultimele k cifre din numar si pentru asta ne putem folosi de valoarea variabilei `p` in care tinem puteri de ale lui 10 egale cu 10^k
+2. 
+    - Rezolvare:
+        ```c++
+            struct punct {
+                int x;
+                int y;
+            }
+            struct triunghi{
+                punct A;
+                punct B;
+                punct C;
+            }t;
+        ```
+3. 
+    - Rezolvare:
+        ```c++
+            k=’a’-’A’; // k = 32
+            strcpy(a,”VIcToriE”); // a = ”VIcToriE”
+            cout<<strlen(a); | printf(”%d”, strlen(a)); // afisam 8
+            for(i=0;i<strlen(a);i++) 
+                if(a[i]>=’A’ && a[i]<=’Z’) a[i]=a[i]+k; 
+                else a[i]=a[i]-k; 
+            cout<<a;  |  printf(”%s”,a); // a=victorie
+        ```
+    - Programul transforma literele mari in litere mici si literele mici in litere mari afiseaza  `8viCtORIe"
 ### Subiect III
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            void putere(long int n, int &d, int &p);
+
+            int main() {
+                int n = 10780;
+                int d, p;
+                putere(n, d, p);
+                cout << d << " " << p;
+                return 0;
+            }
+
+            void putere(long int n, int &d, int &p){
+                int maximP = 0, maximD = 0;
+                d = 2;
+                while (n > 1) {
+                    p = 0;
+                    while (n % d == 0) {
+                        p++;
+                        n=n/d;
+                    }
+                    if (p >= maximP) {
+                        maximP = p;
+                        maximD = d;
+                    }
+                    d++;
+                }
+                d = maximD;
+                p = maximP;
+            }
+
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+                int n,k;
+                cin >> n >> k;
+                int matrice[n][n*k];
+                for (int i = 0; i < n; i++) {
+                    int j = 0;
+                    int valoare = i+1;
+                    while(j < (n*k)) {
+                        matrice[i][j] = valoare;
+                        if ((j+1) % k == 0){
+                            valoare++;
+                        }
+                        j++;
+                    }
+                }
+
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n * k; j++) {
+                        cout << matrice[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+                return 0;
+            }
+
+        ```
+3. 
+    - Rezolvare:
+        * a
+            ```json
+                O sa implementam un algoritm in care plecand de la primele 2 numere date(y si x pe care le scriem direct in fisier), aflam restul de numere extragand formula din relatia lor, anume, fiecare termen pe care vrem sa il afisam este egal cu `3 * numarul de dinainte - numarul de dinaintea acestuia`. In cazul nostru avem `termen = 3 * x - y` si de fiecare data cand afisam un numar, actualizam ca in y sa punem ce a fost in x, in x punem ce am afisat si calculam din nou. COntinuam acest lucru pana ajungem la un x si un y egal, deoarece stim ca primele 2 numere au valoarea 1.
+                Algoritmul este eficient din punct de vedere al timpului de executie deoarece scriem in fisier direct in ordine descrescatoare, fara a manipula ordinea numerelor in prealabil. In acelasi timp, algoritmul este eficient din punct de vedere al memoriei ocupate deoarece nu se foloseste o alta structura de date pentru a stoca datele, rezultatul fiind aflat in mod direct.
+            ```
+        * b
+            ```c++                
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+                int main() {
+                    ofstream fout("bac.txt");
+                    int x, y;
+                    cin >> x >> y;
+                    fout << y << " " << x << " ";
+                    int termen = 3*x - y;
+                    while(y != x) {
+                        fout << termen << " ";
+                        y = x;
+                        x = termen;
+                        termen = 3*x - y;
+                    }
+
+                    fout.close();
+                    return 0;
+                }
+            ```
+
 
 ## Rezolvare test 2 propus pentru BAC 2020
 
