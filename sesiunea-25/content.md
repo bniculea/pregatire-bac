@@ -397,7 +397,7 @@
                 k = 3
             cat timp n!= 0
                 x = 75
-                pentru i<1, 3
+                pentru i<1, 3![Graf initial](imagini/t1-2021-s1-e4.png)
                     x = 7
                 pentru i<- 2, 3
                     x = 0
@@ -613,5 +613,95 @@
 ## Rezolvare test 2 propus pentru BAC 2020
 
 ### Subiect I
+1. 
+    - Rezolvare:
+        * a -> Invalid deoarece obtinem 1 si pentru numere din afara intervalului (e.g 22)
+        * b -> Invalid deoarece obtinem 1 si pentru numere din afara intervalului (e.g 22), din cauza operatorului `||`
+        * c -> `!` transforma expresia in: (x+20 >= 0 || x-20<=0) care este echivalenta cu: `x >= -20 || x <= 20` care difera de ce cautam datorita `||`
+        * d Expresia este echivalenta cu: `x >= -20 && x<= 20` care este exact ce cautam
+    - Raspuns corect: `d`
+2. 
+    - Rezolvare:
+        ```json
+            f(2020, 15)
+                = f(2005, 10)
+                    = f(1995, 5)
+                        = f(1990, 0)
+                            = 1990
+        ```
+    - Raspuns corect: `c`
+3. 
+    - Rezolvare:
+        ```json
+            [   0       1      2      3       4       5        6        7  ]
+            [bentiță, fileu, grip, manșete, mingi, rachetă, racordaj, șapcă]
+            [  40   ,  400 ,  30 ,   30   ,  10 ,    400  ,    70   ,  60  ]
+1d 2c 3b 4b 5ap, manșete),
+            (bentiță, fileu, șapcă),
+            (bentiță, grip, manșete, rachetă)
+
+            Adica:
+            (0, 1, 2, 3),
+            (0, 1, 7),
+            (0, 2, 3, 5)
+
+            Urmatoarele 2 solutii sunt:
+            (0, 5, 7)
+            (1, 2, 4, 7) -> (fileu, grip, mingi, șapcă)
+        ```
+    - Raspuns corect: `b`
+4. 
+    - Rezolvare:
+        - Pentru fiecare dintre variante, o sa desenam arborele corespunzator:
+            * a
+                ```json
+                    (1,2,3,4,5,6)
+                    (0,3,1,6,6,2)
+                    Astfel avem:
+                    - 1 radacina si tata pentru: 3
+                    - 3 tata pentru: 2
+                    - 2 tata pentru 6
+                    - 6 tata pentru:4 si 5 
+                ```
+                - ![Graf initial](imagini/t2-2020-s4-e4-a.png)
+            * b
+                ```json
+                    (1,2,3,4,5,6)
+                    (2,0,1,1,2,1)
+                    Astfel avem:
+                    2 radacina si tata pentru: 1 si 5
+                    1 tata pentru 3, 4, si 6
+                ```
+                -![Graf initial](imagini/t2-2020-s1-e4-b.png)
+            * c
+                ```json
+                    (1,2,3,4,5,6)
+                    (3,5,5,6,0,5)
+                    Astfel avem:
+                    5 radacina si tata pentru 2,3,si 6
+                    3 tata pentru: 1
+                    6 tata pentru 4 
+                ```
+                -![Graf initial](imagini/t2-2020-s1-e4-c.png)
+            * d
+                ```json
+                    (1,2,3,4,5,6)
+                    (5,1,1,1,0,1)
+                    Astfel avem:
+                    5 radacina si tata pentru 1
+                    1 tata pentru: 2,3,4,6
+                ```
+                -![Graf initial](imagini/t2-2020-s1-e4-d.png)
+        - Din poze observam ca arborele de la punctul `b` respecta cerinta
+    - Raspuns corect: `b`
+                
+5. 
+    - Rezolvare:
+        - Mai jos avem graful specific enuntului:
+        -![Graf initial](imagini/t2-2020-s1-e5.png)
+        - Teorie circuit: https://www.pbinfo.ro/articole/509/grafuri-orientate#intlink-12
+        - Daca mai adaugam si muchia [6,2] obtinem 2 circuite:
+            - 3 -> 4 -> 6 -> 2-> 3 si 2 -> 3 -> 4 -> 6 -> 2
+    - Raspuns corect: `a`
 ### Subiect II
 ### Subiect III
