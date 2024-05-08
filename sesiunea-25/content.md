@@ -704,4 +704,99 @@
             - 3 -> 4 -> 6 -> 2-> 3 si 2 -> 3 -> 4 -> 6 -> 2
     - Raspuns corect: `a`
 ### Subiect II
+1. 
+    - a
+        ```json
+            n = 25940464
+            m = 0
+            repeta
+                c = 4
+                n = 2594046
+                daca c = 0 fals -> daca c % 2 = 0 => c = 0
+                m = 0
+            repeta
+                c = 6
+                n = 259404
+                daca c = 0 fals -> daca c%2 = 0 => c = 0
+                m = 0
+            repeta
+                c = 4
+                n = 25940
+                daca c = 0 fals -> daca c%2 = 0 => c = 0
+                m = 0
+            repeta
+                c = 0
+                n = 2594
+                daca c = 0 => c = 2
+                m = 2
+            repeta
+                c = 4
+                n = 259
+                daca c = 0 fals -> daca c%2 = 0 => c = 0
+                m = 20
+            repeta
+                c = 9
+                n = 25
+                daca c = 0 fals -> daca c% 2 = 0 fals
+                m = 209
+            repeta
+                c = 5
+                n = 2
+                daca c = 0 fals => daca c % 2 = 0 fals
+                m = 2095
+            repeta
+                c = 2
+                n = 0
+                daca c = 0 fals -> daca c% 2 = 0  => c = 0
+                m = 20950
+        Afiseaza 20950
+        ```
+    - b
+        - 40404
+        - 40604
+        - 60606
+    - c
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+                int n;
+                cin >> n;
+                int m = 0;
+                do {
+                    int c = n % 10;
+                    n = n / 10;
+                    if (c == 0) {
+                        c = 2;
+                    } else if (c % 2 == 0) {
+                        c = 0;
+                    }
+                    m = m * 10+c;
+                } while(n != 0);
+
+                cout << m;
+                return 0;
+            }
+
+        ```
+    - d
+        ```json
+            citeşte n (număr natural)
+            m<-0
+            ┌ cat timp n!= 0 executa
+            │ c<-n%10; n<-[n/10]
+            │┌dacă c=0 atunci c<-2
+            ││altfel
+            ││┌dacă c%2=0 atunci
+            │││c<-0
+            ││└■
+            │└■
+            │ m<-m*10+c
+            └■
+            scrie m
+        ```
+2. 
+3. 
 ### Subiect III
