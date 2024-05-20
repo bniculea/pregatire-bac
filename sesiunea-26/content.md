@@ -722,13 +722,177 @@
              (cămașă, cravată, pantaloni,șosete, pantofi, sacou),
              (cămașă, cravată, pantaloni, șosete, sacou, pantofi)
 
+             
+
              (0,1,2,4,5,3)
              (0,1,2,5,3,4)
              (0,1,2,5,4,3)
 
-             
+             (0,1,4,2,5,3)
+             (0,1,4,5,2,3)
+             (0,1,5,2,3,4)
+             Adica: (cămașă, cravată, șosete, pantaloni, pantofi, sacou)
         ```
+    - Raspuns corect: `c`
 4. 
+    - Rezolvare:
+        * din vector observam ca nodul 3 este tatal
+    - Raspuns corect: `b`
 5. 
+    - Rezolvare:
+        - Pentru rezolvare o sa o luam cumva pas cu pas
+        - Stim ca numarul maxim de muchii intr-un graf cu  n noduri este `(n*(n+1))/2` si incercam sa vedem cam care este numarul de noduri din cele 2020 pe care le putem lega cu cele 100 de muchii (fiind neorientat, 200  de muchii numar in ambele directii, adica si [1-3] si [3-1])
+        - Incercam cu 13 noduri si avem:
+            - (13*12)/2 = 78 de muchii ceea ce este prea putin pe langa cele 100 ale noastre
+        - Incercam cu 14 noduri si avem:
+            - (14*13)/2 = 91 de muchii ceea ce este prea putin pe langa cele 100 ale noastre
+        - Incercam cu 15 noduri si avem
+            - (15*14)/2 = 105 de muchii, astfel putem avea 15 noduri pe care sa le legam cu cele 100 de muchii.
+        - Acum stiim ca folosim 15 noduri din 2020 sa formam o componenta conexa + cele 2005 componente conexe ramase (deoarece o sa avem o componenta formata dintr-un singur nod) avem 2006 componente conexe
+    - Raspuns corect: `a`
 ### Subiect II
+
+1. 
+    * a
+        ```json
+            n = 100
+            x = 1, y = 100, d = 2
+            cat timp x < y
+                daca n%d == 0
+                    x = 2
+                    y = n/2 = 50
+                d = 3
+            cat timp x < y
+                daca n%d == 0 false
+                d = 4
+            cat timp x < y
+                daca n%d == 0
+                    x = 4
+                    y = 25
+                d = 5
+            cat timp x < y
+                daca n%d == 0
+                    x = 5
+                    y = 20
+                d = 6
+            cat timp x < y
+                daca n%d == 0 false
+                d = 7
+            cat timp x < y
+                daca n%d == 0 false
+                d = 8
+            cat timp x < y
+                daca n%d == 0 false
+                d = 9
+            cat timp x < y
+                daca n%d == 0 false
+                d = 10
+            cat timp x < y
+                daca n%d == 0 true
+                    x = 10
+                    y = 10
+                d = 11
+            daca x = y
+                Scrie `D`, 10
+        ```
+        - Programul afiseaza "D10"
+    * b
+        `2,3,5,6,7,8`
+        - Algoritmul afiseaza N pentru numerele care nu sunt patrate perfecte, excluzand 1.
+    * c
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main()
+            {
+                int n,x,y,d;
+                cin >> n;
+                x = 1;
+                y = n;
+                d = 2;
+                while (x < y) {
+                    if (n % d == 0) {
+                        x = d;
+                        y = n / d;
+                    }
+                    d = d + 1;
+                }
+                if (x == y) {
+                    cout << 'D' << x;
+                } else {
+                    cout << 'N';
+                }
+            }
+        ```
+    * d
+        ```json
+            citește n
+            (număr natural nenul)
+            ┌dacă [√n] = √n atunci
+            |    scrie 'D', √n
+            |altfel scrie 'N'
+            └■
+        ```
+2. 
+    ```c++
+        struct complex {
+            float pre;
+            float pim;
+        };
+
+        struct ecuatie {
+        int numar;
+        complex solutie[102];
+        }s;
+    ```
+3. 
+    ```c++
+        #include <iostream>
+
+        using namespace std;
+
+
+        int main()
+        {
+            char a[6][6] = {
+                    {'@','@','@','@','@','@'},
+                    {'@','@','@','@','@','@'},
+                    {'@','@','@','@','@','@'},
+                    {'@','@','@','@','@','@'},
+                    {'@','@','@','@','@','@'},
+                    {'@','@','@','@','@','@'},
+            };
+
+            for(int i = 0; i < 6; i++) {
+                for (int j = 0; j < 6; j++) {
+                    if (j >= i && j<= (6-i-1)) {
+                        if (j < 3) {
+                            a[i][j] = '(';
+                        } else {
+                            a[i][j] = ')';
+                        }
+                    } else if (j > (6-i-1) && j > i) {
+                        a[i][j]= '*';
+                    } else if (j >= (6-i-1) && j <= i) { // sub ambele diagonale
+                        if (j < 3) {
+                            a[i][j] = '(';
+                        } else {
+                            a[i][j] = ')';
+                        }
+                    } else {
+                        a[i][j] = '*';
+                    }
+                }
+            }
+
+            for(int i = 0; i < 6; i++) {
+                for (int j = 0; j < 6; j++) {
+                    cout << a[i][j] << " ";
+                }
+                cout << endl;
+            }
+        }
+    ```
 ### Subiect III
