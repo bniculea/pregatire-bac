@@ -674,5 +674,61 @@
 ## Rezolvare test 5 propus pentru BAC 2020
 
 ### Subiect I
+
+1. 
+    - Rezolvare:
+        * a -> Valid confirm cerintei
+        * b -> Invalid deoarece putem obtine 1 si pentru numere de mai mult de o cifra (e.g 20)
+        * c -> invalid din acelasi motiv ca si la `b`
+        * d -> invalid, obtinem 1 pentru orice numar care se termina in 0
+    - Raspuns corect: `a`
+
+2. 
+    - Rezolvare:
+        ```json
+            f(3) =
+                for(i = 3; i>= 1; i--)
+                    calculam f(2) si la intoarcere afisam 3
+                        f(2) = 
+                            for(i = 2; i>=1; i--)
+                                calculam f(1) si la intoarcere afisam 2
+                                    f(1) = 
+                                        for(i = 1; i>=1; i--)
+                                            calculam f(0) si la intoarcere afisam 1.
+                                            f(0) nu face nimic deci ne intoarcem
+                                        afisam 1
+                                afisam 2
+                            for(i = 1; i>= 1; i--)
+                                calculam f(1) si la intooarcere afisam 1
+                                    f(1) =
+                                        for(i = 1; i>= 1; i--)
+                                            calculam f(0) si la intoarcere afisam 1
+                                            f(0) nu facem nimic deci ne intoarcem
+                                        afisam 1
+                                afisam 1
+                        afisam 3
+                        ...
+                                                 
+        ```
+    - Programul afiseaza: 12113... si observam ca raspunsul corect este `b`
+3. 
+    - Rezolvare:
+        ```json
+             {  0   ,    1   ,     2    ,    3   ,   4  ,    5  }
+             {cămașă, cravată, pantaloni, pantofi, sacou, șosete}
+
+             Primele 3 solutii:
+             (cămașă, cravată, pantaloni, sacou, șosete, pantofi),
+             (cămașă, cravată, pantaloni,șosete, pantofi, sacou),
+             (cămașă, cravată, pantaloni, șosete, sacou, pantofi)
+
+             (0,1,2,4,5,3)
+             (0,1,2,5,3,4)
+             (0,1,2,5,4,3)
+
+             
+        ```
+4. 
+5. 
 ### Subiect II
 ### Subiect III
