@@ -896,3 +896,102 @@
         }
     ```
 ### Subiect III
+
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int baza(int n);
+
+            int main()
+            {
+                cout << baza(50731);
+            }
+
+            int baza(int n) {
+                int rezultat = 0;
+                int cifraMaxima = 0;
+                while(n) {
+                    int ultimaCifra = n % 10;
+                    if (ultimaCifra > cifraMaxima) {
+                        cifraMaxima = ultimaCifra;
+                    }
+                    n = n / 10;
+                }
+                rezultat = cifraMaxima + 1;
+                return rezultat;
+            }
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <cstring>
+
+            using namespace std;
+
+            int main()
+            {
+                char text[101];
+                cin.getline(text, 101);
+                int contor = 0;
+                char*cuvant = strtok(text, " ");
+                while(cuvant != NULL) {
+                    if (cuvant[0] >= '1' && cuvant[0] <= '9') {
+                        int esteIntreg = 1;
+                        for(int i = 1; i <strlen(cuvant); i++) {
+                            if (cuvant[i] == ',') {
+                                esteIntreg = 0;
+                                break;
+                            }
+                        }
+                        if (esteIntreg == 1) {
+                            contor++;
+                        }
+                    }
+                    cuvant = strtok(NULL, " ");
+                }
+                cout << contor;
+            }
+        ```
+
+3. 
+    - Rezolvare:
+        * a
+            ```json
+                Vom implementa un algoritm care va parcurge fisierul si va citii din fisier, numar cu numar. Fiecare numar citit va fi adaugat la o variabila ce va salva suma curenta. In aceeasi iteratie, vom face 2 verificari: 
+                    1. daca suma curenta este mai mare decat suma maxima, atunci actualizam valoarea sumei maxime
+                    2. daca suma curenta devine negativa, o resetam la 0.
+                Si la final, vom afisa valoarea variabilei care stocheaza suma maxima. Algoritmul este eficient din punct de vedere al timpului de executie deoarece fisierul este parcurs o singura data, si in acelasi timp, algoritmul nostru este eficient din punct de vedere al memoriei deoarece nu se folosesc structuri de date pentru a stoca numerele din fisier, practic din maximul de 10^6 numere cate pot fi in fisier, noi in memorie o sa avem doar 1 dintr ele.
+            ```
+        * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+                int main()
+                {
+                    ifstream fin("bac.txt");
+                    int numar;
+                    int sumaMaxima = -10000, sumaCurenta = 0;
+                    while(fin >> numar) {
+                        sumaCurenta += numar;
+                        if (sumaCurenta >= sumaMaxima) {
+                            sumaMaxima = sumaCurenta;
+                        }
+
+                        if (sumaCurenta < 0) {
+                            sumaCurenta = 0;
+                        }
+                    }
+
+                    cout << sumaMaxima;
+
+                    fin.close();
+                }
+            ```
