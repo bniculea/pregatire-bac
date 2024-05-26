@@ -555,6 +555,123 @@
     - Raspuns corecT: `c`
 
 ### Subiectul II
+1. 
+    * a
+        ```json
+            n = 253387
+            x = 1, m = 0, p = 1
+            cat timp x < 10
+                cn = 253387
+                cat timp cn != 0
+                    c = 7
+                    cn = 25338
+                    daca c == x fals
+                cat timp cn!= 0
+                    c = 8
+                    cn= 2533
+                    daca c == x fals
+                cat timp cn!= 0
+                    c = 3
+                    cn = 253
+                    daca c == x fals
+                cat timp cn != 0
+                    c = 3
+                    cn = 25
+                    daca c == x fals
+                cat timp cn != 0
+                    c = 5
+                    cn = 2
+                    daca c == x false
+                cat timp cn != 0
+                    c = 2
+                    cn =0
+                    daca c == x false
+                x = x+2 = 3
+            cat timp x < 10
+                cn = 253387
+                cat timp cn != 0
+                    c = 7
+                    cn = 25338
+                    daca c == x false
+                cat timp cn != 0
+                    c = 8
+                    cn = 2533
+                    daca c == x false
+                cart timp cn != 0
+                    c = 3
+                    cn = 253
+                    daca c == x
+                        m = 3+0;
+                        p = 10
+                cat timp cn != 0
+                    c = 3
+                    cn = 25
+                    daca c == x
+                        m = 30 + 3 = 33
+                        p = 100
+                cat timp cn != 0
+                    c = 5
+                    cn = 2
+                    daca c==x false
+                cat timp cn != 0
+                    c = 2
+                    cn = 0
+                    daca c == x false
+                x = 5
+            .... observam ca noi creem un numar format din cifrele 1, 3, 5, 7, 9 daca le gasim in numarul de intrra
+        ```
+        - Programul returneaza 7533
+    * b
+        - Cel mai mic: 20
+        - Cel mai mare: 88
+    * c
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+            int n;
+            cin >> n;
+            int x = 1, m = 0, p = 1;
+            while (x < 10) {
+                int cn = n;
+                while (cn != 0) {
+                    int c = cn % 10;
+                    cn = cn / 10;
+                    if (c == x) {
+                        m = c * p + m;
+                        p = p * 10;
+                    }
+                }
+                x = x+2;
+            }
+            cout << m;
+
+            return 0;
+            }
+        ```
+    * d
+        ```json
+            citește n
+            (număr natural nenul)
+            x<-1; m<-0; p<-1
+            ┌execută
+            │ cn<-n
+            |┌daca x < 10 atunci
+            ||┌cât timp cn≠0 execută
+            ││| c<-cn%10; cn<-[cn/10]
+            ││| ┌dacă c=x atunci
+            ││| │ m<-c*p+m; p<-p*10
+            ││| └■
+            │|└■
+            |└■
+            │ x<-x+2
+            └■cât timp x<10
+            scrie m
+        ```
+2. 
+3. 
 ### Subiectul III
 
 ## Testul 8
