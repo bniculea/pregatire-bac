@@ -366,7 +366,123 @@
 
 
 ### Subiectul III
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <fstream>
 
+            using namespace std;
+
+            void prodprim(int n, int &p);
+
+            int main() {
+                int n = 2000;
+                int p = 0;
+                prodprim(n, p);
+                cout << p;
+            }
+
+            void prodprim(int n, int &p) {
+                int rezultat = 1;
+                for(int i = 2; i <= n; i++) {
+                    if (n%i == 0) {
+                        int esteDivizorPrim = 1;
+                        for(int j = 2; j*j <= i; j++) {
+                            if (i%j == 0) {
+                                esteDivizorPrim =0;
+                                break;
+                            }
+                        }
+                        if (esteDivizorPrim) {
+                            rezultat = rezultat * i;
+                        }
+                    }
+                }
+                p = rezultat;
+            }
+        ```
+
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <cstring>
+
+
+            using namespace std;
+
+
+            int main() {
+                char s[101];
+                cin.getline(s, 101);
+                char*cuvant = strtok(s, " ");
+                int exista = 0;
+                while(cuvant != NULL) {
+                    int contorVocale = 0;
+                    int contorConsoane = 0;
+                    for(int i = 0; i<strlen(cuvant);i++) {
+                        if(strchr("aeiou", cuvant[i]) != NULL) {
+                            contorVocale++;
+                        } else {
+                            contorConsoane++;
+                        }
+                    }
+                    if(contorVocale < contorConsoane) {
+                        exista = 1;
+                        cout << cuvant << endl;
+                    }
+                    cuvant = strtok(NULL, " ");
+                }
+                if(!exista) {
+                    cout << "nu exista";
+                }
+            }
+        ```
+3. 
+    * a
+        ```json
+            O sa implementam un algoritm care va incepe mai intai prin a gasii primele 2 cifre descrescatoare care indeplinesc prima cerinta, anume ca produsul lui sa fie egal cu p1. Cand le-am gasit, compunem partea din mijloc, la fel, in mod descrescator, parte care va fi simpla din moment ce toate cifrele sunt egale. Imediat ce avem si partea din mijloc, compunem si ultima partea a numarului, unde trebuie sa respectam conditia ca produsul cifrelor sa fie egal cu p2. Algoritmul este eficient din punct de vedere al timpului de executie deoarece toate partile numarului cerut sunt generate in acelasi timp, si totodata eficient din punct de vedere al memoriei deoarece nu folosim alte structuri de date pentru a stoca numarul final sau partile care il constituie.
+        ```
+    * b
+        ```c++
+            #include <iostream>
+            #include <fstream>
+
+
+            using namespace std;
+
+
+            int main() {
+            ofstream fout("bac.out");
+            int p1,p2;
+            int cifra1,cifra2,cifra3;
+            int cifra6,cifra7;
+            int primaParte,aDouaParte,ultimaParte;
+            int rezultat;
+            cin >> p1 >> p2;
+            for(cifra1 = 9; cifra1 >= 1; cifra1--) {
+                for(cifra2 = 9; cifra2 >= 1; cifra2--) {
+                    if(cifra1 * cifra2 == p1) {
+                        primaParte = cifra1 * 10 + cifra2;
+                        for(cifra3 = 9; cifra3 >= 0; cifra3--) {
+                            aDouaParte = cifra3 * 100 + cifra3 * 10 + cifra3;
+                            for(cifra6 = 9; cifra6 >= 1; cifra6--) {
+                                for(cifra7 = 9; cifra7 >= 1; cifra7--) {
+                                    if(cifra6 * cifra7 == p2) {
+                                        ultimaParte = cifra6 * 10 + cifra7;
+                                        rezultat = primaParte * 100000 + aDouaParte * 100 + ultimaParte;
+                                        fout << rezultat << " ";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            fout.close();
+            }
+        ```
 ## Testul 7
 
 ### Subiectul I
