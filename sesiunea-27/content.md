@@ -935,5 +935,163 @@
             scrie y
         ```
 2. 
+    - Rezolvare:
+        - Din listele de adiacenta, avem graful  de mai jos: 
+         ![Graf initial](imagini/t8-2020-s2-e2.png)
+        - Lant elementar: Lanțul care conține numai vârfuri distincte, două câte două, este lanț elementar.
+        - Ciclu: Se numește ciclu un lanț simplu în care primul vârf este identic cu ultimul. Dacă toate vârfurile sunt distincte, mai puțin primul și ultimul, se numește ciclu elementar.
+        - Astfel avem:
+            - Lant elementar: [1,2,4,5,3,6]
+            - Ciclu neelementar [1,2,4,5,6,2,1]
 3. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <cstring>
+
+            using namespace std;
+
+            int main() {
+                char s[21];
+                strcpy(s, "stilou" + 4); // copiem in s: "ou"
+                cout << s << endl; // afisam "ou" si ne mutam pe linia urmatoare
+                strncpy(s, "stilou", 4); // copiem in s primele 4 caractere din stilou: "stil"
+                s[4] = '\0'; // incheiem s dupa al 5lea caracter
+
+                // forul transforma caracterele de pe pozitii pare bazat pe aceea formula
+                // anume:
+                /*
+                * i = 0 => inlocuim 's' cu 'r'
+                * i = 1 => inlocuim 't' cu 'r' + 3 * (2 * 1/3-1); = 'r' - 3 = 'o'
+                * i = 2 => inlocuim 'i' cu 's'
+                * i = 3 => inlocuim 'l' cu 'r' + 3 * (2 * 3 / 3 -1) = 'r' + 3 = 'u'
+                */
+                for (int i = 0; i < 4; i++)
+                    if (i % 2 == 0) s[i] = s[0] + i - 1;
+                    else s[i] = s[0] + 3 * (2 * i / 3 - 1);
+                cout << s;
+                //obtine
+                //ou
+                // rosue
+                return 0;
+            }
+        ```
 ### Subiectul III
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+            int suma(int n);
+
+            int main() {
+                cout << suma(12);
+                return 0;
+            }
+
+            int suma(int n) {
+                int sum = 0;
+                for(int i = 2; i <=n; i++) {
+                    if (n% i == 0) {
+                        int estePrim = 1;
+                        for(int j =2; j*j <= i; j++) {
+                            if (i % j == 0) {
+                                estePrim = 0;
+                                break;
+                            }
+                        }
+                        if (estePrim) {
+                            sum += i;
+                        }
+                    }
+                }
+                return sum;
+            }
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+                int n, k;
+                cin >> n >> k;
+                int matrice[n][n];
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cin >> matrice[i][j];
+                    }
+                }
+
+                // extragem aici numerele care o sa fie rotite
+                int sirDeMutat[k-1];
+                int index = 0;
+                for(int i = 0; i < k;i++) {
+                    sirDeMutat[index++] = matrice[k-1][i];
+                }
+
+                //fiecare element va fi la pozitia curenta +1 % k insa facem k-1 pentru ca..e 0 based
+                for(int i = 0; i < k-1;i++) {
+                    matrice[k-1][i] = sirDeMutat[(i+1)%(k-1)];
+                }
+
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cout << matrice[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+                return 0;
+            }
+
+        ```
+3. 
+    - Rezolvare
+        * a
+            ```json
+                O sa implementam un algoritm care in timp ce va parcurge numar cu numar din fisier, o sa salvam intr-o structura de frecventa, ultima pozitie la care gasim cifra unitatilor dar incrementam si numarul de aparitii ale unitatii.
+                Dupa care, vom parcurge vectorul de structuri si vom cauta care este unitatea cu numarul maxim de aparitii, dupa care, mai parcurgem o data vectorul si vom afisa pozitiile unitatilor care au aparitii maxime. Programul este eficient din punct de vedere al timpului de executie deoarece fisierul este citit o singura data, si in acelasi timp, este eficient din punct de vedere al memoriei deoarece din totalul de 10^6 numere cate pot fi, noi o sa avem doar un vector in care salvam 10 elemente de tipul struct, fiecare continand doar o pozitie si un numar de aparitii.
+            ```
+        * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+                using namespace std;
+
+                struct frecventa {
+                    int aparitii=0;
+                    int pozitie;
+                }frecventaUnitati[10];
+
+                int main() {
+                    ifstream fin("bac.in");
+                    int numar;
+                    int index = 0;
+                    while(fin >> numar) {
+                        int cifraUnitati = numar%10;
+                        frecventaUnitati[cifraUnitati].aparitii++;
+                        frecventaUnitati[cifraUnitati].pozitie = index;
+                        index++;
+                    }
+
+                    int maxim = 0;
+                    for(int i =0; i < 10; i++) {
+                        if(frecventaUnitati[i].aparitii > maxim) {
+                            maxim = frecventaUnitati[i].aparitii;
+                        }
+                    }
+
+                    for(int i =0; i < 10; i++) {
+                        if(frecventaUnitati[i].aparitii == maxim) {
+                            cout << frecventaUnitati[i].pozitie+1 << " ";
+                        }
+                    }
+
+                    fin.close();
+                    return 0;
+                }
+
+            ```
