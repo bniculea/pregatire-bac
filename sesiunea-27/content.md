@@ -486,6 +486,74 @@
 ## Testul 7
 
 ### Subiectul I
+1. 
+    - Rezolvare:
+        - Expresia este echivalenta cu: `(x >= 2001) && (x<= 2002) || (x>=2019) && (x<=2020)`
+        - De unde ne dam seama ca avem valoarea 1 pentru numerele din intervalele: `[2001,2002] reunit [2019,2020]`
+        * a -> invalid 
+        * b -> invalid deoarece {2019, 2020} acopera doar strict valorile 2019 si 2020 nu si valorile dintre ele
+        * c -> invalid, acelasi motiv ca si la b
+        * d -> valid
+    - Raspuns corect: `d`
+2. 
+    - Rezolvare:
+        ```json
+            f(12345) =
+            = afisam `+` calculam f(123) si la intoarcere trebuie sa afisam x(12345) si '+'
+                = afisam `+` calculam f(1) si la intoarcere trebuie sa afisam x(123) si `+`
+                    = afisam `+` calcuam f(0) si la intoarcere trebuie sa afisam 1 si `+`
+                        = afisam `++`
+                    = afisam `1+`
+                = afisam `123+`
+            = afisam `12345+`
+        ```
+        - afiseaza: `+++++1+123+12345+`
+    - Raspuns corect: `a`
+3. 
+    - Rezolvare:
+        ```json
+            {   0   ,    1     ,    2    ,   3     ,    4  ,   5}
+            {albizia, jacaranda, laburnum, magnolie, mimoza, sakura}
+
+            Primele 5 solutii:
+            (albizia, jacaranda, laburnum, magnolie),
+            (albizia, jacaranda, laburnum, mimoza),
+            (albizia, jacaranda,laburnum, sakura), 
+            (albizia, jacaranda, magnolie, mimoza),
+            (albizia, jacaranda,magnolie, sakura)
+            Adica:
+
+            (0,1,2,3),
+            (0,1,2,4),
+            (0,1,2,5),
+            (0,1,3,4)
+            (0,1,3,5)
+
+            Acum sa analizam variantele:
+        ```
+        * a -> (magnolie, mimoza,laburnum, sakura) adica: (3,4,2,5) invalid deoarece a mai fost o varianta ce cuprindea membrii
+        * b -> (jacaranda, magnolie, mimoza, sakura) adica (1,3,4,5) valid
+        * c -> (jacaranda, laburnum, magnolie, mimoza, sakura) adica (1,2,3,4,5) invalid, deoarece trebuie 4 nu 5
+        * d -> (albizia, jacaranda, magnolie, laburnum) adica (0,1,3,2) -> invalid deoarece a mai fost o varianta ce continea membrii
+    - Raspuns corect: `b`
+4. 
+    - Rezolvare:
+        - Din matricea de adiacenta avem graful orientat de mai jos:
+        ![Graf initial](imagini/t7-2020-s1-e4.png)
+        - Avem:
+            * Varful 1 -> grad interior 2
+            * Varful 2 -> grad interior 1
+            * Varful 3 -> grad interior 2
+            * Varful 4 -> grad interior 2
+            * Varful 5 -> grad interior 1
+        - Deci avem in total 3 varfuri cu grad interior 2
+    - Raspuns corect: `c`
+5. 
+    - Rezolvare:
+        - Stim ca un arbore ar n-1 muchii
+        - Stiind ca avem 5 componente conexe care sunt arbori si 20 de noduri, inseamna ca avem 15 muchii, la fiecare arbore "pierdem" o muchie
+    - Raspuns corecT: `c`
+
 ### Subiectul II
 ### Subiectul III
 
