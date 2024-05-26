@@ -801,5 +801,139 @@
 ## Testul 8
 
 ### Subiectul I
+1. 
+    - Rezolvare:
+        * a -> invalid nu exista astfel de numar.
+        * b -> expresia devine:
+            - `x>= -2020 && x<= 2019 || x>=2019 && x<=2020`
+            - raspuns valid
+        * c -> invalid datorita operatorului `||`
+        * d -> invalid datorita operatorului `||`
+    - Raspuns corect: `b`
+2. 
+    - Rezolvare:
+        ```json
+            Primele 5 numere sunt: 
+            5,
+            55,
+            555,
+            557, 
+            558, 
+            57
+            575
+            577
+            58
+            7 -> al =10-lea numar
+        ```
+    - Raspuns corect: `a`
+3. 
+    - Rezolvare:
+        * a -> invalid din punct de vedere sintactic
+        * b -> invalid din punct de vedere sintactic
+        * c -> valid
+        * d ->invalid din punct de vedere sintactic
+    - Raspuns corect: `c`
+4. 
+    - Rezolvare:
+        - Doar f2 calculeaza cmmdc, deoarece la f1 vedem o diferenta intre cum face apelul recursiv si cum ar trebui sa fie (vezi algoritmul lui euclid: https://ro.wikipedia.org/wiki/Algoritmul_lui_Euclid )
+    - Raspuns corect: `d`
+5. 
+    - Rezolvare:
+        - Mai jos avem graful conform matricei de adiacenta:
+        ![Graf initial](imagini/t8-2020-s1-e5.png)
+        - Dupa cum vedem daca scoatem varful 3, caci el are cele mai multe intrari, am obtine un graf similar cu cel de mai jos:
+        ![Graf initial](imagini/t8-2020-s1-e5-a.png) insa tot nu e de ajuns caci inca nu avem niciun nod izolat. Insa daca acum mai stergem si nodul 2 si 4, am ramane doar cu nodurile 1 si 5 si practic am avea maximul de varfuri izolate.
+    - Raspuns corect: `b`
+
 ### Subiectul II
+1. 
+    * a
+        ```json
+            x = 201920
+            y = 20
+            repeta
+                c = 0
+                x = 20192
+                daca c != 0 fals
+            repeta
+                c = 2
+                x = 2019
+                daca c!= 0
+                    daca y%10 < c
+                        y = 202
+            repeta
+                c = 9
+                x = 201
+                daca c!= 0
+                    daca y%10 < c
+                        y = 2029
+            repeta
+                c = 1
+                x = 20
+                daca c!= 0
+                    daca y%10 < c fals
+                        y = 20290-1 = 20289
+            repeta
+                c = 0
+                x = 2
+                daca c!= 0 fals
+            repeta
+                c = 2
+                x = 2
+                daca c!= 0
+                    daca y%10 < c fals
+                        y = 202890 - 2 = 202888
+            
+        scrie 202888
+        ```
+    * b
+        ```json
+            101 si 110
+        ```
+    * c
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main()
+            {
+            int x, y;
+            cin >> x >> y;
+            do {
+                int c = x % 10;
+                x = x / 10;
+                if (c != 0) {
+                    if (y%10  < c) {
+                        y = y* 10 + c;
+                    } else {
+                        y = y*10-c;
+                    }
+                }
+            } while (x != 0);
+
+            cout << y;
+
+            return 0;
+            }
+        ```
+    * d
+        ```json
+            citește x,y
+            (numere naturale)
+            ┌cat timp x> 0 executa
+            │ c<-x%10
+            │ x<-[x/10]
+            │┌dacă c≠0 atunci
+            ││┌dacă y%10<c atunci
+            │││ y<-y*10+c
+            │││altfel
+            │││ y<-y*10-c
+            ││└■
+            │└■
+            └■
+            scrie y
+        ```
+2. 
+3. 
 ### Subiectul III
