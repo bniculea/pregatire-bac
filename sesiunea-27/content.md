@@ -671,8 +671,132 @@
             scrie m
         ```
 2. 
+    ```c++
+        struct info_carte {
+            char titlu[21];
+            char autor[21];
+        };
+
+        struct biblio {
+            int numar;
+            info_carte carte[100];
+        }c;
+    ```
 3. 
+    - Rezolvare:
+        ```c++
+            strcpy(s,"stilou"); // s = stilou
+            cout<<s+4<<endl; // afiseaza "ou" si endline
+            s[0]=s[0]-1; // inlocuim 's' cu 'r'
+            s[1]=s[0]-3; // inlocuim 't' cu 'o'
+            s[2]=s[0]+1; // inlocuim 'i' cu s
+            s[3]=s[0]+3; // inlocuim 'l' cu 'u'
+            s[4]='\0';
+            cout<<s; //rosu
+        ```
 ### Subiectul III
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+            int putere(int n, int p);
+
+            int main() {
+                cout << putere(80,2);
+                return 0;
+            }
+
+            int putere(int n, int p) {
+                int divizor = 2;
+                int rezultat;
+                while (n != 1) {
+                    rezultat = 0;
+                    while (n%divizor == 0) {
+                        rezultat++;
+                        n = n/divizor;
+                    }
+                    if (rezultat != 0 && divizor == p) {
+                        return rezultat;
+                    } else {
+                        divizor++;
+                    }
+                }
+                return -1;
+            }
+
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+                int m, n;
+                cin >> m >> n;
+                int matrice[m][n];
+                for (int i = 0; i < m; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cin >> matrice[i][j];
+                    }
+                }
+                int existaPolarizate = 0;
+                for (int i = 0; i < m; i++) {
+                    for(int j = 0; j < m; j++) {
+                        if (matrice[i][0] == matrice[j][n-1]) {
+                            existaPolarizate = 1;
+                            cout << matrice[i][0] << " ";
+                        }
+                    }
+                }
+
+                if (!existaPolarizate) {
+                    cout << "nepolarizate";
+                }
+                return 0;
+            }
+
+        ```
+
+3. 
+    - Rezolvare:
+        * a
+            ```json
+                Vom implementa un algoritm care va parcurge fisierul si in timp ce va parcurge, va aduna numarul curent la o variabila unde vom tine sumaCurenta. De fiecare data cand adaugam in sumaCurenta, comparam cu variabila unde tinem sumaMinima si daca in suma curenta avem o valoare mai mica, actualizam sumaMinima. Daca sumaCurenta este mai mare decat 0, o resetam deoarece o suma pozitiva va creste suma minima. Initializam sumaMinima cu valoarea maxima posibila pe care o poate lua un numar intreg. Algoritmul este eficient din punct de vedere al memoriei deoarece nu folosim structuri de date pentru a stoca cele 10^6 numere cate pot fi maximum, si in acelasi timp este eficient din punct de vedere al timpului de executie deoarece rezultatul este compus in timp ce parcurgem fisierul.
+            ```
+        * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+                #include <climits>
+
+                using namespace std;
+
+                int main()
+                {
+                    ifstream fin("bac.txt");
+                    int numar;
+                    int sumaMinima = INT_MAX, sumaCurenta = 0;
+                    while(fin >> numar) {
+                        sumaCurenta += numar;
+                        if (sumaCurenta < sumaMinima) {
+                            sumaMinima = sumaCurenta;
+                        }
+
+                        if (sumaCurenta > 0) {
+                            sumaCurenta = 0;
+                        }
+                    }
+
+                    cout << sumaMinima;
+
+
+                    fin.close();
+                }
+            ```
 
 ## Testul 8
 
