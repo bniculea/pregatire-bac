@@ -741,11 +741,45 @@
 5. 
     - Rezolvare:
         - Pentru rezolvare o sa o luam cumva pas cu pas
-        - Stim ca numarul maxim de muchii intr-un graf cu  n noduri este `(n*(n+1))/2` si incercam sa vedem cam care este numarul de noduri din cele 2020 pe care le putem lega cu cele 100 de muchii (fiind neorientat, 200  de muchii numar in ambele directii, adica si [1-3] si [3-1])
-        - Incercam cu 13 noduri si avem:
-            - (13*12)/2 = 78 de muchii ceea ce este prea putin pe langa cele 100 ale noastre
-        - Incercam cu 14 noduri si avem:
-            - (14*13)/2 = 91 de muchii ceea ce este prea putin pe langa cele 100 ale noastre
+        - Stim ca numarul maxim de m#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+
+int main(){
+    ifstream  fin("numere.in");
+    int numar;
+    int candidat1 =-1, candidat2=-1;
+    int cifraMaxima = -1;
+    while(fin>>numar) {
+        int copieNumar = numar;
+        int cifraMaximaNumar = copieNumar % 10;
+        copieNumar = copieNumar/10;
+        while(copieNumar) {
+            int ultimaCifra = copieNumar%10;
+            if (ultimaCifra > cifraMaximaNumar) {
+                cifraMaximaNumar = ultimaCifra;
+            }
+            copieNumar = copieNumar / 10;
+        }
+        if (cifraMaximaNumar > cifraMaxima) {
+            cifraMaxima = cifraMaximaNumar;
+            candidat1 = numar;
+            candidat2 = -1;
+        } else if (cifraMaximaNumar == cifraMaxima) {
+            candidat2 = numar;
+        }
+    }
+
+    if (candidat1 == -1 || candidat2 == -1) {
+        cout << "nu exista";
+    }  else {
+        cout << candidat1 << " " << candidat2;
+    }
+    fin.close();
+}
+e
         - Incercam cu 15 noduri si avem
             - (15*14)/2 = 105 de muchii, astfel putem avea 15 noduri pe care sa le legam cu cele 100 de muchii.
         - Acum stiim ca folosim 15 noduri din 2020 sa formam o componenta conexa + cele 2005 componente conexe ramase (deoarece o sa avem o componenta formata dintr-un singur nod) avem 2006 componente conexe
@@ -994,4 +1028,62 @@
 
                     fin.close();
                 }
+            ```
+
+## Rezolvare subiecte sesiune speciala 2024
+
+### Subiectul I
+### Subiectul II
+### Subiectul III
+1. 
+2. 
+3. 
+    - Rezolvare:
+        * a
+            ```json
+                O sa implementam un algoritm care va citi numar cu numar, din fisier si va calcula care este cifra maxima a numarului curent, pe care o va compara cu un maxim global. Cand gasim o cifra maxima intr-un numar, care este mai mare decat maximul global, initializam un candidat si setam un al doilea candidat pe -1, ca sa ne asiguram ca daca ar fi fost deja un candidat 2, cu o valoarea mai mica, sa o actualizam. Daca cifra maxima din numarul curent este egala cu cifra maxima globala, atunci setam doar valoarea in al doilea candidat.
+                La final, daca vreunul din cei doi candidati au valoarea -1, o sa afisam mesajul "nu exista", altfel o sa afisam cei doi candidati.
+                Algoritmul este eficien din punct de vedere al timpului de executie deoarece fisierul este citit o singura data, si in acelasi timp, este eficient din punct de vedere al memoriei utilizate deoarece rezultatul este calculat din mers, in timp ce citim numerele, nefiind folosite alte structuri de date pentru a stoca numerele din fisier Practic, din cele 10^6 numere cate pot fi maxim in fisier, in memorie o sa avem doar 1, in orice moment.
+            ```
+        * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+
+                int main(){
+                    ifstream  fin("numere.in");
+                    int numar;
+                    int candidat1 =-1, candidat2=-1;
+                    int cifraMaxima = -1;
+                    while(fin>>numar) {
+                        int copieNumar = numar;
+                        int cifraMaximaNumar = copieNumar % 10;
+                        copieNumar = copieNumar/10;
+                        while(copieNumar) {
+                            int ultimaCifra = copieNumar%10;
+                            if (ultimaCifra > cifraMaximaNumar) {
+                                cifraMaximaNumar = ultimaCifra;
+                            }
+                            copieNumar = copieNumar / 10;
+                        }
+                        if (cifraMaximaNumar > cifraMaxima) {
+                            cifraMaxima = cifraMaximaNumar;
+                            candidat1 = numar;
+                            candidat2 = -1;
+                        } else if (cifraMaximaNumar == cifraMaxima) {
+                            candidat2 = numar;
+                        }
+                    }
+
+                    if (candidat1 == -1 || candidat2 == -1) {
+                        cout << "nu exista";
+                    }  else {
+                        cout << candidat1 << " " << candidat2;
+                    }
+                    fin.close();
+                }
+
             ```
