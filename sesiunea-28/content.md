@@ -524,14 +524,78 @@
             }
         ```
 
-1. 
-2. 
-3. 
-
 ### Subiectul III
 
 1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            using namespace std;
+
+            void produs(int n, long int&p);
+            int main() {
+                int n = 122325;
+                long int p;
+                produs(n, p);
+                cout << p;
+
+                return 0;
+            }
+
+            void produs(int n, long int&p) {
+                long int rezultat = 1;
+                int frecventa[10] = {0};
+                while(n) {
+                    int ultimaCifra = n % 10;
+                    if (ultimaCifra % 2 == 0 && frecventa[ultimaCifra] == 0) {
+                        rezultat = rezultat * ultimaCifra;
+                        frecventa[ultimaCifra]++;
+                    }
+                    n = n/10;
+                }
+                if (rezultat == 1) {
+                    p =-1;
+                } else {
+                    p = rezultat;
+                }
+            }
+        ```
 2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <cstring>
+            using namespace std;
+
+            int main() {
+
+                char text[103];
+                char rezultat [200]="";
+                cin.getline(text, 103);
+
+                char* cuvantAnterior = NULL;
+                char *cuvantCurent = strtok(text, " ");
+
+                while(cuvantCurent != NULL) {
+                    if (cuvantAnterior != NULL) {
+                        if (cuvantCurent[strlen(cuvantCurent)-1]== cuvantAnterior[strlen(cuvantAnterior)-1]) {
+                            strcat(rezultat, "succes");
+                            strcat(rezultat, " ");
+                        }
+                        strcat(rezultat, cuvantCurent);
+                        strcat(rezultat, " ");
+                    } else {
+                        strcat(rezultat, cuvantCurent);
+                        strcat(rezultat, " ");
+                    }
+                    cuvantAnterior = cuvantCurent;
+                    cuvantCurent = strtok(NULL, " ");
+                }
+                cout << rezultat;
+                return 0;
+            }
+
+        ```
 3. 
 
 ## Rezolvare Test 11 Propus BAC 2020
