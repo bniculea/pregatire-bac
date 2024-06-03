@@ -83,7 +83,7 @@
         - Insa vedem ca daca mai adaugam si legatura intre 6 si 2, avem tot 3 drumuri elementare dar un grad maxim exterior: 2
     - Raspuns corect: `b`
 
-### Subiecul II
+### Subiectul II
 
 1. 
     * a
@@ -314,12 +314,215 @@
 ### Subiectul I
 
 1. 
+    - Rezolvare:
+        * a -> invalid, nu se poate obtine 1
+        * b -> invalid, nu se poate impartii la zero. x fiind divizor de al lui 20, 20%x => 0
+        * c -> invalid, de asemenea impartire la zero
+        * d -> valid. Pentru `20/x` obtinem un divizor de al lui `20`, deci `20%x` ne da 0.
+    - Raspuns corect: `d`
 2. 
+    - Rezolvare:
+        ```json
+            f(19, 20)
+            = f(18, 21)
+                = f(15, 22)
+                    = f(8, 23)
+                        = f(-7, 24)
+                            = 24
+        ```
+    - Raspuns corect: `b`      
 3. 
-4. 
-5. 
+    - Rezolvare:
+        ```json
+            { 0 ,  1  ,   2   ,    3   ,  4  }
+            {cal,câine,papagal,porumbel,ponei} 
 
-### Subiecul II
+            (cal,  câine,  cal,  câine),
+            (cal,  câine,  cal,  porumbel),
+            (cal,  câine,  câine, cal),
+            (cal,  câine,  câine,  câine),
+            (cal,  câine,  câine,  papagal),
+            (cal,  câine,  câine, porumbel),
+            (cal,  câine,  câine,  ponei),
+            (cal,  câine,  papagal,  câine)
+
+            (0, 1, 0, 1)
+            (0, 1, 0, 3)
+            (0, 1, 1, 0)
+            (0, 1, 1, 1)
+            (0, 1, 1, 2)
+            (0, 1, 1, 3)
+            (0, 1, 1, 4)
+            (0, 1, 2, 1)
+
+            Enuntul ne cere sa numar cate solutii au forma urmatoare:
+            1 x y 3 si nu avem voie 0,2,4 unul langa celalalt.
+            Daca x ia valoarea: 0, `y` poate sa fie: 1,3
+            Daca x ia valoarea: 1, `y` poate sa fie: 0,1,2,3,4
+            Daca x ia valoarea: 2, `y` poate sa fie: 1,3
+            Daca x ia valoarea: 3, `y` poate sa fie: 0,1,2,3,4
+            Daca x ia valoarea: 4, `y` poate sa fie 1,3
+            Si asa ajungem la 16 posibilitati
+        ```
+    - Raspuns corect: `c`
+4. 
+    - Rezolvare:
+        - Avem arborele de tati:
+            ```json
+                (1,2,3,4,5,6,7,8)
+                (4,4,2,7,4,8,0,7)
+                Adica:
+                7 radacina si tata pentru: 4 si 8
+                4 tata pentru: 1,2,5
+                8 tata pentru: 6
+                2 tata pentru: 3
+            ```
+        - Frunzele sunt: 1,3,5,6
+    - Raspuns corect: `a`
+5. 
+    - Rezolvare:
+        - Din enunt avem graful
+        ![Graf initial](imagini/t10-2020-s1-e5.png)
+        Acum trebuie sa vedem numarul de subgrafuri pe care le putem obtine din graful initial astfel incat arcele de mai jos sa ramana acolo
+         {(1,6), (3,1), (3,6), (6,1)}.
+        Din teorie stim: Fie G=(V,U) un graf orientat. Un subgraf al grafului G, se obține ştergând eventual anumite vârfuri şi odată cu acestea şi arcele care le admit ca extremitate (nu se pot şterge toate vârfurile deoarece s-ar obține un graf cu mulțimea vârfurilor vidă).
+        Astfel avem subgrafuri in care stergem nodurile:
+        - 4
+        - 4,2
+        - 4,5
+        - 4,2,5
+        De retinut ca in orice configuratie trebuie sa stergem varful 4
+        
+    - Raspuns corect: `c`
+### Subiectul II
+
+1. 
+    - Rezolvare:
+        * a
+            ```json
+                x = 16, y = 7
+                x > y => x = 7, y = 16
+                i = 7, j = 16, s =0
+                repeta
+                    s = 0 + 1 * 16 + 0 = 16
+                    i = 8, j = 15
+                pana cand i > j
+                repeta
+                    s = 16 + 0 + 8 = 24
+                    i = 9, j = 14
+                pana cand i > j
+                repeta
+                    s = 24 + 14 + 0 = 38
+                    i = 10
+                    j = 13
+                pana cand i > j
+                repeta
+                    s = 38 + 0 + 10 = 48
+                    i = 11
+                    j = 12
+                pana cand i > j
+                repeta
+                    s = 48 + 12 + 0 = 60
+                    i = 12
+                    j = 11
+                pana cand i > j
+            scrie s = > 60
+            ```
+        * b
+            - Algoritmul aduna numerele pare din intervalul[x, y]
+            - Daca citim `x=10`, practic trebuie sa dam un numar astfel incat suma parelor din intervalul [10, y] sa fie 90. Astfel avem numerele:
+            - 10 -> s = 10
+            - 12 -> s = 22
+            - 14 -> s = 36
+            - 16 -> s = 52
+            - 18 -> s = 70
+            - 20 -> s = 90
+            Deci putem seta ca valoare pentru y: 20 si 21
+        * c
+            ```c++
+                #include <iostream>
+                using namespace std;
+
+                int main() {
+                    int x, y;
+                    cin >> x >> y;
+                    if (x > y) {
+                        int aux = x;
+                        x = y;
+                        y = aux;
+                    }
+                    int i = x, j = y, s =0;
+                    do {
+                        s = s + (i%2)*j + (j%2) * i;
+                        i++;
+                        j--;
+                    } while (i <= j);
+                    cout << s;
+                    return 0;
+                }
+            ```
+        * d
+            ```json
+                citește x,y 
+                (numere naturale nenule) 
+                ┌dacă x>y atunci  
+                | x<-→y 
+                └■ 
+                i<-x; j<-y; s<-0 
+                ┌cat timp i<=j executa  
+                | s<-s+(i%2)*j+(j%2)*i 
+                │ i<-i+1; j<-j-1 
+                └■ 
+                scrie s 
+            ```
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            using namespace std;
+
+            struct spectacol {
+                int cod;
+                int nrActori;
+                int varsta[10];
+            }s[20];
+
+            int main() {
+
+                s[0].cod;
+                s[0].nrActori;
+                s[0].varsta[4];
+                return 0;
+            }
+        ```
+3. 
+    - Rezolvare: 
+        ```c++
+            #include <iostream>
+            using namespace std;
+
+            int main() {
+
+                int a[4][5];
+                for(int i = 0; i<4; i++) {
+                    for(int j = 0; j<5; j++) {
+                        if (i == 0 && j == 0) {
+                            a[i][j] = 5*(i+1);
+                        } else {
+                            a[i][j] = (5 * (i+1))-j;
+                        }
+                    }
+                }
+
+                for(int i = 0; i<4; i++) {
+                    for(int j = 0; j<5; j++) {
+                        cout << a[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+                return 0;
+            }
+        ```
 
 1. 
 2. 
@@ -341,7 +544,7 @@
 4. 
 5. 
 
-### Subiecul II
+### Subiectul II
 
 1. 
 2. 
