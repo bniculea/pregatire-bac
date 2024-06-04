@@ -667,16 +667,221 @@
 ### Subiectul I
 
 1. 
+    - Rezolvare:
+        * a -> Invalid, conditia cu `&&` nu e ok 
+        * b -> Invalid deoarece pentru un x invalid si un y valid obtinem 1
+        * c -> `!` transforma expresia in: `x<= 2019 && y == 2019 && y<=2020` care este invalid pentru y = 2020
+        * d -> `!` transforma expresia in: `x<=2019 && y>=2019 && y <= 2020` care este valida
+    - Raspuns corect: `d`
 2. 
+    - Rezolvare:
+        ```json
+            { 0   ,      1   ,     2   ,    3    ,    4   }
+            {azalea,  begonia,  vriesea,  busuioc,  ferigă}
+
+            {Plante cu flori}
+            {azalea,  begonia,  vriesea}
+
+            { Plante fara flori}
+            {busuioc,  ferigă  }
+
+            Primele 6 solutii:
+            (azalea,busuioc, begonia),
+            (azalea, busuioc, vriesea), 
+            (azalea, ferigă, begonia), 
+            (azalea,ferigă,  vriesea),  
+            (begonia,  busuioc,  azalea), 
+            (begonia,  busuioc,  vriesea)
+
+            Adica:
+            (0,3,1),
+            (0,3,2),
+            (0,4,1),
+            (0,4,2),
+            (1,3,0),
+            (1,3,2),
+
+            a 7 a
+            (1,4,0)
+            a 8 a
+            (1,4,2)
+            a 9 a
+            (2,3,0) => vriesa, busuioc, azalea
+        ```
+    - Raspuns corect: `d`
 3. 
+    - Rezolvare:
+        ```json
+            f(2020, 2)
+            = 1 + f(1010, 2)
+                = 1 + f(505, 2)
+                    = 2020
+                = 2021
+            = 2022
+        ```
+    - Raspuns corect: `a`
 4. 
+    - Rezolvare:
+        - Stim ca un arbore cu `n` noduri are `n-1` muchii. Noi stim ca avem 16 muchii deci avem 17 noduri.
+    - Raspuns corect: `b`
 5. 
+    - Rezolvare:
+        - Stim ca avem 9 muchii, trebuie sa vedem cum grupam cele 9 muchii in cat mai putine noduri. Si pentru asta ne folosim de formula `(n*(n-1))/2`.
+        - Pentru
+            - n = 4=> 6 muchii care e prea putin
+            - n = 5 => 10 muchii care este ce avem nevoie
+        - Deci din 20 de noduri, 5 le folosim ca sa legam cele 9 muchii si restul 15 le lasam singure, pentru a avea 15 componente conexe + 1 componenta conexa alcatuita din cele 5 noduri deci putem avea maximum 16 componente conexe
+    - Rezolvare: `c`
 
 ### Subiectul II
 
 1. 
+    - Rezolvare
+        * a
+            ```json
+                n = 45530
+                m  = 0
+                daca n = 0 fals
+                repeta
+                    c = 0
+                    n = 4553
+                    daca c >= m
+                        m = 0
+                pana cand n == 0
+                repeta
+                    c = 3
+                    n = 455
+                    daca c >= m true
+                        m = 3
+                pana cand n == 0
+                repeta
+                    c = 5
+                    n = 45
+                    daca c >= m
+                        m = 5
+                pana cand n == 0
+                repeta
+                    c = 5
+                    n = 4
+                    daca c>= m
+                        m = 5
+                pana cand n == 0
+                repeta
+                    c = 4
+                    n = 0
+                    daca c >= m fals
+                        m = 10
+                pana cand n = 0
+            scrie m -> 10
+            ```
+        * b
+            - 1000
+            - 1111
+            - 1100
+        * c
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+                int main() {
+                    int n;
+                    cin >> n;
+                    int m =0;
+                    if (n == 0) {
+                        m = 10;
+                    } else {
+                        do {
+                            int c = n % 10;
+                            n = n / 10;
+                            if (c >= m) {
+                                m = c;
+                            } else {
+                                m = 10;
+                            }
+                        } while(n > 0);
+                    }
+
+                    cout << m;
+                    return 0;
+                }
+            ```
+        * d 
+            ```json
+                citeşte n (număr natural) 
+                m<-0 
+                ┌dacă n=0 atunci  
+                │ m<-10 
+                │altfel 
+                │┌repetă  
+                ││ c<-n%10; n<-[n/10] 
+                ││┌dacă c≥m atunci 
+                │││  m<-c 
+                │││altfel  
+                │││  m<-10    
+                ││└■  
+                │└până când n=0 
+                └■ 
+                scrie m
+            ```
 2. 
+    - Rezolvare
+        ```c++
+            #include <iostream>
+            #include <fstream>
+
+            using namespace std;
+
+            struct date_specie {
+                char denumireStiintifica[21];
+                char denumirePopulara[21];
+            };
+
+            struct sera {
+            int numar;
+            date_specie specie[102];
+            }s;
+
+            int main() {
+                s.numar;
+                s.specie[3].denumireStiintifica;
+                s.specie[3].denumirePopulara;
+                return 0;
+            }
+
+        ```
 3. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main() {
+                
+                // Am folosit i si j doar pentru citire, la bac partea assta nu trebuie scrisa
+                int a[7][7];
+                for (int i =0; i < 7; i++) {
+                    for (int j = 0; j < 7; j++) {
+                        cin >> a[i][j];
+                    }
+                }
+
+                // Aici incepe partea ce trebuie scrisa la bac
+                int p = 1;
+                for (int i = 0; i < 7; i++) {
+                    p = p * a[i][i];
+                }
+                cout << p << " ";
+                for(int i = 6; i > 0; i--) {
+                    p = p / a[i][i];
+                    cout << p << " ";
+                }
+                // pana aici
+                return 0;
+            }
+        ```
 
 ### Subiectul III
 
