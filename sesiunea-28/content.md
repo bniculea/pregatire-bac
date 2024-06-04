@@ -575,10 +575,11 @@
 
                 char* cuvantAnterior = NULL;
                 char *cuvantCurent = strtok(text, " ");
-
+                int existaCuvinte = 0;
                 while(cuvantCurent != NULL) {
                     if (cuvantAnterior != NULL) {
                         if (cuvantCurent[strlen(cuvantCurent)-1]== cuvantAnterior[strlen(cuvantAnterior)-1]) {
+                            existaCuvinte = 1;
                             strcat(rezultat, "succes");
                             strcat(rezultat, " ");
                         }
@@ -591,12 +592,75 @@
                     cuvantAnterior = cuvantCurent;
                     cuvantCurent = strtok(NULL, " ");
                 }
-                cout << rezultat;
+
+                if (!existaCuvinte) {
+                    cout << "nu exista";
+                } else {
+                    cout << rezultat;
+                }
                 return 0;
             }
 
         ```
 3. 
+    - Rezolvare
+        * a
+            ```json
+                O sa implementam un algoritm care va citi mai intai primele 2 numere din fisier si va calcula ratia dintre ele. Dupa care continuam sa citim numerele din fisier, numar cu numar, si vom calcula daca ratia dintre numarul citit curent si numarul citit anterior este egala, caz in care vom incrementa un contor in care vom tine lungimea secventei curente. In cazul in care nu este egala ratia, verificam daca lungimea secventei ce tocmai s-a incheiat este mai mare decat lungimea maxima pe care am intalnit-o pana acum (care de asemenea va fi salvata intr-un contor)In cazul in care e mai mare, actualizam valoarea acesteia. Daca lungimeaSecventei curente este insa egala cu lungimeaMaxima, o sa salvam valoarea ratiei cea mai mare dintre cele doua. Dupa ce am terminat de parcurs numerele din fisier, mai facem verificarea in care cautam lungimea maxima si ratia maxima, pentru cazuri in care cea mai mare secventa este chiar la finalul fisierului, caz identic cu exemplul dat. Daca lungimea maxima a secventei este mai mica de 3, atunci afisam nu exista, altfel afisam ratia corespunzatoare. Algoritmul este eficient din punct de vedere al timpului de executie deoarece fisierul este parcurs o singura data, si totodata, este eficient din punct de vedere al memoriei utilizate deoarece rezultatul este calculat din mers si nu se folosesc alte structuri de date pentru a stoca numerele din fisier. Practic, din totalul de 10^6 numere cate pot fi in fisier, noi tinem in memorie doar 2, anume numarul curent si numarul citit anterior. 
+            ```
+        * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+                int main() {
+                    ifstream fin("bac.txt");
+                    int lungimeMaxima = 0;
+
+                    int numarAnterior, numarCurent;
+                    fin >> numarAnterior >> numarCurent;
+                    int ratieSecventaMaxima = 0;
+                    int ratie = numarCurent - numarAnterior;
+                    int lungimeCurenta = 2;
+                    numarAnterior = numarCurent;
+                    while(fin>> numarCurent) {
+                        if (numarCurent - numarAnterior == ratie) {
+                            lungimeCurenta++;
+                        } else {
+                            if (lungimeCurenta > lungimeMaxima) {
+                                lungimeMaxima = lungimeCurenta;
+                                ratieSecventaMaxima = ratie;
+                            } else if (lungimeCurenta == lungimeMaxima && ratie > ratieSecventaMaxima) {
+                                    ratieSecventaMaxima = ratie;
+                            }
+                            lungimeCurenta = 1;
+                            ratie = numarCurent - numarAnterior;
+                        }
+                        numarAnterior = numarCurent;
+                    }
+
+                    if (lungimeCurenta > lungimeMaxima) {
+                        lungimeMaxima = lungimeCurenta;
+                        ratieSecventaMaxima = ratie;
+                    } else if (lungimeCurenta == lungimeMaxima && ratie > ratieSecventaMaxima) {
+                        ratieSecventaMaxima = ratie;
+                    }
+
+
+                    if (lungimeMaxima < 3) {
+                        cout << "nu exista";
+                    } else {
+                        cout << ratieSecventaMaxima;
+                    }
+
+
+                    fin.close();
+                    return 0;
+                }
+
+            ```
 
 ## Rezolvare Test 11 Propus BAC 2020
 
