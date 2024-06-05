@@ -886,5 +886,114 @@
 ### Subiectul III
 
 1. 
+    - Rezolvare
+        ```c++
+            #include <iostream>
+            #include <cmath>
+
+            using namespace std;
+
+            void patrate(int x, int y);
+
+            int main()
+            {
+                int x = 10;
+                int y = 50;
+                patrate(x, y);
+            }
+
+            void patrate(int x, int y) {
+                int suma = 0;
+                int amGasitORadacina =0;
+                for(int i = x; i<=y; i++) {
+                    int radacina = sqrt(i);
+                    if (radacina * radacina == i) {
+                        suma += i;
+                        if (!amGasitORadacina) {
+                            cout << i;
+                            amGasitORadacina = 1;
+                        } else {
+                            cout<<"+"<<i;
+                        }
+                    }
+                }
+
+                if(amGasitORadacina == 0) {
+                    cout << "nu exista";
+                } else {
+                    cout<< "="<<suma;
+                }
+            }
+        ```
 2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <cstring>
+
+            using namespace std;
+
+            int main()
+            {
+                char text[101];
+                char rezultat[101]="";
+                cin.getline(text, 101);
+
+                char* cuvant = strtok(text, " ");
+                while(cuvant != NULL) {
+                    if(cuvant[0] >= 'a' && cuvant[0] <= 'z') {
+                        cuvant[0] = cuvant[0] - ('a'-'A');
+                    }
+                    for(int i = 1; i < strlen(cuvant);i++) {
+                        if(cuvant[i] >='A' && cuvant[i] <= 'Z') {
+                            cuvant[i] = cuvant[i] + ('a'-'A');
+                        }
+                    }
+
+                    strcat(rezultat, cuvant);
+                    strcat(rezultat, " ");
+
+                    cuvant = strtok(NULL, " ");
+                }
+
+                cout << rezultat;
+            }
+        ```
 3. 
+    - Rezolvare
+        * a
+            ```json
+                PS: Algoritmul mai poarta numele si de Run Length Encoding.
+                O sa implementam un algoritm care in timp ce citeste numarul, il va compara cu numarul anterior citit. Daca este egal, vom incrementa un contor in care tinem minte numarul de aparitii al fiecarui numar. Daca numarul curent este diferit de numarul anterior, afisam numarul anterior, urmat de spatiu si de valoarea contorului dupa care resetam contorul la 1 si setam numarul anterior ca fiind drept ultimul numar citit.
+                La terminarea citirii numerelor mai afisam inca o data numarul anterior si aparitiile acestuia pentru a afisa date si despre ultimul/ultimele numere din fisier.
+                Algoritmul este eficient din punct de vedere al timpului de executie deoarece fisierul este parcurs o singura data si rezultatul este calculat in timp ce numerele sunt citite din fisier. De asemenea, este eficient si din punct de vedere al memoriei deoarece nu se folosesc alte structuri de date pentru a stoca numerele din fisier. Practic, din maximul de 10^6 numere cate pot fi in fisier, noi tinem maxim 2 numere in memorie.
+            ```
+        * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+                int main()
+                {
+                    ifstream fin("bac.txt");
+                    int numarAnterior;
+                    fin >> numarAnterior;
+                    int aparitiiNumarAnterior = 1;
+                    int numar;
+                    while(fin >> numar) {
+                        if(numar == numarAnterior) {
+                            aparitiiNumarAnterior++;
+                        } else {
+                            cout << numarAnterior <<" " << aparitiiNumarAnterior << " ";
+                            numarAnterior = numar;
+                            aparitiiNumarAnterior = 1;
+                        }
+                    }
+
+                    cout << numarAnterior << " " << aparitiiNumarAnterior;
+
+                    fin.close();
+                }
+            ```
