@@ -9,7 +9,7 @@
         * b -> Invalid, obtinem 1 si pentru orice y care este diferit de 20 si x diferit de 0
         * c -> Invalid, obtinem 1 si pentur un y care este egal cu 20 si x = 1
         * d -> `!` transforma expresia in: `x*(y-20)>0` adevarat doar pentru x, si y conform enuntului
-    - Raspuns corect: `a`
+    - Raspuns corect: `d`
 2. 
     -  Raspuns corect: `a` => 20*2 = 40
 3. 
@@ -54,11 +54,142 @@
 5. 
     - Rezolvare:
         - Din enunt avem graful de mai jos:
-        ![Graf initial](imagini/t12-s1-e4.png)
+        ![Graf initial](imagini/t12-s1-e5.png)
+        - Observam ca avem nevoie de cel putin 2 muchii, sa eliminam (e.g 1-3 si 2-1) pentru a obtine graful partial neconex
+    - Raspuns corect: `c`
 ### Subiectul II
 
 1. 
+    * a
+        ```json
+            n = 2592
+            nr = 0
+            c = 9
+            cat timp c >=0
+                m = 2592
+                cat timp m!=0 si m%10!=c
+                    m = 259
+                cat timp m!= 0 si m%10 !=c fals
+                daca m!= 0
+                    nr = 9
+                c = c-1 = 8
+            cat timp c >= 0
+                m <- n = 2592
+                cat timp m!= 0 si m%10 != c
+                    m = 259
+                cat timp m!= 0 si m%10 != c
+                    m = 25
+                cat timp m!= 0 si m%10 != c
+                    m = 2
+                cat timp m!= 0 si m%10 != c
+                    m = 0
+                daca m!= 0 fals
+                c = c-1 = 7
+            cat timp c >= 0
+                m <- n = 2592
+                cat timp m!= 0 si m%10 != c
+                    m = 259
+                cat timp m!= 0 si m%10 != c
+                    m = 25
+                cat timp m!= 0 si m%10 != c
+                    m = 2
+                cat timp m!= 0 si m%10 != c
+                    m = 0
+                daca m!= 0 fals
+                c = c-1 = 6
+            cat timp c >= 0
+                m <- n = 2592
+                cat timp m!= 0 si m%10 != c
+                    m = 259
+                cat timp m!= 0 si m%10 != c
+                    m = 25
+                cat timp m!= 0 si m%10 != c
+                    m = 2
+                cat timp m!= 0 si m%10 != c
+                    m = 0
+                daca m!= 0 fals
+                c = c-1 = 5
+            cat timp c >= 0
+                m <- n = 2592
+                cat timp m!= 0 si m%10 != c
+                    m = 259
+                cat timp m!= 0 si m%10 != c
+                    m = 25
+                daca m!= 0
+                    nr = 95
+                c = c-1 = 6
+                -----
+            Programul creeaza un numar format din cifrele de la 9 la 0 care se gasesc in numar
+            
+            Si va returna 952
+        ```
+    * b: `2000, 2002, 2200`
+    * c
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int main()
+            {
+                int n;
+                cin >> n;
+                int c = 9, nr=0;
+                while (c >= 0) {
+                    int m = n;
+                    while (m!= 0 && m%10 != c) {
+                        m = m /10;
+                    }
+
+                    if(m != 0) {
+                        nr = nr * 10 + m%10;
+                    }
+                    c = c-1;
+                }
+                cout << nr;
+                return 0;
+            }
+
+        ```
+    * d
+        ```json
+            citește n (număr natural nenul)
+            nr<-0
+            ┌pentru c<- 9,0,-1 execută
+            │ m<-n
+            │┌cât timp m≠0 și m%10c execută
+            ││ m<-[m/10]
+            │└■
+            │┌dacă m<-0 atunci
+            ││ nr<-nr*10+m%10
+            │└■
+            │
+            └■
+            scrie nr
+
+        ```
 2. 
+    - Rezolvare
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            struct flori {
+                int cod;
+                int nrVarietati;
+                int nrExemplare[11];
+            }f[21];
+
+            int main()
+            {
+                f[0].cod;
+                f[0].nrVarietati;
+                f[0].nrExemplare[3];
+                
+                return 0;
+            }
+        ```
 3. 
 
 ### Subiectul III
