@@ -191,15 +191,116 @@
             }
         ```
 3. 
+    - Rezolvare:
+        ```json
+            Numerele sunt de forma: x x x x 6 si sunt crescatoare
+            Ultimul: 23456
+            Penultimul: 13456
+            Antepenultimul: 12456
+        ```
+        - Raspuns: 12456, 13456, 23456
 
 ### Subiectul III
 
 1. 
+    - Rezolvare
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int pDoi(int n);
+
+            int main()
+            {
+                cout << pDoi(32);
+                return 0;
+            }
+
+            int pDoi(int n) {
+                int rezultat = 0;
+                for(int i = n; i >=1; i--) {
+                    int estePutere = 1;
+                    int numar = i;
+                    while(numar > 1) {
+                        if (numar % 2 != 0) {
+                            estePutere = 0;
+                            break;
+                        }
+                        numar = numar / 2;
+                    }
+                    if (estePutere) {
+                        rezultat = i;
+                        break;
+                    }
+                }
+                return rezultat;
+            }
+
+        ```
 2. 
+    - Rezolvare
+        ```c++
+            #include <iostream>
+            #include <cstring>
+
+            using namespace std;
+
+
+            int main()
+            {
+                char text[101];
+                cin.getline(text, 101);
+                int pozitieUltimaVocala = -1;
+                for(int i = strlen(text)-1; i>=0; i--) {
+                    if(strchr("aeiou", text[i]) != NULL) {
+                        pozitieUltimaVocala = i;
+                        break;
+                    }
+                };
+
+                if (pozitieUltimaVocala == -1) {
+                    cout << "nu exista";
+                } else {
+                    strcpy(text+pozitieUltimaVocala, text+pozitieUltimaVocala+1);
+                    cout << text;
+                }
+
+                return 0;
+            }
+        ```
 3. 
     - Rezolvare
         * a
+            ```json
+                O sa proiectam un algoritm care va citi n de la tastatura dupa care vom avea o instructiune repetitiva, ce va rula cat timp n va fi mai mare sau egal cu 1. Imediat cum intram in while, vom scrie in fisier n dupa care vom calcula urmatoarea valoare a lui n anume: daca n e mai mic sau egal cu 10 sau va fi impar, urmatorul n va fi egal cu n-1, altfel, va fi egal cu n/2. Algoritmul este eficient din punct de vedere al memoriei deoarece nu folosim vreo structura de date pentru a stoca numerele, ele fiind calculate din mers. In acelasi timp, algoritmul este eficient din punct de vedere al timpului deoarece vom scrie direct in ordine descrescatoare, nu mai va fi nevoie de o alta prelucrare pentru a le sorta.
+            ```
         * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+
+                int main()
+                {
+                    ofstream fout("bac.out");
+                    int n;
+                    cin >> n;
+                    while(n >= 1) {
+                        fout << n << " ";
+                        if (n <= 10 || n % 2 == 1) {
+                            n = n-1;
+                        } else {
+                            n = n / 2;
+                        }
+                    }
+
+                    return 0;
+                }
+
+            ```
 
 ## Test 13
 
