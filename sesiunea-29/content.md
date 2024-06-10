@@ -439,7 +439,7 @@
                     k = 5
             Scrie m => 10375
             ```
-        * b
+        * b: 100 1000 1010 1010
         * c
             ```c++
                 #include <iostream>
