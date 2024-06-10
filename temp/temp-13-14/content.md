@@ -29,8 +29,8 @@
             Primele 8: 5, 55, 555, 557, 565, 567, 57, 575
             9:-> 585
             10: -> 587
-            11: -> 65
-            12: -> 655
+            11: -> 588
+            12: -> 65
         ```
     - Raspuns corect: `d`
 4. 
@@ -61,6 +61,135 @@
 ### Subiectul II
 
 1. 
+    - Rezolvare:
+        * a
+            ```json
+                n = 12345
+                p = 1; m = 0; k = 0
+                cat timp n!= 0
+                    x = 25
+                    i = k = 0
+                    cat tomp i!= 0
+                    daca x == 0 fals => c = 5
+                    m = 5+0
+                    n = 1234
+                    p = 10
+                    k = 1
+                cat timp n!= 0
+                    x = 2070
+                    i = 1
+                    cat timp i != 0 executa
+                        x = 207
+                        i = 0
+                    daca x = 0 fals =>c = 7
+                    m = 7*10+5 = 75
+                    n = 123
+                    p = 100
+                    k = 2
+                cat timp n!= 0
+                    x = 49
+                    i = 2
+                    cat timp i!= 0
+                        x = 4
+                        i = 1
+                    cat timp i!= 0
+                        x = 0
+                        i = 0
+                    daca x == 0 => c = 3
+                    m = 300+75 = 375
+                    n = 12
+                    p = 1000
+                    k = 3
+                cat timp n!= 0
+                    x =  270135
+                    i = 3
+                    cat timp i!= 0
+                        x = 27013
+                        i = 2
+                    cat timp i!= 0
+                        x = 2701
+                        i = 1
+                    cat timp i!= 0
+                        x = 270
+                        i = 0
+                    Daca x == 0-> c = 0
+                    n = 1
+                    m = 375
+                    p = 10000
+                    k = 4
+                cat timp n!= 0
+                    x = 21
+                    i = 4
+                    cat timp i!= 0
+                        x = 1
+                        i = 3
+                    cat timp i!= 0
+                        x = 0
+                        i = 2
+                    .....
+
+                    daca x == 0 => c = > 1
+                    m = 10000+375 = 10375
+                    p = 100000
+                    n = 0
+                    k = 5
+            Scrie m => 10375
+            ```
+        * b
+        * c
+            ```c++
+                #include <iostream>
+
+                using namespace std;
+
+                int main() {
+
+                    int n;
+                    cin >> n;
+                    int p = 1, m = 0, k = 0;
+                    while (n != 0) {
+                        int x;
+                        cin >> x;
+                        int i = k;
+                        while (i != 0){
+                            x = x /10;
+                            i = i-1;
+                        }
+                        int c;
+                        if (x == 0) {
+                            c = n % 10;
+                        } else {
+                            c = x % 10;
+                        }
+
+                        m = c * p + m;
+                        n = n /10;
+                        p = p * 10;
+                        k = k +1;
+                    }
+                    cout << m;
+                    return 0;
+                }
+
+            ```
+        * d
+            ```json
+                citeşte n (număr natural) 
+                p<-1; m<-0; k<-0 
+                ┌cât timp n≠0 execută 
+                │ citește x (număr natural) 
+                │ i<-k 
+                │┌cât timp i≠0 execută 
+                ││ x<-[x/10]; i<-i-1 
+                │└■ 
+                │┌dacă x=0 atunci c<-n%10 
+                ││altfel c<-x%10 
+                │└■ 
+                │ m<-c*p+m; n<-[n/10] 
+                │ p<-p*10; k<-k+1 
+                └■ 
+                scrie m
+            ```
 2. 
 3. 
 
