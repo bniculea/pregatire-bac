@@ -654,13 +654,77 @@
 
 ### Subiectul I
 1. 
+    - Rezolvare
+        * a -> Expresia este echivalenta cu: `x >= -2002 && x<=2020` care este valida
+        * b -> Invalida deoarece nu se verifica ambele conditii
+        * c -> Invalid
+        * d -> Invalid
+    - Raspuns corect: `a`
 2. 
+    - Rezolvare
+        ```json
+            f(2020, 20) =
+                = f(101, 2000)
+                    = f(0, -1899)
+                     -1899
+        ```
+    - Raspuns corect: `c`
+
 3. 
+    - Rezolvare:
+        ```json
+            {  0  ,    1          ,   2  ,         3       ,   4  ,          5         ,    6    ,    7   }
+            {cască, costum de înot, cleme, dopuri de urechi, plută, mască de snorkeling, ochelari, snorkel}
+            {  40 ,      400      ,  30  ,        30       ,   10 ,         400        ,     70  ,   60   }
+
+            Primele 3 solutii: 
+            (cască,costum de înot, cleme, dopuri de urechi),
+            (cască, costum de înot, snorkel),
+            (cască,cleme, dopuri de urechi, mască de snorkeling)
+            Adica:
+            (0,1,2,3)
+            (0,1,7)
+            (0,2,3,5)
+
+            A 4 a
+            (0,5,7)
+            A 5 a
+            (1,2, 4,7)
+            Adica: (costum de înot, cleme, plută, snorkel)
+        ```
 4. 
+    - Rezolvare
+        * Pentru a vedea cine satisface cerinta, desenam cei 4 arbori:
+            * a 
+            ![Graf initial](imagini/t14-s1-e4-a.png)
+                - nu respecta cerinta
+            * b
+            ![Graf initial](imagini/t14-s1-e4-b.png)
+                - nu respecta cerinta
+            * c
+             ![Graf initial](imagini/t14-s1-e4-c.png)
+                - valid
+
+
+
 5. 
+    - Rezolvare:
+        * Din matricea de adiacenta avem urmatorul graf orientat:
+        ![Graf initial](imagini/t14-s1-e5.png)
+        * Definiție: Se numește circuit un drum simplu în care extremitatea inițială și finală sunt egale. Se numește circuit elementar un circuit în care, cu excepția extremităților, nu se repetă noduri.
+        * Daca adaugam [6->2] obtinem circuitele
+            * 2 -> 3 -> 4 -> 6 -> 2
+            * 6 -> 2-> 3 -> 4 -> 6
+    - Raspuns corect: `a`
 ### Subiectul II
 
 1. 
+    * a
+        ```json
+        ```
+    * b
+    * c
+    * d
 2. 
 3. 
 
