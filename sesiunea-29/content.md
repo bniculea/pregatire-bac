@@ -495,16 +495,160 @@
                 scrie m
             ```
 2. 
+    ```c++
+        #include <iostream>
+
+        using namespace std;
+
+        struct punct {
+            float x;
+            float y;
+        };
+
+        struct cerc {
+        float raza;
+        punct centru;
+        }c;
+
+        int main() {
+            c.raza;
+            c.centru.x;
+            c.centru.y;
+            
+            return 0;
+        }
+    ```
 3. 
+    ```c++
+        #include <iostream>
+        #include <cstring>
+
+        using namespace std;
+
+        int main() {
+            char s[21];
+            strcpy(s,"stilou"); // s contine "stilou"
+            int i = 0;
+            cout<<s+4<<endl; // afiseaza "ou" si se muta pe linia urmatoare
+            for(i=0;i<4;i++)
+                s[i]=s[0]+(i-1)*(1-i%2)+3*(2*i/3-1)*(i%2); // inlocuieste fiecare litera din primele 4 cu 'r' 'o' 's' si 'u'
+            s[4]='\0'; // incheie string-ul dupa al 4-lea caracter
+            cout<<s;
+            return 0;
+        }
+    ```
 
 ### Subiectul III
 
 1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <climits>
+            using namespace std;
+            void putere (int n, int&d, int& p);
+
+            int main() {
+                int d, p;
+                putere(10780, d, p);
+                cout << d << " " << p;
+                return 0;
+            }
+
+            void putere (int n, int&d, int& p) {
+                int putereMin = INT_MAX, divizorMin;
+                d = 2;
+                while ( n > 1) {
+                    p = 0;
+                    while (n% d == 0) {
+                        n = n / d;
+                        p = p+1;
+                    }
+
+                    if (p!= 0) {
+                        if (p < putereMin) {
+                            putereMin = p;
+                            divizorMin = d;
+                        } else if (p == putereMin && d < divizorMin) {
+                            divizorMin = d;
+                        }
+                    }
+
+                    d = d+1;
+                }
+                p = putereMin;
+                d = divizorMin;
+            }
+        ```
 2. 
+    - Rezolvare
+        ```c++
+            #include <iostream>
+            using namespace std;
+
+            int main() {
+
+                int n, k;
+                cin >> n >> k;
+                int matrice[n*k][n];
+
+                int numar = 1;
+                for(int i = 0; i < n*k; i++) {
+                    for(int j =0; j < n; j++) {
+                        matrice[i][j] = numar + j;
+                    }
+                    if((i+1) % k == 0) {
+                        numar++;
+                    }
+                }
+
+                for(int i = 0; i < n*k; i++) {
+                    for(int j =0; j < n; j++) {
+                        cout << matrice[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+                return 0;
+            }
+
+        ```
 3. 
     - Rezolvare
         * a
+            ```json
+                Observam ca sirul este o progresie geometrica, valorile sirului crescand exponential, fiind puteri ale lui 2, deci ratia va fi 2.
+                Algoritmul de mai jos este eficient din punct de vedere al timpului de executie dar si al memoriei ocupate deoarece rezultatul este calculat direct in ordine descrescatoare, fara a genera mai intai sirul in ordine crescatoare, si de asemenea nu tinem in memorie sirul inainte de a-l scrie.
+            ```
         * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+                int main() {
+                    ofstream fout("bac.txt");
+                    int x;
+                    cin >> x;
+                    while(x >=1) {
+                        if(x == 1) {
+                            fout << 1 << " ";
+                            x--;
+                        } else if (x == 2) {
+                            fout << 2 << " ";
+                            x--;
+                        } else {
+                            fout << x << " ";
+                            x = x/2;
+
+                        }
+
+                    }
+
+                    return 0;
+                }
+
+            ```
 
 ## Test 14
 
