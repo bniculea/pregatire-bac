@@ -874,8 +874,107 @@
 ### Subiectul III
 
 1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            void perechi(int n);
+            int main() {
+                perechi(9);
+
+                return 0;
+            }
+
+            void perechi(int n) {
+                int arePerechi = 0;
+                int divizorAnterior = -1;
+                for(int i = 1; i <= n/2; i++) {
+                    if (n % i == 0) {
+                        int d1 = i;
+                        int d2 = n / i;
+                        if (d1 % 2  != d2 % 2 && d1 != divizorAnterior) {
+                            divizorAnterior = d2;
+                            arePerechi = 1;
+                            cout << "[" << d1 <<" " << d2 << "] ";
+                        }
+                    }
+                }
+                if (!arePerechi) {
+                    cout << "nu exista";
+                }
+            }
+        ```
 2. 
+    - Rezolvare
+        ```c++
+            #include <iostream>
+            #include <cstring>
+
+            using namespace std;
+
+            int main() {
+                char text[101], rezultat[101] = "";
+                cin.getline(text, 101);
+                char* cuvant = strtok(text, " ");
+                while (cuvant != NULL) {
+                    if (cuvant[0] == '-' && cuvant[1] >= '0' && cuvant[1]<='9') {
+                        strcpy(cuvant, cuvant+1);
+                    }
+                    strcat(rezultat, cuvant);
+                    strcat(rezultat, " ");
+
+                    cuvant = strtok(NULL, " ");
+                }
+                cout << rezultat;
+                return 0;
+            }
+
+        ```
 3. 
     - Rezolvare
         * a
+            ```json
+                o sa scriem un algoritm care va initializa 3 variabile in care vom tine minimul cel mai mic, cel mijlociu si cel mare, si pe care le initializam cu INT_MAX. DUpa aceea, in timp ce parcurgem numerele din fisier, verificam urmatoarele cazuri:
+                1. daca numarul este mai mic sau egal decat cel mai mic atunci: cel mai mare numar mic devine cel mijlociu, cel mijlociu ia valoarea din cel mic, si cel mic devine numarul curent
+                2. daca numarul este mai mic sau egal decat cel mijlociu, punem in cel mare valoarea din cel mijlociu, iar in cel mijlociu punem numarul curent. Pe cel mic nu il atingem in acest caz deoarece numarul citit este sigur mai mare decat el.
+                3. daca numarul citit este mai mic sau egal decat cel mai mare numar minim, atunci actualizam valoarea acestuai cu numarul curent.
+                Algoritmul este eficient din punct de vedere al timpului de executie deoarece fisierul este parcurs o singura data. In acelasi timp, programul este eficient din punct de vedere al memoriei deoarece din totalul de 10^9 numere cate pot fi in fisier, noi in memorie tinem doar 3, anume cele 3 minime si nu se folosesc alte structuri de date pentru a stoca numerele, rezultatul fiind calculat in timp ce citim numerele din fisier.
+            ```
         * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+                #include <climits>
+
+                using namespace std;
+
+                int main() {
+                    ifstream  fin("bac.in");
+                    int celMaiMic = INT_MAX;
+                    int celMijlociu = INT_MAX;
+                    int celMare = INT_MAX;
+
+                    int numar;
+                    while(fin >> numar) {
+                        if (numar % 100 == 20) {
+                            if (numar <= celMaiMic) {
+                                celMare = celMijlociu;
+                                celMijlociu = celMaiMic;
+                                celMaiMic  = numar;
+                            } else if (numar <= celMijlociu){
+                                celMare = celMijlociu;
+                                celMijlociu = numar;
+                            } else if (numar <= celMare) {
+                                celMare = numar;
+                            }
+                        }
+                    }
+
+                    cout << celMaiMic << " " << celMijlociu << " " << celMare;
+                    fin.close();
+                    return 0;
+                }
+
+            ```
