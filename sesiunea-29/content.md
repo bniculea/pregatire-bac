@@ -721,12 +721,155 @@
 1. 
     * a
         ```json
+            n = 1527894
+            m = 0
+            repeta
+                c = 4
+                n = 152789
+                daca c == 9  fals
+                    daca c% 2== 1 fals
+                m = 4
+            pana cand n = 0
+            repeta
+                c = 9
+                n = 15278
+                daca c == 9 => c = 1
+                m = 41
+            pana cand n == 0
+            repeta
+                c = 8
+                n = 1527
+                daca c == 9 fals
+                    daca c%2 == 1 fals
+                m = 418
+            pana cand n == 0
+            repeta
+                c = 7
+                n = 152
+                daca c == 9 fals
+                    daca c % 2 == 1 ->c = 8
+                m = 4188
+            pana cand n = 0
+            repeta
+                c = 2
+                n = 15
+                daca c == 9 fals
+                    daca c % 2 == 1 fals
+                m = 41882
+            pana cand n == 0
+            repeta 
+                c = 5
+                n = 1
+                daca c == 9 fals
+                    daca c%2 == 1 => c = 6
+                m = 418826
+            pana cand n = 0
+            repeta
+                c = 1
+                n = 0
+                daca c== 9 fals
+                    daca c % 2 == 1
+                        c = 2
+                m = 4188262
+            pana cand n = 0
+        scrie m => 4188262
         ```
-    * b
+    * b: `9, 90, 900, 9000, 90000, etc.`
     * c
+        ```c++
+            #include <iostream>
+            #include <fstream>
+
+            using namespace std;
+
+            int main() {
+                int n;
+                cin >> n;
+                int m = 0;
+                do {
+                    int c = n % 10;
+                    n = n / 10;
+                    if (c == 9) {
+                        c = 1;
+                    } else {
+                        if (c % 2 == 1) {
+                            c = c+1;
+                        }
+                    }
+                    m = m * 10 + c;
+                } while (n != 0);
+                cout << m;
+
+                return 0;
+            }
+
+        ```
     * d
+        ```c++
+            citește n (număr natural)
+            m<-0
+            ┌cat timp n > 0 executa 
+            │ c<-n%10; n<-[n/10]
+            │┌dacă c=9 atunci c<-1
+            ││altfel
+            ││┌dacă c%2=1 atunci
+            │││c<-c+1
+            ││└■
+            │└■
+            │ m<-m*10+c
+            └■
+            scrie m
+        ```
 2. 
+    - Rezolvare:
+        ```c++
+            struct rasa {
+                int cod;
+                int nrExemplare;
+                int varsta[11];
+            }r[21];
+        ```
 3. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <fstream>
+
+            using namespace std;
+
+
+            int main() {
+
+                int a[5][7] = {
+                        {0,0,0,0,0,0,0},
+                        {0,0,0,0,0,0,0},
+                        {0,0,0,0,0,0,0},
+                        {0,0,0,0,0,0,0},
+                        {0,0,0,0,0,0,0},
+                };
+                for(int i = 0; i < 5; i++) {
+                    for(int j = 7; j >= 0; j--) {
+                        if (i == 0 || j == 6) {
+                            a[i][j] = 1;
+                        } else {
+                            a[i][j] = (a[i-1][j] + a[i][j+1]) % 10;
+                        }
+                    }
+                }
+
+
+
+                for(int i = 0; i < 5; i++) {
+                    for(int j = 0; j < 7; j++) {
+                        cout << a[i][j] <<" ";
+                    }
+                    cout << endl;
+                }
+
+                return 0;
+            }
+
+        ```
 
 ### Subiectul III
 
