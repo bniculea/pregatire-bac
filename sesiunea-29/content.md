@@ -537,7 +537,6 @@
             return 0;
         }
     ```
-
 ### Subiectul III
 
 1. 
