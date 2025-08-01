@@ -163,7 +163,7 @@
                 - `6` are piersici
                 - Astfel stim ce varfuri trebuie sa contina cele 3 componente tare conexe
                 - Prin urmare daca trasam muchiile:
-                    - `[5->3]`, `[1->3]`, `[2->4]` si `[4->2]` obtinem cele 3 componente tare conexe cerute.
+                    - `[5->3]`, `[3->1]`, `[2->4]` si `[4->2]` obtinem cele 3 componente tare conexe cerute.
                     - Raspuns corect: `A` 
 
 
